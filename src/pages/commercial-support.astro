@@ -1,0 +1,271 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import { vendors } from '../data/vendors';
+
+function vendorId(name: string): string {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
+
+const sortedVendors = [...vendors].sort((a, b) =>
+  a.name.localeCompare(b.name, 'en', { sensitivity: 'base' }),
+);
+---
+
+<BaseLayout
+  title="Commercial Support Vendors - Open Integration Engine"
+  description="Organizations committed to providing commercial support, implementation, migration, and custom development for Open Integration Engine."
+>
+  <article class="container page">
+    <PageHero title="Commercial Support Vendors" />
+
+    <p class="page-lead">
+      Organizations publicly committed to supporting Open Integration Engine. These vendors
+      offer implementation, migration, custom development, plugin engineering, and managed support.
+    </p>
+    <p class="page-lead-sub">
+      Listed alphabetically. Want to be listed? <a href="/contact/">Contact us</a>.
+    </p>
+
+    <ul class="vendor-grid">
+      {sortedVendors.map((v) => {
+        const id = vendorId(v.name);
+        return (
+          <li class="card card--padded-sm card--hover vendor">
+            <div class="vendor__logo">
+              <img src={v.logo} alt={`${v.name} logo`} loading="lazy" />
+            </div>
+
+            <div class="vendor__body">
+              <h2 class="vendor__name">{v.name}</h2>
+              <p class="vendor__tagline">{v.tagline}</p>
+              <dl class="vendor__meta">
+                <div>
+                  <dt aria-label="Region"><Icon name="pin" size={14} /></dt>
+                  <dd>{v.regions}</dd>
+                </div>
+                <div>
+                  <dt aria-label="Languages"><Icon name="globe" size={14} /></dt>
+                  <dd>{v.languages}</dd>
+                </div>
+              </dl>
+            </div>
+
+            <div class="vendor__actions">
+              <button type="button" class="vendor__more" data-dialog={`#vendor-${id}`}>
+                Read more
+              </button>
+              <a class="vendor__visit" href={v.url} target="_blank" rel="noopener">
+                Visit site
+                <Icon name="arrow-up-right" size={14} />
+              </a>
+            </div>
+
+            <dialog class="vendor-dialog" id={`vendor-${id}`} aria-labelledby={`vendor-${id}-title`}>
+              <button class="vendor-dialog__close" type="button" aria-label="Close">
+                <Icon name="close" size={20} />
+              </button>
+
+              <div class="vendor-dialog__header">
+                <div class="vendor-dialog__logo">
+                  <img src={v.logo} alt={`${v.name} logo`} />
+                </div>
+                <div>
+                  <h2 id={`vendor-${id}-title`} class="vendor-dialog__name">{v.name}</h2>
+                  <p class="vendor-dialog__tagline">{v.tagline}</p>
+                </div>
+              </div>
+
+              <div class="vendor-dialog__body">
+                <p>{v.description}</p>
+                <dl class="vendor-dialog__meta">
+                  <div><dt>Regions</dt><dd>{v.regions}</dd></div>
+                  <div><dt>Languages</dt><dd>{v.languages}</dd></div>
+                </dl>
+              </div>
+
+              <div class="vendor-dialog__footer">
+                <a class="button" href={v.url} target="_blank" rel="noopener">
+                  Visit {v.name}
+                </a>
+              </div>
+            </dialog>
+          </li>
+        );
+      })}
+    </ul>
+  </article>
+</BaseLayout>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-dialog]').forEach((btn) => {
+    const targetId = btn.dataset.dialog;
+    if (!targetId) return;
+    const dlg = document.querySelector<HTMLDialogElement>(targetId);
+    if (!dlg) return;
+    btn.addEventListener('click', () => dlg.showModal());
+  });
+
+  document.querySelectorAll<HTMLDialogElement>('dialog.vendor-dialog').forEach((dlg) => {
+    dlg.querySelector<HTMLButtonElement>('.vendor-dialog__close')?.addEventListener('click', () => dlg.close());
+    dlg.addEventListener('click', (e) => {
+      if (e.target === dlg) dlg.close();
+    });
+  });
+</script>
+
+<style>
+  .page { padding: 3rem 0 2rem; }
+  .page-lead { font-size: 1.1rem; line-height: 1.5; margin: -1.5rem 0 0.5rem; }
+  .page-lead-sub { font-size: 0.95rem; color: var(--color-base); margin: 0 0 2rem; }
+
+  .vendor-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .vendor {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .vendor__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 110px;
+    background: var(--color-light-grey);
+    border-radius: 10px;
+    padding: 1rem;
+  }
+  .vendor__logo img {
+    max-height: 80px;
+    max-width: 80%;
+    object-fit: contain;
+  }
+
+  .vendor__body { flex: 1; min-width: 0; }
+  .vendor__name { font-size: 1.25rem; color: var(--color-headings); margin: 0 0 0.35rem; }
+  .vendor__tagline { color: var(--color-base); font-size: 0.95rem; line-height: 1.5; margin: 0 0 0.75rem; }
+
+  .vendor__meta { margin: 0; display: grid; gap: 0.25rem; font-size: 0.85rem; }
+  .vendor__meta > div { display: flex; align-items: center; gap: 0.5rem; }
+  .vendor__meta dt { display: inline-flex; color: var(--color-accent); flex-shrink: 0; margin: 0; }
+  .vendor__meta dd { margin: 0; color: var(--color-base); }
+
+  .vendor__actions {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--color-divider-soft);
+  }
+
+  .vendor__more {
+    background: transparent;
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent);
+    padding: 0.5rem 1rem;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: var(--radius-button);
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .vendor__more:hover { background: var(--color-accent); color: var(--color-white); }
+
+  .vendor__visit {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--color-base);
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.5rem 0;
+    margin-left: auto;
+  }
+  .vendor__visit:hover { color: var(--color-accent); }
+
+  /* Dialog */
+  .vendor-dialog {
+    border: none;
+    border-radius: var(--radius-card);
+    padding: 0;
+    max-width: 640px;
+    width: calc(100% - 2rem);
+    color: var(--color-base);
+    box-shadow: 0 20px 60px rgba(24, 51, 67, 0.25);
+  }
+  .vendor-dialog::backdrop {
+    background: rgba(24, 51, 67, 0.55);
+    backdrop-filter: blur(2px);
+  }
+
+  .vendor-dialog__close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 0;
+    background: transparent;
+    color: var(--color-base);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s ease;
+  }
+  .vendor-dialog__close:hover { background: var(--color-light-grey); color: var(--color-headings); }
+
+  .vendor-dialog__header {
+    padding: 2rem 2rem 1rem;
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 1.25rem;
+    align-items: center;
+  }
+  .vendor-dialog__logo {
+    height: 80px;
+    width: 140px;
+    background: var(--color-light-grey);
+    border-radius: 10px;
+    padding: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .vendor-dialog__logo img { max-height: 56px; max-width: 100%; object-fit: contain; }
+
+  .vendor-dialog__name { font-size: 1.5rem; color: var(--color-headings); margin: 0 0 0.35rem; }
+  .vendor-dialog__tagline { color: var(--color-base); font-size: 0.95rem; margin: 0; line-height: 1.4; }
+
+  .vendor-dialog__body { padding: 1rem 2rem; border-top: 1px solid var(--color-border-soft); }
+  .vendor-dialog__body p { font-size: 0.95rem; line-height: 1.6; margin: 0 0 1.5rem; }
+
+  .vendor-dialog__meta { margin: 0; display: grid; gap: 0.5rem; font-size: 0.9rem; }
+  .vendor-dialog__meta > div { display: grid; grid-template-columns: 100px 1fr; gap: 0.5rem; }
+  .vendor-dialog__meta dt { font-weight: 600; color: var(--color-headings); margin: 0; }
+  .vendor-dialog__meta dd { margin: 0; }
+
+  .vendor-dialog__footer {
+    padding: 1.5rem 2rem 2rem;
+    border-top: 1px solid var(--color-border-soft);
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  @media (max-width: 720px) {
+    .vendor-grid { grid-template-columns: 1fr; }
+    .vendor-dialog__header { grid-template-columns: 1fr; text-align: center; }
+    .vendor-dialog__logo { margin: 0 auto; }
+  }
+</style>

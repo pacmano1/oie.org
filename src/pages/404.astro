@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+---
+
+<BaseLayout title="Page Not Found - Open Integration Engine" description="The page you were looking for does not exist.">
+  <article class="container-narrow page">
+    <PageHero
+      title="404"
+      lead="That page does not exist, or it moved."
+    />
+
+    <section class="actions">
+      <p>A few good places to land instead:</p>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About OIE</a></li>
+        <li><a href="/news/">News</a></li>
+        <li><a href="/downloads/">Downloads</a></li>
+        <li><a href="https://github.com/OpenIntegrationEngine" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .page { padding: 3rem 0 6rem; }
+  .actions { text-align: center; }
+  .actions ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    font-weight: 600;
+  }
+</style>

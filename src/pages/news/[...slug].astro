@@ -1,0 +1,78 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('news');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const fmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<BaseLayout title={`${post.data.title} - Open Integration Engine`} description={post.data.excerpt}>
+  <article class="container article">
+    <header class="article__header">
+      <p class="article__crumbs"><a href="/news/">← All news</a></p>
+      <h1>{post.data.title}</h1>
+      <time datetime={post.data.date.toISOString()}>{fmt.format(post.data.date)}</time>
+    </header>
+
+    <div class="article__body">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .article { padding: 3rem 0 4rem; }
+  .article__header { margin-bottom: 2.5rem; }
+  .article__crumbs { margin-bottom: 1rem; font-size: 0.9rem; }
+  .article__header h1 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 0.5rem; text-align: left; }
+  .article__header time {
+    display: block;
+    color: var(--color-base);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .article__body :global(h2) { margin-top: 2rem; font-size: 1.5rem; }
+  .article__body :global(h3) { margin-top: 1.5rem; font-size: 1.2rem; }
+  .article__body :global(img) {
+    border-radius: var(--radius-image);
+    display: block;
+    margin: 1.75rem auto;
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--color-border);
+  }
+  .article__body :global(p) { margin-bottom: 1em; font-size: 1.1rem; line-height: 1.75; }
+  .article__body :global(ul),
+  .article__body :global(ol) {
+    padding-left: 1.4rem;
+    margin-bottom: 1em;
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+  .article__body :global(li) { margin-bottom: 0.5em; }
+  .article__body :global(code) {
+    background: var(--color-light-grey);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+  .article__body :global(a) {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+  }
+  .article__body :global(a:hover) {
+    color: var(--color-accent-active);
+  }
+</style>

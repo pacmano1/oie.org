@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+---
+
+<BaseLayout title="Contact Us - Open Integration Engine" description="Get in touch with the Open Integration Engine project.">
+  <article class="container-narrow page">
+    <PageHero
+      title="Contact Us"
+      lead="Get in touch with the Open Integration Engine community."
+    />
+
+    <section class="channels">
+      <div class="card card--padded-sm">
+        <h2>General inquiries</h2>
+        <p>
+          Email us at
+          <a href="mailto:info@openintegrationengine.org"><strong>info@openintegrationengine.org</strong></a>
+        </p>
+      </div>
+
+      <div class="card card--padded-sm">
+        <h2>Community chat</h2>
+        <p>
+          Join us on
+          <a href="https://discord.gg/azdehW2Zrx" target="_blank" rel="noopener"><strong>Discord</strong></a>
+          for real-time discussion with the community.
+        </p>
+      </div>
+
+      <div class="card card--padded-sm">
+        <h2>Issues and contributions</h2>
+        <p>
+          Report bugs, request features, or contribute code on
+          <a href="https://github.com/OpenIntegrationEngine" target="_blank" rel="noopener"><strong>GitHub</strong></a>.
+        </p>
+      </div>
+
+      <div class="card card--padded-sm">
+        <h2>Follow us</h2>
+        <p>
+          Professional updates on
+          <a href="https://www.linkedin.com/company/open-integration-engine" target="_blank" rel="noopener"><strong>LinkedIn</strong></a>.
+        </p>
+      </div>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .page { padding: 3rem 0 4rem; }
+  .channels { display: grid; gap: 1rem; }
+  .channels h2 { font-size: 1.2rem; margin: 0 0 0.35rem; color: var(--color-headings); }
+  .channels p { margin: 0; }
+</style>

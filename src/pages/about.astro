@@ -1,0 +1,253 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+
+const capabilities = [
+  { title: 'Data transformation',     icon: 'transform' as const, desc: 'Convert between HL7 v2, FHIR, DICOM, X12, JSON, XML, and custom formats with a visual mapper and JavaScript transformers.' },
+  { title: 'Message routing',         icon: 'route'     as const, desc: 'Rule-based routing and filtering by content, source, or custom logic.' },
+  { title: 'Custom scripting',        icon: 'code'      as const, desc: 'Full JavaScript access to every message, globals, config maps, and external services.' },
+  { title: 'Real-time monitoring',    icon: 'activity'  as const, desc: 'Live message tracking, queue counts, and alerts on failures or SLA breaches.' },
+  { title: 'Plugin architecture',     icon: 'puzzle'    as const, desc: 'Extend the engine with connectors, transformers, and admin UI plugins without forking.' },
+  { title: 'Durable, queued delivery',icon: 'database'  as const, desc: 'Messages persist to the database, retry on failure, and survive restarts. Clinical data does not get dropped.' },
+];
+
+const connectors = [
+  { title: 'TCP / MLLP',         icon: 'heart'  as const, desc: 'Native HL7 v2 transport. The standard way of moving clinical messages between systems.' },
+  { title: 'HTTP / HTTPS',       icon: 'globe'  as const, desc: 'REST and SOAP web services, inbound and outbound. JSON, XML, multipart, and custom payloads.' },
+  { title: 'JDBC',               icon: 'server' as const, desc: 'Direct database integration. Read and write to PostgreSQL, MySQL, Oracle, SQL Server, and more.' },
+  { title: 'File / SFTP / FTP',  icon: 'folder' as const, desc: 'Read and write files on local volumes, network shares, or remote SFTP / FTP servers.' },
+  { title: 'Messaging',          icon: 'mail'   as const, desc: 'SMTP for email; JMS, AWS SQS, and other queues for asynchronous integration.' },
+  { title: 'DICOM',              icon: 'image'  as const, desc: 'Medical imaging data exchange with DICOM-conformant PACS, modalities, and imaging workflows.' },
+];
+
+const personas = [
+  { title: 'Integration engineers',         icon: 'wrench'  as const, desc: 'Building and maintaining the interfaces between clinical, financial, and operational systems.' },
+  { title: 'Health IT teams',               icon: 'team'    as const, desc: 'Moving data between EHRs, labs, imaging, pharmacy, and billing. Reliably, at scale.' },
+  { title: 'EHR and app vendors',           icon: 'package' as const, desc: 'Shipping interoperability to their customers without rolling their own engine.' },
+  { title: 'Researchers and informaticists',icon: 'flask'   as const, desc: 'Building dependable data pipelines for informatics, analytics, and research workflows.' },
+];
+---
+
+<BaseLayout
+  title="About - Open Integration Engine"
+  description="Open Integration Engine is an open source healthcare integration engine supporting HL7, FHIR, DICOM, and the standards-based data exchange healthcare runs on."
+>
+  <article class="page">
+    <PageHero
+      title="About"
+      lead="Open Integration Engine is an open source integration engine for healthcare: a flexible, standards-based tool for connecting disparate systems and moving clinical data reliably between them."
+    />
+
+    <section class="connectors-section">
+      <div class="container">
+        <h2>Connectors</h2>
+        <ul class="tile-grid">
+          {connectors.map((c) => (
+            <li class="card card--padded-sm">
+              <span class="tile__icon"><Icon name={c.icon} /></span>
+              <h3>{c.title}</h3>
+              <p>{c.desc}</p>
+            </li>
+          ))}
+        </ul>
+        <p class="muted-tail">…and anything else you can build with the plugin SDK.</p>
+      </div>
+    </section>
+
+    <section class="capabilities-section">
+      <div class="container">
+        <h2>Capabilities</h2>
+        <ul class="tile-grid">
+          {capabilities.map((c) => (
+            <li class="card card--padded-sm">
+              <span class="tile__icon"><Icon name={c.icon} /></span>
+              <h3>{c.title}</h3>
+              <p>{c.desc}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section class="who-section">
+      <div class="container">
+        <h2>Who it's for</h2>
+        <ul class="persona-grid">
+          {personas.map((p) => (
+            <li class="card card--padded-sm">
+              <span class="persona__icon"><Icon name={p.icon} size={24} /></span>
+              <h3>{p.title}</h3>
+              <p>{p.desc}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section class="why-section">
+      <div class="container">
+        <div class="card card--padded">
+          <h2>Why OIE</h2>
+          <p>
+            Healthcare integration is its own discipline. OIE is built for it, not a
+            general-purpose ESB retrofitted for clinical workloads. The engine speaks
+            healthcare standards natively, the plugin ecosystem targets healthcare
+            problems specifically, and the community is made up of people who ship
+            clinical integrations for a living.
+          </p>
+          <p>
+            The architecture is modular and extensible: add connectors, custom
+            transformers, or domain plugins without modifying the core. Deployment runs
+            anywhere the JVM runs: on-premises, in your cloud, or in a container.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="history-section">
+      <div class="container">
+        <div class="card card--padded">
+          <h2>A brief history</h2>
+          <p>
+            OIE originated as a fork of <a href="https://github.com/nextgenhealthcare/connect" target="_blank" rel="noopener">Mirth Connect</a>,
+            the widely-adopted open source integration engine originally developed by
+            WebReach, later acquired by Quality Systems, and now stewarded by NextGen
+            Healthcare. The fork was created to preserve fully-open, community-governed
+            healthcare integration tooling after the commercial steward began shifting
+            toward a proprietary direction.
+          </p>
+          <p class="cta-row">
+            <a href="/open/">Read about how the project is governed →</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="ack-section">
+      <div class="container">
+        <h2>Acknowledgments</h2>
+        <p>
+          OIE stands on the shoulders of the original Mirth Connect team and the many
+          contributors who shaped the engine over the years it was developed as open source.
+          And we're grateful to the broader open source healthcare community that continues
+          to show up every day.
+        </p>
+      </div>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .page { padding: 3rem 0 2rem; }
+
+  section { padding: 3rem 0; }
+  section h2 { margin: 0 0 2rem; text-align: center; }
+
+  .connectors-section,
+  .why-section {
+    background: var(--color-surface);
+    border-top: 1px solid var(--color-border-soft);
+    border-bottom: 1px solid var(--color-border-soft);
+  }
+
+  /* Tile grid (Connectors, Capabilities) - 3 columns */
+  .tile-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .tile-grid li {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .tile__icon {
+    width: 48px;
+    height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-page-bg);
+    border-radius: 12px;
+    color: var(--color-accent);
+  }
+
+  .tile-grid h3 {
+    margin: 0 0 0.5rem;
+    color: var(--color-headings);
+  }
+  .tile-grid p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--color-base);
+  }
+
+  /* Persona grid (Who it's for) - auto-fit */
+  .persona-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+  }
+  .persona-grid li {
+    display: flex;
+    flex-direction: column;
+  }
+  .persona__icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: var(--color-light-blue);
+    color: var(--color-accent);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  .persona-grid h3 {
+    margin: 0 0 0.35rem;
+    color: var(--color-headings);
+  }
+  .persona-grid p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--color-base);
+  }
+
+  .muted-tail {
+    margin-top: 1.75rem;
+    font-size: 0.95rem;
+    color: var(--color-base);
+    font-style: italic;
+  }
+
+  .why-section .card p,
+  .history-section .card p {
+    margin: 0 0 1rem;
+    line-height: 1.7;
+  }
+  .why-section .card p:last-child,
+  .history-section .card p:last-child { margin-bottom: 0; }
+
+  .cta-row { font-weight: 600; }
+
+  .ack-section { text-align: center; padding-bottom: 4rem; }
+  .ack-section p { color: var(--color-base); max-width: 720px; margin: 0 auto; text-align: left; }
+
+  @media (max-width: 900px) {
+    .tile-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .tile-grid { grid-template-columns: 1fr; }
+  }
+</style>

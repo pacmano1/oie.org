@@ -1,0 +1,349 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import { getCollection } from 'astro:content';
+import { sponsors } from '../data/sponsors';
+import { vendors } from '../data/vendors';
+
+const announcements = (await getCollection('news'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 5)
+  .map((p) => ({ href: `/news/${p.id}/`, label: `${p.data.title}!` }));
+
+const plugins = [
+  {
+    name: 'Cache Manager',
+    screenshot: '/images/plugins/cache-manager.png',
+    description: 'In-memory key-value lookups against external databases, with lazy loading, HikariCP pooling, and a dedicated admin UI and inspector.',
+    repo: 'https://github.com/diridium-com/oie-cache-manager',
+  },
+  {
+    name: 'Channel & Code Template History',
+    screenshot: '/images/plugins/channel-history.jpg',
+    description: 'Built-in version history for channels and code templates. Side-by-side diff viewer with word-level highlighting, right-click revert, and database-backed storage.',
+    repo: 'https://github.com/diridium-com/simple-channel-history',
+  },
+  {
+    name: 'Source Code Search',
+    screenshot: '/images/plugins/source-code-search.png',
+    description: 'Grep across channel scripts, code templates, global scripts, and message templates, with regex, scoping, highlighted matches, and JSON/CSV export.',
+    repo: 'https://github.com/diridium-com/oie-source-code-search',
+  },
+];
+---
+
+<BaseLayout>
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__logo">
+        <img src="/images/oie-logo.png" alt="Open Integration Engine logo" width="360" height="360" />
+      </div>
+      <div class="hero__copy">
+        <p class="hero__lead">
+          Welcome to the community-supported, vendor-independent<sup>*</sup> fork of Mirth<sup>®</sup> Connect
+        </p>
+
+        <p class="hero__tag">
+          <a href="/open/">Built in the open <span aria-hidden="true">→</span></a>
+        </p>
+
+        <ul class="hero__announcements">
+          {announcements.map((a) => (
+            <li><a href={a.href}>{a.label}</a></li>
+          ))}
+        </ul>
+
+        <a class="button" href="https://github.com/OpenIntegrationEngine" target="_blank" rel="noopener">Get Started</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="plugins">
+    <div class="container">
+      <header class="plugins__header">
+        <h2>Built by the community.</h2>
+        <p>
+          A growing ecosystem of open source plugins extends OIE into the work you actually
+          need to do. Here are a few.
+        </p>
+      </header>
+
+      <ul class="plugins__grid">
+        {plugins.map((p) => (
+          <li class="card card--hover card--lift plugin-card">
+            <a class="plugin-card__screen" href={p.repo} target="_blank" rel="noopener" aria-label={`${p.name} on GitHub`}>
+              <img src={p.screenshot} alt={`${p.name} screenshot`} loading="lazy" />
+            </a>
+            <div class="plugin-card__body">
+              <h3>{p.name}</h3>
+              <p>{p.description}</p>
+              <a class="plugin-card__link" href={p.repo} target="_blank" rel="noopener">
+                View on GitHub
+                <Icon name="arrow-up-right" size={13} />
+              </a>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="ecosystem">
+    <div class="container">
+      <header class="ecosystem__header">
+        <h2>Backed by a real ecosystem.</h2>
+        <p>Companies fund it, build on it, and deliver it to their customers.</p>
+      </header>
+
+      <div class="ecosystem__group">
+        <div class="ecosystem__group-head">
+          <h3>Sponsors</h3>
+          <a class="ecosystem__all" href="/sponsors/">See all sponsors →</a>
+        </div>
+        <ul class="ecosystem__logos">
+          {sponsors.map((s) => (
+            <li>
+              <a href={s.url} target="_blank" rel="noopener" title={s.name} aria-label={s.name}>
+                <img src={s.logo} alt={s.name} loading="lazy" />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="ecosystem__group">
+        <div class="ecosystem__group-head">
+          <h3>Commercial support vendors</h3>
+          <a class="ecosystem__all" href="/commercial-support/">See all vendors →</a>
+        </div>
+        <ul class="ecosystem__logos">
+          {vendors.map((v) => (
+            <li>
+              <a href={v.url} target="_blank" rel="noopener" title={v.name} aria-label={v.name}>
+                <img src={v.logo} alt={v.name} loading="lazy" />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    background: linear-gradient(0deg, var(--color-page-bg) 16%, #fed5d8 100%);
+    padding: 4rem 0 5rem;
+  }
+
+  .hero__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .hero__logo img {
+    display: block;
+    max-width: 420px;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: var(--radius-image);
+  }
+
+  .hero__lead {
+    font-size: clamp(1.5rem, 2.4vw, 2rem);
+    color: var(--color-black);
+    font-weight: 600;
+    line-height: 1.25;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero__tag {
+    margin: 0 0 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  .hero__tag a { color: var(--color-headings); }
+  .hero__tag a:hover { color: var(--color-accent); }
+
+  .hero__announcements {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem;
+  }
+  .hero__announcements li { margin-bottom: 0.4rem; }
+  .hero__announcements a {
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+
+  .plugins {
+    background: var(--color-surface);
+    padding: 4rem 0 5rem;
+    border-top: 1px solid var(--color-border-soft);
+    border-bottom: 1px solid var(--color-border-soft);
+  }
+
+  .plugins__header {
+    max-width: 640px;
+    margin: 0 auto 2.5rem;
+    text-align: center;
+  }
+  .plugins__header h2 {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    margin-bottom: 0.75rem;
+  }
+  .plugins__header p {
+    color: var(--color-base);
+    font-size: 1.05rem;
+    margin: 0;
+  }
+
+  .plugins__grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .plugin-card { overflow: hidden; display: flex; flex-direction: column; }
+
+  .plugin-card__screen {
+    display: block;
+    aspect-ratio: 16 / 10;
+    background: var(--color-light-grey);
+    overflow: hidden;
+    border-bottom: 1px solid var(--color-border-soft);
+  }
+  .plugin-card__screen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+
+  .plugin-card__body {
+    padding: 1.25rem 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .plugin-card__body h3 {
+    font-size: 1.15rem;
+    margin: 0 0 0.5rem;
+  }
+  .plugin-card__body p {
+    color: var(--color-base);
+    font-size: 0.93rem;
+    line-height: 1.55;
+    margin: 0 0 1rem;
+  }
+
+  .plugin-card__link {
+    margin-top: auto;
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--color-accent);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: gap 0.15s ease;
+  }
+  .plugin-card__link:hover { gap: 0.55rem; }
+
+  .ecosystem { padding: 4rem 0 5rem; }
+
+  .ecosystem__header {
+    max-width: 640px;
+    margin: 0 auto 3rem;
+    text-align: center;
+  }
+  .ecosystem__header h2 {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    margin-bottom: 0.5rem;
+  }
+  .ecosystem__header p {
+    color: var(--color-base);
+    font-size: 1.05rem;
+    margin: 0;
+  }
+
+  .ecosystem__group + .ecosystem__group { margin-top: 3rem; }
+
+  .ecosystem__group-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .ecosystem__group-head h3 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-headings);
+    margin: 0;
+  }
+
+  .ecosystem__all {
+    font-size: 0.85rem;
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  .ecosystem__logos {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+  }
+
+  .ecosystem__logos li {
+    aspect-ratio: 2 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 0.75rem;
+    transition: border-color 0.15s ease;
+  }
+  .ecosystem__logos li:hover { border-color: var(--color-border-strong); }
+
+  .ecosystem__logos a {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  .ecosystem__logos img {
+    max-width: 100%;
+    max-height: 50px;
+    object-fit: contain;
+  }
+
+  @media (max-width: 900px) {
+    .hero__inner {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+    .hero__copy { text-align: left; }
+    .plugins__grid { grid-template-columns: 1fr; }
+    .ecosystem__logos { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
+  }
+
+  @media (min-width: 901px) and (max-width: 1100px) {
+    .plugins__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>

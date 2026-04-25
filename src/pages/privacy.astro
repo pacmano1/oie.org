@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+---
+
+<BaseLayout title="Privacy Policy - Open Integration Engine" description="Privacy policy for openintegrationengine.org">
+  <article class="container-narrow page">
+    <PageHero title="Privacy Policy" />
+
+    <section>
+      <h2>Who we are</h2>
+      <p>Our website address is <a href="https://openintegrationengine.org">https://openintegrationengine.org</a>.</p>
+    </section>
+
+    <section>
+      <h2>What we collect</h2>
+      <p>
+        This is a static website. We do not require accounts, do not collect personal
+        information via forms hosted on this site, and do not set first-party tracking cookies.
+      </p>
+    </section>
+
+    <section>
+      <h2>Embedded content from other websites</h2>
+      <p>
+        Pages on this site may include embedded content (videos, images, links to GitHub, etc.).
+        Embedded content from other websites behaves as if the visitor has visited the other
+        website directly. Those services may collect data about you, set cookies, and monitor
+        your interaction with their embedded content.
+      </p>
+    </section>
+
+    <section>
+      <h2>Analytics</h2>
+      <p>
+        We may use privacy-respecting analytics to understand aggregate usage of the site.
+        No personally identifiable information is collected.
+      </p>
+    </section>
+
+    <section>
+      <h2>Who we share your data with</h2>
+      <p>We do not share visitor data with third parties.</p>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <p>
+        Questions about this privacy policy can be sent to
+        <a href="mailto:info@openintegrationengine.org">info@openintegrationengine.org</a>.
+      </p>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .page { padding: 3rem 0 4rem; }
+  section { margin-bottom: 2rem; }
+  section h2 { margin-top: 0; }
+</style>

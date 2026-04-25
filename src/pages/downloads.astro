@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+
+const currentRelease = {
+  version: '4.5.2',
+  url: 'https://github.com/OpenIntegrationEngine/engine/releases/tag/v4.5.2',
+};
+---
+
+<BaseLayout title="Downloads - Open Integration Engine" description="Download the latest Open Integration Engine release.">
+  <article class="container-narrow page">
+    <PageHero
+      title="Downloads"
+      lead="Open Integration Engine is stable and ready for production use."
+    />
+
+    <section>
+      <p>Installers are available including:</p>
+      <ul>
+        <li>A full version <strong>with a bundled JRE</strong> for fast, hassle-free setup</li>
+        <li>A lightweight version <strong>without a JRE</strong> for custom environments</li>
+      </ul>
+    </section>
+
+    <section class="card card--padded download">
+      <h2>Open Integration Engine {currentRelease.version}</h2>
+      <p>
+        <a class="button" href={currentRelease.url} target="_blank" rel="noopener">
+          Download v{currentRelease.version} from GitHub
+        </a>
+      </p>
+      <p class="meta">
+        All releases: <a href="https://github.com/OpenIntegrationEngine/engine/releases" target="_blank" rel="noopener">github.com/OpenIntegrationEngine/engine/releases</a>
+      </p>
+    </section>
+
+    <p class="license-note">
+      Released under the <a href="https://www.mozilla.org/en-US/MPL/2.0/" target="_blank" rel="noopener">Mozilla Public License 2.0</a>.
+    </p>
+  </article>
+</BaseLayout>
+
+<style>
+  .page { padding: 3rem 0 4rem; }
+  .page :global(.lead) { font-size: 1.15rem; }
+  section { margin-bottom: 1.5rem; }
+  .download { text-align: center; }
+  .download h2 { margin-top: 0; }
+  .download .meta { font-size: 0.9rem; color: var(--color-base); margin-bottom: 0; }
+  .license-note { text-align: center; font-size: 0.9rem; color: var(--color-base); margin-top: 1.5rem; }
+</style>

@@ -1,0 +1,365 @@
+---
+import Icon from './Icon.astro';
+
+const communityLinks = [
+  { href: '/sponsors/', label: 'Sponsors' },
+  { href: '/news/',     label: 'News' },
+  { href: '/contact/',  label: 'Contact' },
+];
+
+const githubLinks = [
+  { href: 'https://github.com/OpenIntegrationEngine/engine',             label: 'Engine source' },
+  { href: 'https://github.com/OpenIntegrationEngine/engine/issues',      label: 'Issues' },
+  { href: 'https://github.com/OpenIntegrationEngine/engine/discussions', label: 'Discussions' },
+  { href: 'https://github.com/OpenIntegrationEngine/engine/milestones',  label: 'Milestones' },
+  { href: 'https://github.com/OpenIntegrationEngine/engine/releases',    label: 'Releases' },
+  { href: 'https://github.com/OpenIntegrationEngine',                    label: 'All repositories' },
+];
+
+const primaryLinks = [
+  { href: '/about/',              label: 'About' },
+  { href: '/open/',               label: 'Open Development' },
+  { href: '/commercial-support/', label: 'Commercial Support' },
+];
+
+const endLinks = [
+  { href: '/downloads/', label: 'Downloads', cta: true },
+];
+
+const pathname = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === '/' ? pathname === '/' : pathname.startsWith(href);
+const communityActive = communityLinks.some((l) => isActive(l.href));
+---
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a href="/" class="site-header__brand" aria-label="Open Integration Engine, home">
+      <img src="/images/oie-logo.png" alt="" width="56" height="56" />
+      <span class="site-header__brand-text">
+        <span class="site-header__brand-name">Open Integration Engine<sup>™</sup></span>
+        <span class="site-header__brand-tag">Free. Open Source. Trusted.</span>
+      </span>
+    </a>
+
+    <button class="site-header__toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav id="primary-nav" class="site-header__nav" aria-label="Primary">
+      <ul>
+        {primaryLinks.map((link) => (
+          <li>
+            <a href={link.href} class:list={['site-header__link', { 'is-active': isActive(link.href) }]}>
+              {link.label}
+            </a>
+          </li>
+        ))}
+
+        <li class="site-header__dropdown">
+          <button
+            type="button"
+            class:list={['site-header__link', 'site-header__dropdown-trigger', { 'is-active': communityActive }]}
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-controls="community-menu"
+          >
+            Community
+            <Icon name="chevron" size={12} class="site-header__chevron" />
+          </button>
+          <ul id="community-menu" class="site-header__dropdown-menu" role="menu">
+            {communityLinks.map((link) => (
+              <li role="none">
+                <a
+                  role="menuitem"
+                  href={link.href}
+                  class:list={['site-header__dropdown-link', { 'is-active': isActive(link.href) }]}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </li>
+
+        {endLinks.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class:list={[
+                'site-header__link',
+                { 'site-header__link--cta': link.cta, 'is-active': isActive(link.href) },
+              ]}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+
+        <li class="site-header__dropdown">
+          <button
+            type="button"
+            class="site-header__link site-header__dropdown-trigger"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-controls="github-menu"
+          >
+            GitHub
+            <Icon name="chevron" size={12} class="site-header__chevron" />
+          </button>
+          <ul id="github-menu" class="site-header__dropdown-menu" role="menu">
+            {githubLinks.map((link) => (
+              <li role="none">
+                <a
+                  role="menuitem"
+                  href={link.href}
+                  class="site-header__dropdown-link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border-soft);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .site-header__brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--color-headings);
+  }
+  .site-header__brand:hover { color: var(--color-headings); }
+
+  .site-header__brand img { width: 56px; height: 56px; border-radius: 6px; }
+
+  .site-header__brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+
+  .site-header__brand-name {
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--color-headings);
+  }
+
+  .site-header__brand-tag {
+    font-size: 0.8rem;
+    color: var(--color-base);
+    font-weight: 500;
+  }
+
+  .site-header__nav ul {
+    display: flex;
+    gap: 1.75rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+  }
+
+  .site-header__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--color-menu);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.5rem 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    font-family: inherit;
+    border-bottom: 2px solid transparent;
+  }
+
+  .site-header__link:hover,
+  .site-header__link.is-active {
+    color: var(--color-menu-hover);
+    border-bottom-color: var(--color-main);
+  }
+
+  .site-header__link--cta {
+    background: var(--color-main);
+    color: var(--color-white);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-button);
+    border-bottom: 0;
+    transition: background 0.15s ease;
+  }
+  .site-header__link--cta:hover,
+  .site-header__link--cta.is-active {
+    background: var(--color-main-active);
+    color: var(--color-white);
+    border-bottom: 0;
+  }
+
+  .site-header__dropdown { position: relative; }
+
+  .site-header__chevron { transition: transform 0.15s ease; }
+  .site-header__dropdown-trigger[aria-expanded="true"] .site-header__chevron {
+    transform: rotate(180deg);
+  }
+
+  .site-header__nav .site-header__dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 200px;
+    margin-top: 0.5rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    box-shadow: 0 8px 28px rgba(24, 51, 67, 0.1);
+    padding: 0.5rem;
+    flex-direction: column;
+    gap: 0;
+    align-items: stretch;
+  }
+  .site-header__nav .site-header__dropdown-trigger[aria-expanded="true"] + .site-header__dropdown-menu {
+    display: flex;
+  }
+
+  .site-header__nav .site-header__dropdown-menu li { width: 100%; }
+
+  .site-header__dropdown-link {
+    display: block;
+    padding: 0.6rem 0.9rem;
+    border-radius: 6px;
+    color: var(--color-base);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: background 0.1s ease, color 0.1s ease;
+  }
+
+  .site-header__dropdown-link:hover,
+  .site-header__dropdown-link.is-active {
+    background: var(--color-page-bg);
+    color: var(--color-menu-hover);
+  }
+
+  .site-header__toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    padding: 0.5rem;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+  }
+  .site-header__toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--color-headings);
+  }
+
+  @media (max-width: 900px) {
+    .site-header__toggle { display: inline-flex; }
+
+    .site-header__nav {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--color-surface);
+      border-bottom: 1px solid var(--color-border-soft);
+      display: none;
+      padding: 0.5rem 1.5rem 1rem;
+    }
+    .site-header__nav.is-open { display: block; }
+    .site-header__nav > ul {
+      flex-direction: column;
+      gap: 0;
+      align-items: stretch;
+    }
+    .site-header__nav > ul > li { border-bottom: 1px solid var(--color-divider-soft); }
+    .site-header__nav > ul > li:last-child { border-bottom: 0; }
+
+    .site-header__link {
+      padding: 0.85rem 0;
+      justify-content: space-between;
+    }
+
+    .site-header__dropdown { position: static; }
+
+    .site-header__nav .site-header__dropdown-menu {
+      position: static;
+      transform: none;
+      box-shadow: none;
+      border: 0;
+      padding: 0 0 0.5rem 1rem;
+      background: transparent;
+      border-radius: 0;
+      min-width: 0;
+    }
+
+    .site-header__dropdown-link {
+      padding: 0.6rem 0;
+      border-radius: 0;
+    }
+  }
+</style>
+
+<script>
+  // Mobile menu toggle
+  const toggle = document.querySelector<HTMLButtonElement>('.site-header__toggle');
+  const nav = document.querySelector<HTMLElement>('#primary-nav');
+  if (toggle && nav) {
+    toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+
+  // Dropdowns - click-only
+  const dropdownTriggers = document.querySelectorAll<HTMLButtonElement>('.site-header__dropdown-trigger');
+  const closeAll = () => {
+    dropdownTriggers.forEach((t) => t.setAttribute('aria-expanded', 'false'));
+  };
+
+  dropdownTriggers.forEach((trigger) => {
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const wasOpen = trigger.getAttribute('aria-expanded') === 'true';
+      closeAll();
+      if (!wasOpen) trigger.setAttribute('aria-expanded', 'true');
+    });
+  });
+
+  document.querySelectorAll<HTMLAnchorElement>('.site-header__dropdown-link').forEach((link) => {
+    link.addEventListener('click', closeAll);
+  });
+
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    if (!target.closest('.site-header__dropdown')) closeAll();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeAll();
+  });
+</script>

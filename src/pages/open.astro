@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+---
+
+<BaseLayout
+  title="Built in the Open - Open Integration Engine"
+  description="Open Integration Engine is developed in the open. Public code, public releases, public governance, on a path to Eclipse Foundation stewardship."
+>
+  <article class="page">
+    <PageHero
+      title="Built in the open."
+      lead="No private forks. No insider builds. No walled-off releases."
+    />
+
+    <section>
+      <div class="container">
+        <div class="card card--padded">
+          <h2>Where the work happens</h2>
+          <p>
+            OIE is developed on <a href="https://github.com/OpenIntegrationEngine" target="_blank" rel="noopener">GitHub</a>.
+            Every code change is a public commit. Every bug, feature request, and design
+            discussion is a <a href="https://github.com/OpenIntegrationEngine/engine/issues" target="_blank" rel="noopener">public issue</a>
+            or <a href="https://github.com/OpenIntegrationEngine/engine/discussions" target="_blank" rel="noopener">discussion thread</a>.
+            Every <a href="https://github.com/OpenIntegrationEngine/engine/releases" target="_blank" rel="noopener">release</a>
+            ships from a repository you can audit.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="card card--padded">
+          <h2>Governance</h2>
+          <p>
+            The engine is led by a public
+            <a href="https://github.com/OpenIntegrationEngine/governance/blob/main/steering_committee.md" target="_blank" rel="noopener">Steering Committee</a>
+            and a group of
+            <a href="https://github.com/OpenIntegrationEngine/governance/blob/main/maintainers.md" target="_blank" rel="noopener">Maintainers</a>,
+            with Contributors at every level. Selection, responsibilities, and decision-making
+            are documented in the
+            <a href="https://github.com/OpenIntegrationEngine/governance" target="_blank" rel="noopener">governance repository</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="card card--padded">
+          <h2>Headed for the Eclipse Foundation</h2>
+          <p>
+            OIE has begun the process of joining the
+            <a href="https://www.eclipse.org/org/foundation/" target="_blank" rel="noopener">Eclipse Foundation</a>,
+            the same stewardship structure that backs Jakarta EE, Theia, and Jetty. It is a
+            multi-year path, but the direction is set: long-term institutional openness, not
+            just a friendly license.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="card card--padded">
+          <h2>How to contribute</h2>
+          <p>
+            Everything is on GitHub.
+            <a href="https://github.com/OpenIntegrationEngine/engine/issues" target="_blank" rel="noopener">Open an issue</a>,
+            <a href="https://github.com/OpenIntegrationEngine/engine/discussions" target="_blank" rel="noopener">start a discussion</a>,
+            or <a href="https://github.com/OpenIntegrationEngine/engine/pulls" target="_blank" rel="noopener">send a pull request</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .page { padding: 3rem 0 2rem; }
+  section { padding: 1rem 0; }
+  section:last-of-type { padding-bottom: 4rem; }
+  .card h2 { margin: 0 0 1rem; text-align: center; font-size: var(--font-size-section-h2); }
+  .card p { margin: 0; font-size: 1rem; line-height: 1.7; }
+  .card a { font-weight: 600; }
+</style>
