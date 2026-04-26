@@ -1,3 +1,11 @@
+export type VendorService =
+  | 'Integration & Interface Services'
+  | 'Migration from Other Engines'
+  | 'Cloud Hosting'
+  | 'Managed Support'
+  | 'Custom Development'
+  | 'Training';
+
 export interface Vendor {
   name: string;
   url: string;
@@ -6,6 +14,7 @@ export interface Vendor {
   description: string;
   regions: string;
   languages: string;
+  services: VendorService[];
 }
 
 export const vendors: Vendor[] = [
@@ -19,6 +28,13 @@ export const vendors: Vendor[] = [
       "BrightCodeCompany excels in Mirth Connect/OIE plugin development, offering specialized solutions for custom integrations. Our expertise in Open Integration Engine's internals ensures a seamless and efficient integration process, making us your reliable partner for tailored and high-quality solutions.",
     regions: 'HQ in Estonia, operates globally',
     languages: 'English, Estonian',
+    services: [
+      'Integration & Interface Services',
+      'Migration from Other Engines',
+      'Cloud Hosting',
+      'Managed Support',
+      'Custom Development',
+    ],
   },
   {
     name: 'Technicise',
@@ -30,6 +46,14 @@ export const vendors: Vendor[] = [
       'Technicise Software & Technologies Pvt Ltd is a Healthcare Technology company specialized in Healthcare Platform development, Healthcare Data Interoperability standards implementation, EHR & EMR integration along with cloud-based enterprise software development & integration.',
     regions: 'HQ in India, offices in Germany and USA. Operates globally',
     languages: 'English, German, French, Hindi, Bengali',
+    services: [
+      'Integration & Interface Services',
+      'Migration from Other Engines',
+      'Cloud Hosting',
+      'Managed Support',
+      'Custom Development',
+      'Training',
+    ],
   },
   {
     name: 'Diridium Technologies',
@@ -41,6 +65,13 @@ export const vendors: Vendor[] = [
       'Diridium Technologies provides support and implementation of Mirth Connect, Open Integration Engine and BridgeLink. We specialize in using your infrastructure whether that be AWS, Azure or on-premises.',
     regions: 'HQ in USA. Global subject to language constraints',
     languages: 'English',
+    services: [
+      'Integration & Interface Services',
+      'Migration from Other Engines',
+      'Cloud Hosting',
+      'Managed Support',
+      'Custom Development',
+    ],
   },
   {
     name: 'NovaMap Health',
@@ -52,6 +83,7 @@ export const vendors: Vendor[] = [
       "NovaMap Health's mission is to simplify healthcare integration. Our tools tackle some of the most complex integration challenges. Poor integration of healthcare IT systems blights lives through poorer health outcomes. The best way forward to improve healthcare integration rests with reusable, standards-based components.",
     regions: 'HQ in England, operates globally',
     languages: 'English',
+    services: ['Cloud Hosting', 'Managed Support'],
   },
   {
     name: 'Meditecs',
@@ -63,6 +95,14 @@ export const vendors: Vendor[] = [
       "Meditecs, a Spain-based leader in healthcare interoperability solutions since 2009, processes over 100 million patient records per month and provides services to leading healthcare institutions and technology providers across Europe, the UK, the US, and Asia. Flagship products include Meditecs Smart Connect (advanced integration engine 100% compatible with Mirth Connect/OIE), DICOMPath, and ASTM Extension. Organizations like Abbott, NHS, and Quirón trust Meditecs to integrate medical technologies securely, efficiently, and in compliance with HL7, FHIR, and DICOM. ISO and ENS (High Level) certified.",
     regions: 'HQ in Spain, operates globally',
     languages: 'English, Spanish',
+    services: [
+      'Integration & Interface Services',
+      'Migration from Other Engines',
+      'Cloud Hosting',
+      'Managed Support',
+      'Custom Development',
+      'Training',
+    ],
   },
   {
     name: 'David Labs',
@@ -74,6 +114,12 @@ export const vendors: Vendor[] = [
       'David Labs is a Delaware LLC headquartered in Canada with an extensive pool of Mirth Connect, BridgeLink, and OIE consultants and trainers available at lower cost. Our consulting vertical offers a free initial consultation call. We also operate a products vertical delivered in parallel.',
     regions: 'HQ in Canada, operates in North America, India, and Dubai',
     languages: 'English',
+    services: [
+      'Integration & Interface Services',
+      'Migration from Other Engines',
+      'Custom Development',
+      'Training',
+    ],
   },
   {
     name: 'Taction Software',
@@ -85,6 +131,13 @@ export const vendors: Vendor[] = [
       'Taction Software brings 20+ years of healthcare IT expertise to Open Integration Engine and Mirth Connect projects. We specialize in custom interface development, EHR/EMR integrations, secure data exchange, and HIPAA-compliant workflows. Deep understanding of HL7, FHIR, and XDS ensures reliable, audit-ready integration solutions for hospitals, clinics, and healthtech startups. From legacy engine migration to plugin development and long-term managed support, Taction is your trusted partner for scalable and future-proof integration projects.',
     regions: 'HQ in USA, clients across North America, Europe, and Asia',
     languages: 'English',
+    services: [
+      'Integration & Interface Services',
+      'Migration from Other Engines',
+      'Cloud Hosting',
+      'Managed Support',
+      'Custom Development',
+    ],
   },
   {
     name: 'Converge Health',
@@ -96,5 +149,32 @@ export const vendors: Vendor[] = [
       'Converge Health delivers specialised digital health and integration engine services, with proven experience in platforms such as Mirth Connect, Open Integration Engine, Rhapsody, and InterSystems IRIS for Health. Headquartered in Australia, we serve clients across Asia-Pacific, Europe, the Middle East, and the United Kingdom. As a trusted partner for seamless interoperability, engine migration, and interface development, we help healthcare organisations connect systems, streamline workflows, and enhance patient outcomes.',
     regions: 'HQ in Australia, operates across APAC, Europe, Middle East, UK',
     languages: 'English, Filipino, Hindi',
+    services: [
+      'Integration & Interface Services',
+      'Migration from Other Engines',
+      'Cloud Hosting',
+      'Managed Support',
+      'Custom Development',
+      'Training',
+    ],
+  },
+  {
+    name: 'Saga IT',
+    url: 'https://saga-it.com',
+    logo: '/images/vendors/saga.png',
+    tagline:
+      'US-based healthcare IT consulting specializing in OIE and Mirth Connect. Makers of MirthSync and the MDDS Console.',
+    description:
+      'Saga IT is a US-based healthcare IT consulting firm, founded in 2016, specializing in integration engines (OIE and Mirth Connect) along with broader healthcare interoperability and EHR integration. We build and maintain MirthSync, distribute OIE packages and Docker images, and develop the MDDS Console browser-based management platform. Our team provides OIE consulting across the full lifecycle: migration from Mirth Connect, channel development, cloud and on-premise deployment, managed support, and training. We deploy on AWS, Azure, Google Cloud, Docker, Kubernetes, and on-premise infrastructure.',
+    regions: 'HQ in USA, operates globally',
+    languages: 'English, Spanish',
+    services: [
+      'Integration & Interface Services',
+      'Migration from Other Engines',
+      'Cloud Hosting',
+      'Managed Support',
+      'Custom Development',
+      'Training',
+    ],
   },
 ];

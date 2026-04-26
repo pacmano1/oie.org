@@ -49,6 +49,10 @@ const sortedVendors = [...vendors].sort((a, b) =>
                   <dt aria-label="Languages"><Icon name="globe" size={14} /></dt>
                   <dd>{v.languages}</dd>
                 </div>
+                <div>
+                  <dt aria-label="Services"><Icon name="wrench" size={14} /></dt>
+                  <dd>{v.services.join(', ')}</dd>
+                </div>
               </dl>
             </div>
 
@@ -82,6 +86,7 @@ const sortedVendors = [...vendors].sort((a, b) =>
                 <dl class="vendor-dialog__meta">
                   <div><dt>Regions</dt><dd>{v.regions}</dd></div>
                   <div><dt>Languages</dt><dd>{v.languages}</dd></div>
+                  <div><dt>Services</dt><dd>{v.services.join(', ')}</dd></div>
                 </dl>
               </div>
 
