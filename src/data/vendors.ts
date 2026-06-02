@@ -177,4 +177,23 @@ export const vendors: Vendor[] = [
       'Training',
     ],
   },
+  {
+    name: 'CaboLabs Health Informatics',
+    url: 'https://cabolabs.com/',
+    logo: '/images/vendors/cabolabs.png',
+    tagline:
+      'Clinical data is for life. Isolated data silos are the enemy. CaboLabs enables health information to flow and survive beyond systems, vendors, and generations of technology.',
+    description:
+      'CaboLabs Health Informatics, founded in Uruguay in 2012 by Pablo Pazos Gutierrez, specializes in health information systems, healthcare standards, and interoperability. The team brings deep expertise in openEHR, HL7 v2.x, CDA, and FHIR, and has trained more than 200 professionals on Mirth Connect across 15+ countries. CaboLabs delivers integration and interface services, engine migration, cloud hosting, managed support, custom development, and training for healthcare organizations worldwide, working with customers rather than simply for them.',
+    regions: 'HQ in Uruguay, operates worldwide',
+    languages: 'Spanish, English',
+    services: [
+      'Integration & Interface Services',
+      'Migration from Other Engines',
+      'Cloud Hosting',
+      'Managed Support',
+      'Custom Development',
+      'Training',
+    ],
+  },
 ];
