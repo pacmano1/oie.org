@@ -1,6 +1,11 @@
 ---
 import Icon from './Icon.astro';
 
+const aboutLinks = [
+  { href: '/about/', label: 'About' },
+  { href: '/open/',  label: 'Open Development' },
+];
+
 const communityLinks = [
   { href: '/sponsors/', label: 'Sponsors' },
   { href: '/news/',     label: 'News' },
@@ -17,8 +22,7 @@ const githubLinks = [
 ];
 
 const primaryLinks = [
-  { href: '/about/',              label: 'About' },
-  { href: '/open/',               label: 'Open Development' },
+  { href: '/plugins/',            label: 'Plugins' },
   { href: '/commercial-support/', label: 'Commercial Support' },
 ];
 
@@ -29,6 +33,7 @@ const endLinks = [
 const pathname = Astro.url.pathname;
 const isActive = (href: string) =>
   href === '/' ? pathname === '/' : pathname.startsWith(href);
+const aboutActive = aboutLinks.some((l) => isActive(l.href));
 const communityActive = communityLinks.some((l) => isActive(l.href));
 ---
 
@@ -48,6 +53,32 @@ const communityActive = communityLinks.some((l) => isActive(l.href));
 
     <nav id="primary-nav" class="site-header__nav" aria-label="Primary">
       <ul>
+        <li class="site-header__dropdown">
+          <button
+            type="button"
+            class:list={['site-header__link', 'site-header__dropdown-trigger', { 'is-active': aboutActive }]}
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-controls="about-menu"
+          >
+            About
+            <Icon name="chevron" size={12} class="site-header__chevron" />
+          </button>
+          <ul id="about-menu" class="site-header__dropdown-menu" role="menu">
+            {aboutLinks.map((link) => (
+              <li role="none">
+                <a
+                  role="menuitem"
+                  href={link.href}
+                  class:list={['site-header__dropdown-link', { 'is-active': isActive(link.href) }]}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </li>
+
         {primaryLinks.map((link) => (
           <li>
             <a href={link.href} class:list={['site-header__link', { 'is-active': isActive(link.href) }]}>

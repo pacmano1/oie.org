@@ -4,32 +4,12 @@ import Icon from '../components/Icon.astro';
 import { getCollection } from 'astro:content';
 import { sponsors } from '../data/sponsors';
 import { vendors } from '../data/vendors';
+import { plugins } from '../data/plugins';
 
 const announcements = (await getCollection('news'))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 5)
   .map((p) => ({ href: `/news/${p.id}/`, label: `${p.data.title}!` }));
-
-const plugins = [
-  {
-    name: 'Cache Manager',
-    screenshot: '/images/plugins/cache-manager.png',
-    description: 'In-memory key-value lookups against external databases, with lazy loading, HikariCP pooling, and a dedicated admin UI and inspector.',
-    repo: 'https://github.com/diridium-com/oie-cache-manager',
-  },
-  {
-    name: 'Channel & Code Template History',
-    screenshot: '/images/plugins/channel-history.jpg',
-    description: 'Built-in version history for channels and code templates. Side-by-side diff viewer with word-level highlighting, right-click revert, and database-backed storage.',
-    repo: 'https://github.com/diridium-com/simple-channel-history',
-  },
-  {
-    name: 'Source Code Search',
-    screenshot: '/images/plugins/source-code-search.png',
-    description: 'Grep across channel scripts, code templates, global scripts, and message templates, with regex, scoping, highlighted matches, and JSON/CSV export.',
-    repo: 'https://github.com/diridium-com/oie-source-code-search',
-  },
-];
 ---
 
 <BaseLayout>
@@ -66,13 +46,14 @@ const plugins = [
           A growing ecosystem of open source plugins extends OIE into the work you actually
           need to do. Here are a few.
         </p>
+        <a class="plugins__all" href="/plugins/">See all plugins →</a>
       </header>
 
       <ul class="plugins__grid">
-        {plugins.map((p) => (
+        {plugins.slice(0, 4).map((p) => (
           <li class="card card--hover card--lift plugin-card">
             <a class="plugin-card__screen" href={p.repo} target="_blank" rel="noopener" aria-label={`${p.name} on GitHub`}>
-              <img src={p.screenshot} alt={`${p.name} screenshot`} loading="lazy" />
+              <img src={p.screenshot} alt={`${p.name} screenshot`} loading="lazy" style={p.imgPosition ? `object-position: ${p.imgPosition}` : undefined} />
             </a>
             <div class="plugin-card__body">
               <h3>{p.name}</h3>
@@ -199,14 +180,23 @@ const plugins = [
     font-size: 1.05rem;
     margin: 0;
   }
+  .plugins__all {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-accent);
+  }
 
   .plugins__grid {
     list-style: none;
     padding: 0;
     margin: 0;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
+    max-width: 880px;
+    margin-inline: auto;
   }
 
   .plugin-card { overflow: hidden; display: flex; flex-direction: column; }
@@ -343,7 +333,4 @@ const plugins = [
     .ecosystem__logos { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
   }
 
-  @media (min-width: 901px) and (max-width: 1100px) {
-    .plugins__grid { grid-template-columns: repeat(2, 1fr); }
-  }
 </style>

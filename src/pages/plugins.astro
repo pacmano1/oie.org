@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import { plugins } from '../data/plugins';
+---
+
+<BaseLayout title="Plugins - Open Integration Engine" description="Open source plugins that extend the Open Integration Engine.">
+  <article class="container page">
+    <PageHero title="Plugins" />
+
+    <p class="page-lead">
+      A growing ecosystem of open source plugins extends OIE into the work you actually
+      need to do. They are built and maintained by the community, free to use, and open
+      to contribution. Have one to add? <a href="/contact/">Get in touch</a>.
+    </p>
+
+    <ul class="plugins__grid">
+      {plugins.map((p) => (
+        <li class="card card--hover card--lift plugin-card">
+          <div class="plugin-card__head">
+            <h3>{p.name}</h3>
+            <p>{p.description}</p>
+            <a class="plugin-card__link" href={p.repo} target="_blank" rel="noopener">
+              View on GitHub
+              <Icon name="arrow-up-right" size={13} />
+            </a>
+          </div>
+          <div class="plugin-card__shot">
+            <a class="plugin-card__screen" href={p.repo} target="_blank" rel="noopener" aria-label={`${p.name} on GitHub`}>
+              <img src={p.screenshot} alt={`${p.name} screenshot`} loading="lazy" style={p.imgPosition ? `object-position: ${p.imgPosition}` : undefined} />
+            </a>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </article>
+</BaseLayout>
+
+<style>
+  .page { padding: 3rem 0 4rem; }
+  .page-lead { text-align: center; max-width: 720px; margin: -1.5rem auto 3rem; }
+
+  .plugins__grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .plugin-card { overflow: hidden; display: flex; flex-direction: column; }
+
+  .plugin-card__head {
+    padding: 1.5rem 1.25rem 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .plugin-card__head h3 {
+    font-size: 1.15rem;
+    margin: 0 0 0.5rem;
+  }
+  .plugin-card__head p {
+    color: var(--color-base);
+    font-size: 0.93rem;
+    line-height: 1.55;
+    margin: 0 0 1rem;
+  }
+
+  .plugin-card__link {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--color-accent);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: gap 0.15s ease;
+  }
+  .plugin-card__link:hover { gap: 0.55rem; }
+
+  .plugin-card__shot {
+    margin-top: auto;
+    padding: 0 1.25rem 1.25rem;
+  }
+  .plugin-card__screen {
+    display: block;
+    aspect-ratio: 16 / 10;
+    background: var(--color-light-grey);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+  }
+  .plugin-card__screen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+
+  @media (max-width: 720px) {
+    .plugins__grid { grid-template-columns: 1fr; }
+  }
+</style>
