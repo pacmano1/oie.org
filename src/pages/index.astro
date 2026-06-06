@@ -6,35 +6,64 @@ import { sponsors } from '../data/sponsors';
 import { vendors } from '../data/vendors';
 import { plugins } from '../data/plugins';
 
-const announcements = (await getCollection('news'))
+const latestNews = (await getCollection('news'))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 5)
-  .map((p) => ({ href: `/news/${p.id}/`, label: `${p.data.title}!` }));
+  .slice(0, 3)
+  .map((p) => ({
+    href: `/news/${p.id}/`,
+    title: p.data.title,
+    excerpt: p.data.excerpt,
+    date: p.data.date,
+  }));
+
+const newsFmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
 ---
 
-<BaseLayout>
+<BaseLayout
+  title="Open Integration Engine - Open Source Healthcare Integration"
+  description="Open Integration Engine (OIE) is a free, open source healthcare integration engine. Community-driven, vendor-independent, and fully compatible with Mirth Connect."
+>
   <section class="hero">
     <div class="container hero__inner">
       <div class="hero__logo">
         <img src="/images/oie-logo.png" alt="Open Integration Engine logo" width="360" height="360" />
       </div>
       <div class="hero__copy">
-        <p class="hero__lead">
-          Welcome to the community-supported, vendor-independent<sup>*</sup> fork of Mirth<sup>®</sup> Connect
+        <h1 class="hero__lead">
+          <span>Healthcare Integration</span>
+          <span>Free and Open Source</span>
+          <span>No Vendor Lock-In</span>
+        </h1>
+
+        <p class="hero__sub">
+          A community-driven open source engine, fully compatible with Mirth<sup>®</sup> Connect and extended by a growing ecosystem of free plugins.
         </p>
 
-        <p class="hero__tag">
-          <a href="/open/">Built in the open <span aria-hidden="true">→</span></a>
+        <p class="hero__cta">
+          <a class="button" href="/downloads/">Download</a>
         </p>
-
-        <ul class="hero__announcements">
-          {announcements.map((a) => (
-            <li><a href={a.href}>{a.label}</a></li>
-          ))}
-        </ul>
-
-        <a class="button" href="https://github.com/OpenIntegrationEngine" target="_blank" rel="noopener">Get Started</a>
       </div>
+    </div>
+  </section>
+
+  <section class="news">
+    <div class="container">
+      <header class="news__header">
+        <h2>Latest news</h2>
+        <a class="news__all" href="/news/">See all news →</a>
+      </header>
+
+      <ul class="news__grid">
+        {latestNews.map((n) => (
+          <li class="card card--hover card--lift news-card">
+            <a class="news-card__link" href={n.href}>
+              <time class="news-card__date" datetime={n.date.toISOString()}>{newsFmt.format(n.date)}</time>
+              <h3 class="news-card__title">{n.title}</h3>
+              {n.excerpt && <p class="news-card__excerpt">{n.excerpt}</p>}
+            </a>
+          </li>
+        ))}
+      </ul>
     </div>
   </section>
 
@@ -114,7 +143,7 @@ const announcements = (await getCollection('news'))
 <style>
   .hero {
     background: linear-gradient(0deg, var(--color-page-bg) 16%, #fed5d8 100%);
-    padding: 4rem 0 5rem;
+    padding: 4rem 0 3rem;
   }
 
   .hero__inner {
@@ -133,30 +162,79 @@ const announcements = (await getCollection('news'))
   }
 
   .hero__lead {
-    font-size: clamp(1.5rem, 2.4vw, 2rem);
+    font-size: clamp(2rem, 3.6vw, 3rem);
     color: var(--color-black);
-    font-weight: 600;
-    line-height: 1.25;
-    margin-bottom: 0.75rem;
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+  .hero__lead span { display: block; }
+
+  .hero__sub {
+    font-size: 1.1rem;
+    color: var(--color-base);
+    line-height: 1.55;
+    margin: 0 0 1.25rem;
+    text-wrap: pretty;
   }
 
-  .hero__tag {
-    margin: 0 0 1.5rem;
-    font-size: 1rem;
-    font-weight: 600;
+  .hero__cta {
+    margin: 0.5rem 0 0;
   }
-  .hero__tag a { color: var(--color-headings); }
-  .hero__tag a:hover { color: var(--color-accent); }
 
-  .hero__announcements {
+  .news {
+    padding: 2rem 0 4rem;
+  }
+  .news__header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .news__header h2 {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    margin: 0;
+  }
+  .news__all {
+    font-size: 0.9rem;
+    color: var(--color-accent);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .news__grid {
     list-style: none;
     padding: 0;
-    margin: 0 0 2rem;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
   }
-  .hero__announcements li { margin-bottom: 0.4rem; }
-  .hero__announcements a {
-    font-size: 1.05rem;
-    font-weight: 600;
+  .news-card { display: flex; }
+  .news-card__link {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    height: 100%;
+    color: inherit;
+  }
+  .news-card__link:hover { color: inherit; }
+  .news-card__date {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-base);
+    margin-bottom: 0.5rem;
+  }
+  .news-card__title {
+    font-size: 1.15rem;
+    margin: 0 0 0.6rem;
+  }
+  .news-card__excerpt {
+    color: var(--color-base);
+    font-size: 0.93rem;
+    line-height: 1.6;
+    margin: 0;
   }
 
   .plugins {
@@ -329,6 +407,7 @@ const announcements = (await getCollection('news'))
       text-align: center;
     }
     .hero__copy { text-align: left; }
+    .news__grid { grid-template-columns: 1fr; }
     .plugins__grid { grid-template-columns: 1fr; }
     .ecosystem__logos { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
   }

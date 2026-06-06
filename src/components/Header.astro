@@ -27,7 +27,7 @@ const primaryLinks = [
 ];
 
 const endLinks = [
-  { href: '/downloads/', label: 'Downloads', cta: true },
+  { href: '/downloads/', label: 'Downloads' },
 ];
 
 const pathname = Astro.url.pathname;
@@ -117,10 +117,7 @@ const communityActive = communityLinks.some((l) => isActive(l.href));
           <li>
             <a
               href={link.href}
-              class:list={[
-                'site-header__link',
-                { 'site-header__link--cta': link.cta, 'is-active': isActive(link.href) },
-              ]}
+              class:list={['site-header__link', { 'is-active': isActive(link.href) }]}
             >
               {link.label}
             </a>
@@ -229,21 +226,6 @@ const communityActive = communityLinks.some((l) => isActive(l.href));
   .site-header__link.is-active {
     color: var(--color-menu-hover);
     border-bottom-color: var(--color-main);
-  }
-
-  .site-header__link--cta {
-    background: var(--color-main);
-    color: var(--color-white);
-    padding: 0.5rem 1rem;
-    border-radius: var(--radius-button);
-    border-bottom: 0;
-    transition: background 0.15s ease;
-  }
-  .site-header__link--cta:hover,
-  .site-header__link--cta.is-active {
-    background: var(--color-main-active);
-    color: var(--color-white);
-    border-bottom: 0;
   }
 
   .site-header__dropdown { position: relative; }
