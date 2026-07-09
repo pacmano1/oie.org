@@ -196,4 +196,23 @@ export const vendors: Vendor[] = [
       'Training',
     ],
   },
+  {
+    name: 'Globalesm',
+    url: 'https://www.globalesm.com/',
+    logo: '/images/vendors/globalesm.png',
+    tagline:
+      'Healthcare technology consulting and custom software development for integrations and interoperability across HL7, FHIR, and EDI.',
+    description:
+      "Globalesm, Inc is a healthcare technology consulting and software development company specializing in healthcare integrations, interoperability, and custom software solutions. The team works across HL7, FHIR, EDI transactions, APIs, cloud technologies, and enterprise applications, helping healthcare organizations and technology partners streamline data exchange, improve operational efficiency, and implement reliable, secure solutions.",
+    regions: 'HQ in USA, operates worldwide',
+    languages: 'English, Spanish, Italian',
+    services: [
+      'Integration & Interface Services',
+      'Migration from Other Engines',
+      'Cloud Hosting',
+      'Managed Support',
+      'Custom Development',
+      'Training',
+    ],
+  },
 ];
