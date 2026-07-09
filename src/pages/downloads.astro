@@ -2,14 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 
-const releaseCandidate = {
-  version: '4.6.0-rc1',
-  url: 'https://github.com/OpenIntegrationEngine/engine/releases/tag/v4.6.0-rc1',
-};
-
 const currentRelease = {
-  version: '4.5.2',
-  url: 'https://github.com/OpenIntegrationEngine/engine/releases/tag/v4.5.2',
+  version: '4.6.0',
+  url: 'https://github.com/OpenIntegrationEngine/engine/releases/tag/v4.6.0',
 };
 ---
 
@@ -17,7 +12,7 @@ const currentRelease = {
   <article class="container-narrow page">
     <PageHero
       title="Downloads"
-      lead="Open Integration Engine is stable and ready for production use. The 4.5.2 release is recommended for most users. A 4.6.0 release candidate is also available for community testing."
+      lead="Open Integration Engine is stable and ready for production use. The 4.6.0 release is recommended for most users."
     />
 
     <section>
@@ -29,20 +24,6 @@ const currentRelease = {
     </section>
 
     <section class="card card--padded download">
-      <p class="release-label">Release candidate</p>
-      <h2>Open Integration Engine {releaseCandidate.version}</h2>
-      <p class="release-note">Available for testing and feedback. Not recommended for production use.</p>
-      <p>
-        <a class="button" href={releaseCandidate.url} target="_blank" rel="noopener">
-          Download v{releaseCandidate.version} from GitHub
-        </a>
-      </p>
-      <p class="meta">
-        <a href="/news/oie-4-6-0-rc1/">Read what's new in 4.6.0-rc1</a>
-      </p>
-    </section>
-
-    <section class="card card--padded download">
       <p class="release-label">Current stable release</p>
       <h2>Open Integration Engine {currentRelease.version}</h2>
       <p class="release-note">Recommended for production use.</p>
@@ -50,6 +31,9 @@ const currentRelease = {
         <a class="button" href={currentRelease.url} target="_blank" rel="noopener">
           Download v{currentRelease.version} from GitHub
         </a>
+      </p>
+      <p class="meta">
+        <a href="/news/oie-4-6-0/">Read what's new in 4.6.0</a>
       </p>
       <p class="meta">
         All releases: <a href="https://github.com/OpenIntegrationEngine/engine/releases" target="_blank" rel="noopener">github.com/OpenIntegrationEngine/engine/releases</a>
