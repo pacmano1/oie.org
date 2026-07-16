@@ -33,6 +33,12 @@ export const plugins: Plugin[] = [
     repo: 'https://github.com/diridium-com/oie-source-code-search',
   },
   {
+    name: 'Role Based Access Control',
+    screenshot: '/images/plugins/rbac.png',
+    description: 'Dynamic roles with per-permission grants and channel-level restrictions, replacing the engine\'s default always-allow authorization controller. Works in both the desktop Administrator and the OIE Web Administrator, with denied operations always enforced server-side.',
+    repo: 'https://github.com/diridium-com/role-based-access-control',
+  },
+  {
     name: 'AWS SQS Source Connector',
     screenshot: '/images/plugins/sqs-source.png',
     description: 'Native AWS SQS queue polling as a source connector. Long polling with configurable wait, max messages, and visibility timeout; Default, Static, and STS authentication; SQS and FIFO metadata in the source map; and S3 event-notification handling.',
