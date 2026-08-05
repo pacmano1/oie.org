@@ -46,6 +46,36 @@ const newsFmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long
     </div>
   </section>
 
+  <section class="compare-callout">
+    <div class="container">
+      <div class="card compare-callout__card">
+        <div class="compare-callout__copy">
+          <h2 class="compare-callout__title">Choosing an integration engine?</h2>
+          <p class="compare-callout__text">
+            See how OIE compares to BridgeLink and Mirth Connect on licensing, plugins, cost, and independence.
+          </p>
+        </div>
+        <a class="button compare-callout__btn" href="/compare/">See the comparison</a>
+      </div>
+    </div>
+  </section>
+
+  {/* TEMPORARY: comparison interstitial. Remove when the compare push ends. */}
+  <dialog class="compare-modal" id="compare-modal" aria-labelledby="compare-modal-title">
+    <button class="compare-modal__close" type="button" aria-label="Close">
+      <Icon name="close" size={20} />
+    </button>
+    <h2 id="compare-modal-title" class="compare-modal__title">Choosing an integration engine?</h2>
+    <p class="compare-modal__text">
+      See how Open Integration Engine stacks up against BridgeLink and Mirth Connect on
+      licensing, plugins, cost, and independence. An honest side-by-side.
+    </p>
+    <div class="compare-modal__actions">
+      <a class="button compare-modal__go" href="/compare/">See the comparison</a>
+      <button class="compare-modal__later" type="button">Maybe later</button>
+    </div>
+  </dialog>
+
   <section class="news">
     <div class="container">
       <header class="news__header">
@@ -181,6 +211,85 @@ const newsFmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long
   .hero__cta {
     margin: 0.5rem 0 0;
   }
+
+  .compare-callout {
+    padding: 2rem 0 0.5rem;
+  }
+  .compare-callout__card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 1.1rem 1.75rem;
+  }
+  .compare-callout__copy { text-align: left; }
+  .compare-callout__title {
+    font-size: 1.2rem;
+    margin: 0 0 0.2rem;
+  }
+  .compare-callout__text {
+    color: var(--color-base);
+    margin: 0;
+    font-size: 0.95rem;
+  }
+  .compare-callout__btn { flex-shrink: 0; white-space: nowrap; }
+  @media (max-width: 640px) {
+    .compare-callout__card { flex-direction: column; align-items: flex-start; }
+  }
+
+  /* TEMPORARY: comparison interstitial */
+  .compare-modal {
+    border: none;
+    border-radius: var(--radius-card);
+    padding: 2.5rem 2.25rem 2rem;
+    max-width: 460px;
+    width: calc(100% - 2rem);
+    color: var(--color-base);
+    box-shadow: 0 24px 70px rgba(24, 51, 67, 0.28);
+    position: relative;
+    text-align: center;
+  }
+  .compare-modal::backdrop {
+    background: rgba(24, 51, 67, 0.55);
+    backdrop-filter: blur(2px);
+  }
+  .compare-modal__close {
+    position: absolute;
+    top: 0.85rem;
+    right: 0.85rem;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 0;
+    background: transparent;
+    color: var(--color-base);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s ease;
+  }
+  .compare-modal__close:hover { background: var(--color-light-grey); color: var(--color-headings); }
+  .compare-modal__title { font-size: 1.5rem; margin: 0 0 0.75rem; color: var(--color-headings); }
+  .compare-modal__text { margin: 0 0 1.75rem; line-height: 1.6; }
+  .compare-modal__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+  }
+  .compare-modal__go { width: 100%; }
+  .compare-modal__later {
+    background: transparent;
+    border: 0;
+    color: var(--color-base);
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.25rem;
+  }
+  .compare-modal__later:hover { color: var(--color-headings); }
 
   .news {
     padding: 2rem 0 4rem;
@@ -413,3 +522,22 @@ const newsFmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long
   }
 
 </style>
+
+<!-- TEMPORARY: comparison interstitial -->
+<script>
+  const modal = document.getElementById('compare-modal') as HTMLDialogElement | null;
+  if (modal && localStorage.getItem('oie-compare-modal') !== 'dismissed') {
+    const dismiss = () => {
+      localStorage.setItem('oie-compare-modal', 'dismissed');
+      if (modal.open) modal.close();
+    };
+    setTimeout(() => modal.showModal(), 800);
+    modal.querySelector('.compare-modal__close')?.addEventListener('click', dismiss);
+    modal.querySelector('.compare-modal__later')?.addEventListener('click', dismiss);
+    modal.querySelector('.compare-modal__go')?.addEventListener('click', dismiss);
+    modal.addEventListener('cancel', dismiss);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) dismiss();
+    });
+  }
+</script>
