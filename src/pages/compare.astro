@@ -1,0 +1,313 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+
+type Tone = 'pos' | 'warn' | 'neg' | 'neutral';
+type Cell = { v: string; tone: Tone; href?: string };
+
+const columns = ['OIE', 'BridgeLink', 'Mirth (open source)', 'Mirth (commercial)'];
+
+const rows: { label: string; cells: Cell[] }[] = [
+  {
+    label: 'License',
+    cells: [
+      { v: 'MPL 2.0', tone: 'pos' },
+      { v: 'MPL 2.0; some parts Business Source (restricted)', tone: 'warn' },
+      { v: 'MPL 2.0', tone: 'pos' },
+      { v: 'Proprietary', tone: 'neg' },
+    ],
+  },
+  {
+    label: 'Free, no paid tiers',
+    cells: [
+      { v: 'yes', tone: 'pos' },
+      { v: 'Tiered licensing', tone: 'warn' },
+      { v: 'yes', tone: 'pos' },
+      { v: 'Paid', tone: 'neg' },
+    ],
+  },
+  {
+    label: 'Plugins, free and open',
+    cells: [
+      { v: 'All free, MPL 2.0', tone: 'pos', href: '/plugins/' },
+      { v: 'Vary by license tier', tone: 'warn' },
+      { v: 'Core only', tone: 'warn' },
+      { v: 'Paid extensions', tone: 'neg' },
+    ],
+  },
+  {
+    label: 'Open source web administrator',
+    cells: [
+      { v: 'yes', tone: 'pos' },
+      { v: 'Restricted', tone: 'warn' },
+      { v: 'no', tone: 'neg' },
+      { v: 'no', tone: 'neg' },
+    ],
+  },
+  {
+    label: 'Community-governed, vendor-neutral',
+    cells: [
+      { v: 'yes', tone: 'pos' },
+      { v: 'Single vendor', tone: 'warn' },
+      { v: 'Single vendor', tone: 'warn' },
+      { v: 'Single vendor', tone: 'warn' },
+    ],
+  },
+  {
+    label: 'Open-source foundation',
+    cells: [
+      { v: 'Applied', tone: 'pos', href: '#independence' },
+      { v: 'no', tone: 'neg' },
+      { v: 'no', tone: 'neg' },
+      { v: 'no', tone: 'neg' },
+    ],
+  },
+  {
+    label: 'Commercial support',
+    cells: [
+      { v: 'Independent vendors', tone: 'pos', href: '/commercial-support/' },
+      { v: 'Vendor-led', tone: 'warn' },
+      { v: 'Community + vendors', tone: 'warn' },
+      { v: 'Vendor-led', tone: 'warn' },
+    ],
+  },
+  {
+    label: 'Actively developed',
+    cells: [
+      { v: 'yes', tone: 'pos' },
+      { v: 'yes', tone: 'pos' },
+      { v: 'no', tone: 'neg' },
+      { v: 'yes', tone: 'pos' },
+    ],
+  },
+  {
+    label: 'Mirth-compatible',
+    cells: [
+      { v: 'yes', tone: 'pos' },
+      { v: 'yes', tone: 'pos' },
+      { v: 'yes', tone: 'pos' },
+      { v: 'yes', tone: 'pos' },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Compare - Open Integration Engine vs BridgeLink and Mirth Connect"
+  description="An honest comparison of Open Integration Engine, BridgeLink, and Mirth Connect: licensing, plugins, governance, support, and community."
+>
+  <article class="page">
+    <PageHero
+      title="How OIE compares"
+      lead="An honest look at Open Integration Engine alongside BridgeLink and Mirth Connect, including where the others are strong."
+    />
+
+    <section class="table-section">
+      <div class="container">
+        <div class="compare-table-wrap card">
+          <table class="compare-table">
+            <caption class="sr-only">
+              Comparison of OIE, BridgeLink, and Mirth Connect across licensing, plugins, governance, support, and development.
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col" class="compare-table__corner"><span class="sr-only">Feature</span></th>
+                {columns.map((c, i) => (
+                  <th scope="col" class:list={['compare-table__colhead', { 'is-oie': i === 0 }]}>{c}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((row) => (
+                <tr>
+                  <th scope="row" class="compare-table__rowhead">{row.label}</th>
+                  {row.cells.map((cell, i) => (
+                    <td class:list={['compare-table__cell', `tone-${cell.tone}`, { 'is-oie': i === 0 }]}>
+                      {cell.v === 'yes' ? (
+                        <>
+                          <Icon name="check" size={18} class="compare-check" />
+                          <span class="sr-only">Yes</span>
+                        </>
+                      ) : cell.v === 'no' ? (
+                        <>
+                          <Icon name="close" size={18} class="compare-no" />
+                          <span class="sr-only">No</span>
+                        </>
+                      ) : cell.v === 'na' ? (
+                        <span class="compare-muted">n/a</span>
+                      ) : cell.href ? (
+                        <a href={cell.href}>{cell.v}</a>
+                      ) : (
+                        cell.v
+                      )}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <p class="table-note">
+          Independent vendors also support BridgeLink and Mirth Connect. The distinction is that
+          OIE has no controlling vendor; its support ecosystem is vendor-neutral. Comparison based
+          on publicly available information and each project's own published licenses, as of
+          August 2026.
+        </p>
+      </div>
+    </section>
+
+    <section class="notes-section">
+      <div class="container-narrow">
+        <div class="card card--padded note">
+          <h2>Where OIE is different</h2>
+          <p>
+            OIE builds on the open source foundation that Mirth Connect established, and takes that
+            openness further. Every OIE plugin is free and MPL 2.0 licensed, with nothing held back
+            for a paid tier. Capabilities that cost extra elsewhere are open in OIE: the
+            <a href="/plugins/">TLS Manager</a> handles certificate management comparable to
+            NextGen's paid SSL Manager extension, and Role Based Access Control provides user
+            permissions comparable to NextGen's paid User Authorization extension. Both are free and
+            community-maintained.
+          </p>
+          <p>
+            BridgeLink open-sources its engine under MPL 2.0, but ships its web administrator under
+            the Business Source License, which by its own terms is "not an Open Source license" and
+            may not be used with any integration engine other than BridgeLink. OIE has a web-based
+            administrator as well, and like every OIE plugin it is fully open under MPL 2.0,
+            reusable without restrictions.
+          </p>
+          <p>
+            OIE also has the most active open development and community of the group. The work
+            happens in public on <a href="https://github.com/OpenIntegrationEngine/engine" target="_blank" rel="noopener">GitHub</a>,
+            and an active <a href="https://discord.gg/azdehW2Zrx" target="_blank" rel="noopener">Discord</a>
+            is where many experienced Mirth practitioners now help each other day to day.
+          </p>
+        </div>
+
+        <div class="card card--padded note" id="independence">
+          <h2>Built to stay independent</h2>
+          <p>
+            OIE is governed by its community today, not by any single vendor. To protect that
+            independence for the long term, the project has applied to join the
+            <a href="https://www.eclipse.org/" target="_blank" rel="noopener">Eclipse Foundation</a>,
+            a vendor-neutral home for open source software. That process is underway. The goal is
+            simple: no one company can ever take OIE private, change its license, or put it behind a
+            paywall.
+          </p>
+        </div>
+
+        <div class="cta">
+          <a class="button" href="/downloads/">Download OIE</a>
+          <a class="cta__secondary" href="/plugins/">Browse the free plugins</a>
+        </div>
+      </div>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .page { padding: 3rem 0 4rem; }
+  .page :global(.lead) { max-width: 720px; margin-inline: auto; }
+
+  .table-section { padding-bottom: 1rem; }
+
+  .compare-table-wrap {
+    overflow-x: auto;
+    padding: 0;
+  }
+
+  .compare-table {
+    width: 100%;
+    min-width: 720px;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+
+  .compare-table th,
+  .compare-table td {
+    padding: 0.9rem 1rem;
+    text-align: center;
+    border-bottom: 1px solid var(--color-border);
+    vertical-align: middle;
+  }
+  .compare-table tbody tr:last-child th,
+  .compare-table tbody tr:last-child td { border-bottom: 0; }
+
+  .compare-table__corner { border-bottom: 1px solid var(--color-border); }
+
+  .compare-table__colhead {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-headings);
+    white-space: nowrap;
+  }
+  .compare-table__rowhead {
+    text-align: left;
+    font-weight: 600;
+    color: var(--color-headings);
+    white-space: normal;
+    min-width: 180px;
+  }
+
+  /* Scorecard tones */
+  .compare-table__cell { font-weight: 600; }
+  .compare-table__cell.tone-pos { background: #e8f4ec; color: #256b45; }
+  .compare-table__cell.tone-warn { background: #fbf1e0; color: #8a5a12; }
+  .compare-table__cell.tone-neg { background: #fbe9e9; color: #b23b3b; }
+  .compare-table__cell.tone-neutral { background: var(--color-light-grey); color: var(--color-text-muted); }
+
+  .compare-table a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+  .compare-table a:hover { opacity: 0.7; }
+
+  /* OIE column emphasis: green fill plus a framed outline */
+  .compare-table__colhead.is-oie {
+    color: var(--color-main);
+    background: #e8f4ec;
+    box-shadow: inset 2px 0 0 var(--color-accent), inset -2px 0 0 var(--color-accent), inset 0 2px 0 var(--color-accent);
+    border-top-left-radius: var(--radius-card);
+    border-top-right-radius: var(--radius-card);
+  }
+  .compare-table__cell.is-oie {
+    box-shadow: inset 2px 0 0 var(--color-accent), inset -2px 0 0 var(--color-accent);
+  }
+  .compare-table tbody tr:last-child .compare-table__cell.is-oie {
+    box-shadow: inset 2px 0 0 var(--color-accent), inset -2px 0 0 var(--color-accent), inset 0 -2px 0 var(--color-accent);
+    border-bottom-left-radius: var(--radius-card);
+    border-bottom-right-radius: var(--radius-card);
+  }
+
+  .compare-check { color: #2f8a5a; display: inline-block; vertical-align: middle; }
+  .compare-no { color: #c0392b; display: inline-block; vertical-align: middle; }
+  .compare-muted { color: var(--color-text-muted); }
+
+  .table-note {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    max-width: 720px;
+    margin: 1.5rem auto 0;
+    line-height: 1.5;
+  }
+
+  .notes-section { padding-top: 2rem; }
+
+  .note { margin-bottom: 1.5rem; }
+  .note h2 { font-size: 1.4rem; text-align: left; margin: 0 0 0.75rem; }
+  .note p { margin: 0 0 1rem; line-height: 1.7; }
+  .note p:last-child { margin-bottom: 0; }
+
+  .cta {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 2.5rem;
+  }
+  .cta__secondary { font-weight: 600; }
+
+  @media (max-width: 560px) {
+    .cta { gap: 1rem; }
+  }
+</style>
