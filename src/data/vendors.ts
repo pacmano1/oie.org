@@ -215,4 +215,20 @@ export const vendors: Vendor[] = [
       'Training',
     ],
   },
+  {
+    name: 'SYSNET International',
+    url: 'https://www.sysnetint.com',
+    logo: '/images/vendors/sysnet.png',
+    tagline:
+      'Professional services and managed support for OIE-based interfaces, from the team behind OpenEMPI.',
+    description:
+      'SYSNET International provides professional services and managed support to organizations using Open Integration Engine as part of an OpenEMPI deployment. SYSNET is the company behind OpenEMPI, a master patient/entity index that matches, deduplicates, and links records across systems. The team helps customers implement, configure, operate, and support OIE-based interfaces alongside OpenEMPI, covering interface development, HL7 and healthcare-system integration, architecture and design assessments, custom development, performance testing and tuning, data transformation, and ongoing managed support.',
+    regions: 'HQ in USA, operates worldwide',
+    languages: 'English',
+    services: [
+      'Integration & Interface Services',
+      'Managed Support',
+      'Custom Development',
+    ],
+  },
 ];
