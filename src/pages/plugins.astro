@@ -12,19 +12,38 @@ import { plugins } from '../data/plugins';
     <p class="page-lead">
       A growing ecosystem of open source plugins extends OIE into the work you actually
       need to do. They are built and maintained by the community, free to use, and open
-      to contribution. Have one to add? <a href="/contact/">Get in touch</a>.
+      to contribution. The engine discovers plugins at runtime, so a plugin that ships a
+      web interface runs in both the desktop and
+      <a href="/web-administrator/">web administrators</a> from a single install, with no
+      rebuild. Have one to add? <a href="/contact/">Get in touch</a>.
     </p>
 
     <ul class="plugins__grid">
       {plugins.map((p) => (
         <li class="card card--hover card--lift plugin-card">
           <div class="plugin-card__head">
-            <h3>{p.name}</h3>
+            <div class="plugin-card__title">
+              <h3>{p.name}</h3>
+              {p.ui && (
+                <span class="plugin-card__uis" tabindex="0" role="img" aria-label={p.ui} data-tip={p.ui}>
+                  <Icon name="monitor" size={15} />
+                  <Icon name="browser" size={15} />
+                </span>
+              )}
+            </div>
             <p>{p.description}</p>
-            <a class="plugin-card__link" href={p.repo} target="_blank" rel="noopener">
-              View on GitHub
-              <Icon name="arrow-up-right" size={13} />
-            </a>
+            <div class="plugin-card__links">
+              {p.page && (
+                <a class="plugin-card__link" href={p.page}>
+                  Read more
+                  <Icon name="arrow-up-right" size={13} />
+                </a>
+              )}
+              <a class="plugin-card__link" href={p.repo} target="_blank" rel="noopener">
+                View on GitHub
+                <Icon name="arrow-up-right" size={13} />
+              </a>
+            </div>
           </div>
           <div class="plugin-card__shot">
             <a class="plugin-card__screen" href={p.repo} target="_blank" rel="noopener" aria-label={`${p.name} on GitHub`}>
@@ -39,7 +58,7 @@ import { plugins } from '../data/plugins';
 
 <style>
   .page { padding: 3rem 0 4rem; }
-  .page-lead { text-align: center; max-width: 720px; margin: -1.5rem auto 3rem; }
+  .page-lead { max-width: 720px; margin: -1.5rem auto 3rem; }
 
   .plugins__grid {
     list-style: none;
@@ -57,10 +76,7 @@ import { plugins } from '../data/plugins';
     display: flex;
     flex-direction: column;
   }
-  .plugin-card__head h3 {
-    font-size: 1.15rem;
-    margin: 0 0 0.5rem;
-  }
+  .plugin-card__head h3 { font-size: 1.15rem; }
   .plugin-card__head p {
     color: var(--color-base);
     font-size: 0.93rem;
@@ -68,8 +84,58 @@ import { plugins } from '../data/plugins';
     margin: 0 0 1rem;
   }
 
-  .plugin-card__link {
+  .plugin-card__title {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin: 0 0 0.5rem;
+  }
+  .plugin-card__title h3 { margin: 0; }
+
+  .plugin-card__uis {
+    position: relative;
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: var(--color-text-muted);
+    cursor: help;
+    transform: translateY(1px);
+  }
+  .plugin-card__uis:hover, .plugin-card__uis:focus-visible { color: var(--color-accent); }
+
+  .plugin-card__uis::after {
+    content: attr(data-tip);
+    position: absolute;
+    right: -0.25rem;
+    top: calc(100% + 0.55rem);
+    width: max-content;
+    max-width: 15rem;
+    background: var(--color-headings);
+    color: var(--color-white);
+    font-size: 0.75rem;
+    line-height: 1.35;
+    text-align: left;
+    padding: 0.45rem 0.6rem;
+    border-radius: 6px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+    z-index: 5;
+  }
+  .plugin-card__uis:hover::after,
+  .plugin-card__uis:focus-visible::after { opacity: 1; }
+
+  .plugin-card__links {
     align-self: flex-start;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .plugin-card__link {
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
