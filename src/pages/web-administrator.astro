@@ -23,14 +23,14 @@ const features: Feature[] = [
   {
     title: 'Your plugins, in the browser',
     body:
-      'Plugins you install are recognized at runtime, the same ones that run in the desktop client, from a single install. No rebuild, no vendor sign-off.',
+      'Plugins you install are recognized at runtime, the same ones that run in the desktop client, from a single install. Nobody maintains a separate web build.',
     img: '/images/webadmin/05-source-code-search.png',
     alt: 'Source Code Search plugin running in the web administrator',
   },
   {
     title: 'Extensions light up on their own',
     body:
-      'Install an extension on the engine and the administrator detects and serves its interface automatically. The community plugin store is itself just a plugin.',
+      'Install an extension on the engine and the administrator detects and serves its interface automatically. Its views appear alongside the built-in ones.',
     img: '/images/webadmin/06-extensions.png',
     alt: 'Extensions page in the web administrator',
   },
@@ -80,6 +80,33 @@ const features: Feature[] = [
         </li>
       ))}
     </ul>
+
+    <section class="extend">
+      <h2>How do I add web capabilities to my new or existing plugin?</h2>
+      <p>
+        The web administrator does not privilege its own features. The connectors, data types,
+        transformer steps, attachment viewers, and dashboard tabs it ships with are all plugins,
+        loaded through the same mechanism a plugin of yours uses. A plugin is a folder holding a
+        manifest and a compiled React entry, dropped into a plugins directory and picked up on the
+        next browser refresh.
+      </p>
+      <p>
+        If you already have an engine extension with a Swing panel, the engine half stays as it is
+        and you write only the web UI, calling the REST endpoints you already have. Every Swing
+        extension point has a web equivalent: dashboard tabs and columns, settings panels, channel
+        tabs and tasks, transformer steps and filter rules, attachment viewers, connector panels,
+        data types, transmission modes, resource types, and the authorization controller.
+      </p>
+      <a
+        class="extend__link"
+        href="https://github.com/gibson9583/oie-web-client/blob/main/web-administrator/PLUGINS.md"
+        target="_blank"
+        rel="noopener"
+      >
+        Read the plugin development guide
+        <Icon name="arrow-up-right" size={13} />
+      </a>
+    </section>
 
     <div class="cta">
       <a class="button" href="https://github.com/gibson9583/oie-web-support-plugin" target="_blank" rel="noopener">
@@ -141,6 +168,16 @@ const features: Feature[] = [
   .feature-card__shot { margin-top: auto; padding: 0 1.25rem 1.25rem; }
   .feature-card__shot .screen { aspect-ratio: 16 / 10; }
   .feature-card__shot .screen img { height: 100%; object-fit: cover; object-position: top center; }
+
+  .extend { max-width: 720px; margin: 3rem auto 0; }
+  .extend h2 { font-size: 1.35rem; margin: 0 0 1rem; }
+  .extend p { color: var(--color-base); line-height: 1.6; margin: 0 0 1rem; }
+  .extend__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-weight: 600;
+  }
 
   .cta {
     display: flex;
