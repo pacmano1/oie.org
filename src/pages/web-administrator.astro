@@ -1,0 +1,160 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+
+type Feature = { title: string; body: string; img: string; alt: string };
+
+const features: Feature[] = [
+  {
+    title: 'Inspect every message',
+    body:
+      'Search, browse, reprocess, and resend messages, and drill into any one with the full message tree.',
+    img: '/images/webadmin/03-message-tree.png',
+    alt: 'Message browser with the message tree',
+  },
+  {
+    title: 'Full channel editing',
+    body:
+      'Not a read-only viewer. Configure sources and destinations, write transformers and filters, and deploy.',
+    img: '/images/webadmin/04-channel-editor.png',
+    alt: 'Channel editor in the web administrator',
+  },
+  {
+    title: 'Your plugins, in the browser',
+    body:
+      'Plugins you install are recognized at runtime, the same ones that run in the desktop client, from a single install. No rebuild, no vendor sign-off.',
+    img: '/images/webadmin/05-source-code-search.png',
+    alt: 'Source Code Search plugin running in the web administrator',
+  },
+  {
+    title: 'Extensions light up on their own',
+    body:
+      'Install an extension on the engine and the administrator detects and serves its interface automatically. The community plugin store is itself just a plugin.',
+    img: '/images/webadmin/06-extensions.png',
+    alt: 'Extensions page in the web administrator',
+  },
+];
+---
+
+<BaseLayout
+  title="Web Administrator - Open Integration Engine"
+  description="The OIE web administrator: administer Open Integration Engine from any browser. Open source under MPL 2.0, with plugins recognized at runtime in both the desktop and web clients."
+>
+  <article class="container page">
+    <PageHero title="Web Administrator" />
+
+    <p class="page-lead">
+      Administer Open Integration Engine from any browser. The web administrator is part of OIE,
+      open source under MPL 2.0, and installs as a standard extension. Everything you build works
+      in both the desktop and web administrators from one install.
+    </p>
+
+    <section class="lead-shot">
+      <div class="lead-shot__pair">
+        <figure class="screen">
+          <img src="/images/webadmin/01-dashboard-light.png" alt="Web administrator dashboard, light theme" loading="lazy" />
+        </figure>
+        <figure class="screen">
+          <img src="/images/webadmin/02-dashboard-dark.png" alt="Web administrator dashboard, dark theme" loading="lazy" />
+        </figure>
+      </div>
+      <p class="lead-shot__caption">
+        The full administrator in your browser: live channel status, throughput, and deployment
+        state, in light or dark theme.
+      </p>
+    </section>
+
+    <ul class="feature-grid">
+      {features.map((f) => (
+        <li class="card card--hover card--lift feature-card">
+          <div class="feature-card__head">
+            <h3>{f.title}</h3>
+            <p>{f.body}</p>
+          </div>
+          <div class="feature-card__shot">
+            <div class="screen">
+              <img src={f.img} alt={f.alt} loading="lazy" />
+            </div>
+          </div>
+        </li>
+      ))}
+    </ul>
+
+    <div class="cta">
+      <a class="button" href="https://github.com/gibson9583/oie-web-support-plugin" target="_blank" rel="noopener">
+        Get the Web Support plugin
+        <Icon name="arrow-up-right" size={13} />
+      </a>
+      <a class="cta__secondary" href="/plugins/">Browse the plugins</a>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .page { padding: 3rem 0 4rem; }
+  .page-lead { max-width: 720px; margin: -1.5rem auto 2.5rem; }
+
+  .lead-shot { margin: 0 0 3rem; }
+  .lead-shot__pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+  .lead-shot__caption {
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    margin: 1rem auto 0;
+    max-width: 640px;
+  }
+
+  .screen {
+    margin: 0;
+    display: block;
+    background: var(--color-light-grey);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .screen img { display: block; width: 100%; height: auto; }
+
+  .feature-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .feature-card { overflow: hidden; display: flex; flex-direction: column; }
+  .feature-card__head { padding: 1.5rem 1.25rem 1rem; }
+  .feature-card__head h3 { font-size: 1.15rem; margin: 0 0 0.5rem; }
+  .feature-card__head p {
+    color: var(--color-base);
+    font-size: 0.93rem;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  .feature-card__shot { margin-top: auto; padding: 0 1.25rem 1.25rem; }
+  .feature-card__shot .screen { aspect-ratio: 16 / 10; }
+  .feature-card__shot .screen img { height: 100%; object-fit: cover; object-position: top center; }
+
+  .cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+  }
+  .button { display: inline-flex; align-items: center; gap: 0.35rem; }
+  .cta__secondary { font-weight: 600; }
+
+  @media (max-width: 720px) {
+    .lead-shot__pair { grid-template-columns: 1fr; }
+    .feature-grid { grid-template-columns: 1fr; }
+  }
+</style>
