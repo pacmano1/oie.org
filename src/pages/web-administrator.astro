@@ -44,6 +44,33 @@ const features: Feature[] = [
   <article class="container page">
     <PageHero title="Web Administrator" />
 
+    <details class="context card card--hover">
+      <summary>Why does a web interface get its own page?</summary>
+      <div class="context__body">
+        <p>
+          If you have never administered an engine in this family, here is what the job used to
+          take. This is our own client too, not a competitor's.
+        </p>
+        <ol>
+          <li>Install an Administration Tool Launcher, not the administrator.</li>
+          <li>The launcher brings its own Java runtime. You may use yours instead, provided it has JavaFX.</li>
+          <li>The launcher downloads the administrator. Close to 90 MB of it.</li>
+          <li>The administrator opens. Log in to a user interface that is twenty years old.</li>
+          <li>Start doing the Administration.</li>
+        </ol>
+        <p class="context__now">Now:</p>
+        <ol>
+          <li>Open a browser and log in.</li>
+          <li>Start doing the Administration.</li>
+        </ol>
+        <p>
+          The web administrator is served by the engine itself, on the same port and behind the same
+          credentials. The desktop Administrator still works against the same engine, so nothing has
+          to move at once.
+        </p>
+      </div>
+    </details>
+
     <p class="page-lead">
       Administer Open Integration Engine from any browser. The web administrator is part of OIE,
       open source under MPL 2.0, and installs as a standard extension. Everything you build works
@@ -120,7 +147,50 @@ const features: Feature[] = [
 
 <style>
   .page { padding: 3rem 0 4rem; }
-  .page-lead { max-width: 720px; margin: -1.5rem auto 2.5rem; }
+  .page-lead { max-width: 720px; margin: 0 auto 2.5rem; }
+
+  details.context {
+    max-width: 720px;
+    margin: -1.5rem auto 1.75rem;
+    background: #e6f1f9;
+    border-color: #c8dcea;
+  }
+  details.context:hover { border-color: #a9cbe2; }
+  .context > summary {
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    font-weight: 600;
+    color: var(--color-headings);
+  }
+  .context > summary::-webkit-details-marker { display: none; }
+  .context > summary::after {
+    content: '';
+    flex: none;
+    width: 8px;
+    height: 8px;
+    margin-top: -4px;
+    border-right: 2px solid var(--color-text-muted);
+    border-bottom: 2px solid var(--color-text-muted);
+    transform: rotate(45deg);
+    transition: transform 0.15s ease;
+  }
+  .context[open] > summary::after { margin: 4px 0 0; transform: rotate(-135deg); }
+  .context__body { padding: 0 1.25rem 1.25rem; }
+  .context__body > *:last-child { margin-bottom: 0; }
+  .context p { color: var(--color-base); line-height: 1.6; margin: 0 0 1rem; }
+  .context ol {
+    color: var(--color-base);
+    line-height: 1.6;
+    margin: 0 0 1.5rem;
+    padding-left: 1.25rem;
+  }
+  .context li { margin: 0 0 0.4rem; }
+  .context__now { font-weight: 600; margin-bottom: 0.75rem; }
 
   .lead-shot { margin: 0 0 3rem; }
   .lead-shot__pair {
