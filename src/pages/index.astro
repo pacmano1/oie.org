@@ -20,13 +20,17 @@ const newsFmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long
 ---
 
 <BaseLayout
-  title="Open Integration Engine - Open Source Healthcare Integration"
+  title="Eclipse Open Integration Engine - Open Source Healthcare Integration"
   description="Open Integration Engine (OIE) is a free, open source healthcare integration engine. Community-driven, vendor-independent, and fully compatible with Mirth Connect."
 >
   <section class="hero">
     <div class="container hero__inner">
       <div class="hero__logo">
-        <img src="/images/oie-logo.png" alt="Open Integration Engine logo" width="360" height="360" />
+        <a class="hero__ef-link" href="https://www.eclipse.org/" target="_blank" rel="noopener" aria-label="Eclipse Foundation">
+          <img class="hero__ef" src="/images/eclipse-foundation.svg" alt="" aria-hidden="true" width="283" height="91" />
+        </a>
+        <img class="hero__mark" src="/images/oie-mark.svg" alt="" aria-hidden="true" width="1024" height="1024" />
+        <img class="hero__wordmark" src="/images/oie-wordmark.svg" alt="Eclipse Open Integration Engine" width="664" height="351" />
       </div>
       <div class="hero__copy">
         <h1 class="hero__lead">
@@ -36,7 +40,7 @@ const newsFmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long
         </h1>
 
         <p class="hero__sub">
-          A community-driven open source engine, fully compatible with Mirth<sup>®</sup> Connect and extended by a growing ecosystem of free plugins.
+          A community-driven open source engine, fully compatible with Mirth<sup>®</sup> Connect and extended by a growing ecosystem of free third-party plugins.
         </p>
 
         <p class="hero__cta">
@@ -102,7 +106,7 @@ const newsFmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long
       <header class="plugins__header">
         <h2>Built by the community.</h2>
         <p>
-          A growing ecosystem of open source plugins extends OIE into the work you actually
+          A growing ecosystem of third-party open source plugins extends OIE into the work you actually
           need to do. Here are a few.
         </p>
         <a class="plugins__all" href="/plugins/">See all plugins →</a>
@@ -183,13 +187,20 @@ const newsFmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long
     align-items: center;
   }
 
-  .hero__logo img {
-    display: block;
-    max-width: 420px;
+  .hero__logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
+    max-width: 300px;
     margin: 0 auto;
-    border-radius: var(--radius-image);
+    container-type: inline-size;
   }
+  .hero__mark { display: block; width: 52%; }
+  /* EF clear-space rule: >= the cap height of "E", which is 10.07cqw here. Do not go below 11. */
+  .hero__ef-link { display: block; width: 72%; margin-bottom: 11cqw; }
+  .hero__ef { display: block; width: 100%; }
+  .hero__wordmark { display: block; width: 100%; margin-top: 0.06em; }
 
   .hero__lead {
     font-size: clamp(2rem, 3.6vw, 3rem);
@@ -201,7 +212,7 @@ const newsFmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long
   .hero__lead span { display: block; }
 
   .hero__sub {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: var(--color-base);
     line-height: 1.55;
     margin: 0 0 1.25rem;

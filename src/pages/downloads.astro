@@ -8,7 +8,7 @@ const currentRelease = {
 };
 ---
 
-<BaseLayout title="Downloads - Open Integration Engine" description="Download the latest Open Integration Engine release.">
+<BaseLayout title="Downloads - Eclipse Open Integration Engine" description="Download the latest Open Integration Engine release.">
   <article class="container-narrow page">
     <PageHero
       title="Downloads"
@@ -38,6 +38,16 @@ const currentRelease = {
       <p class="meta">
         All releases: <a href="https://github.com/OpenIntegrationEngine/engine/releases" target="_blank" rel="noopener">github.com/OpenIntegrationEngine/engine/releases</a>
       </p>
+      <p class="incubation-note">
+        <a href="https://www.eclipse.org/projects/dev_process/" target="_blank" rel="noopener" aria-label="Eclipse Incubation">
+          <img src="/images/eclipse-incubation.svg" alt="" aria-hidden="true" width="468" height="169" />
+        </a>
+        <span>
+          Releases are production builds; incubation refers to the project's stage at the Foundation.
+          Eclipse Open Integration Engine is in the incubation phase of the
+          <a href="https://www.eclipse.org/projects/dev_process/" target="_blank" rel="noopener">Eclipse Development Process</a>.
+        </span>
+      </p>
     </section>
 
     <p class="license-note">
@@ -52,6 +62,23 @@ const currentRelease = {
   section { margin-bottom: 1.5rem; }
   .download { text-align: center; }
   .download h2 { margin: 0.25rem 0 0.5rem; }
+  .incubation-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    text-align: left;
+    margin: 1.5rem 0 0;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--color-divider);
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+  .incubation-note a { flex-shrink: 0; display: block; }
+  .incubation-note img { display: block; width: 104px; height: auto; }
+  @media (max-width: 640px) {
+    .incubation-note { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+  }
   .download .release-label {
     font-size: 0.8rem;
     text-transform: uppercase;

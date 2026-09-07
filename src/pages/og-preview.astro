@@ -1,0 +1,92 @@
+---
+// Not linked from anywhere and excluded from the sitemap. None of these assets
+// render on the site itself, which is how the previous set went stale for months.
+// Rebuild with: python3 scripts/brand/og-card.py && python3 scripts/brand/icons.py
+const card = '/og-image.jpg';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Generated brand assets</title>
+    <style>
+      body { margin: 0; padding: 2.5rem 1.5rem 4rem; font: 15px/1.55 system-ui, sans-serif; color: #183343; background: #f4f6f7; }
+      .wrap { max-width: 1240px; margin: 0 auto; }
+      h1 { font-size: 1.4rem; margin: 0 0 0.35rem; }
+      .sub { color: #5a6b74; margin: 0 0 2rem; max-width: 80ch; }
+      h2 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: #5a6b74; margin: 2.5rem 0 0.7rem; font-weight: 600; }
+      img { display: block; border: 1px solid #d8dee1; }
+      .full img { width: 100%; height: auto; }
+      .sizes { display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap; }
+      .sizes figure { margin: 0; }
+      .sizes figcaption { font-size: 0.78rem; color: #5a6b74; margin-top: 0.45rem; }
+      code { background: #e8ecee; padding: 0.15em 0.4em; border-radius: 3px; font-size: 0.9em; }
+      ul { padding-left: 1.1rem; max-width: 80ch; }
+      li { margin-bottom: 0.45rem; }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>Generated brand assets</h1>
+      <p class="sub">
+        <code>public/og-image.jpg</code>, 1200&times;630. This is what LinkedIn, Slack, Teams,
+        Discord and iMessage render when a link to any page is posted. It never appears on the
+        site itself, which is this page's reason for existing.
+      </p>
+
+      <h2>Full size</h2>
+      <div class="full"><img src={card} alt="Share card, full size" /></div>
+
+      <h2>As it is actually seen</h2>
+      <div class="sizes">
+        <figure>
+          <img src={card} width="500" alt="Share card at 500px" />
+          <figcaption>500px, large link preview</figcaption>
+        </figure>
+        <figure>
+          <img src={card} width="260" alt="Share card at 260px" />
+          <figcaption>260px, Slack unfurl</figcaption>
+        </figure>
+        <figure>
+          <img src={card} width="120" alt="Share card at 120px" />
+          <figcaption>120px, compact thumbnail</figcaption>
+        </figure>
+      </div>
+
+      <h2>Icons</h2>
+      <p class="sub">
+        <code>public/favicon-32.png</code> and <code>public/apple-touch-icon.png</code>. The mark
+        alone on an opaque white ground. Shown at native size, then magnified so the 32px pixel
+        grid is visible.
+      </p>
+      <div class="sizes">
+        <figure>
+          <img src="/favicon-32.png" width="32" alt="Favicon at native 32px" />
+          <figcaption>32px, native</figcaption>
+        </figure>
+        <figure>
+          <img src="/favicon-32.png" width="192" style="image-rendering: pixelated" alt="Favicon magnified" />
+          <figcaption>32px, magnified 6&times;</figcaption>
+        </figure>
+        <figure>
+          <img src="/apple-touch-icon.png" width="180" alt="Apple touch icon" />
+          <figcaption>180px touch icon (iOS masks the corners)</figcaption>
+        </figure>
+      </div>
+
+      <h2>Notes</h2>
+      <ul>
+        <li>Rebuild with <code>python3 scripts/brand/og-card.py</code> and <code>python3 scripts/brand/icons.py</code>. The card headline auto-fits, so changing the copy re-flows rather than overflows.</li>
+        <li>The icons carry the mark only. A wordmark inside a 32px square is noise, not small type, and the previous pair included one.</li>
+        <li>The icons are opaque. iOS ignores alpha on a touch icon and composites onto black, so the previous transparent one rendered as a dark tile.</li>
+        <li>The headline is positioned by measured glyph ink rather than by the font's line box, which carries leading no glyph occupies. Gaps above and below come out at 63px and 64px.</li>
+        <li>The OIE mark sits on a light chip because its strokes are navy and would disappear on this background.</li>
+        <li>The Eclipse Foundation logo is their reversed orange-and-white artwork, used unmodified, as their brand guidelines require on dark backgrounds.</li>
+        <li>Type is rasterised at build time, so the card carries no font dependency once rendered.</li>
+        <li>Platforms cache these aggressively. After deploying, force a re-scrape (LinkedIn Post Inspector, Slack's unfurl refresh) or previews will keep showing the old card.</li>
+      </ul>
+    </div>
+  </body>
+</html>

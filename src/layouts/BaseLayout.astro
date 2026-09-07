@@ -13,7 +13,7 @@ interface Props {
 }
 
 const {
-  title = 'Open Integration Engine™ - Free. Open Source. Trusted.',
+  title = 'Eclipse Open Integration Engine™ - Free. Open Source. Trusted.',
   description = 'Open Integration Engine (OIE) is a free, open source healthcare integration engine. Community-driven, vendor-independent, and fully compatible with Mirth Connect.',
   bodyClass = '',
   type = 'website',
@@ -27,11 +27,16 @@ const ogImage = new URL('/og-image.jpg', Astro.site).toString();
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'Open Integration Engine',
+  name: 'Eclipse Open Integration Engine',
   alternateName: 'OIE',
   url: Astro.site?.toString(),
   logo: new URL('/images/oie-logo.png', Astro.site).toString(),
   sameAs: ['https://github.com/OpenIntegrationEngine'],
+  parentOrganization: {
+    '@type': 'Organization',
+    name: 'Eclipse Foundation AISBL',
+    url: 'https://www.eclipse.org/',
+  },
 };
 
 const extraSchemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
@@ -47,14 +52,14 @@ const schemas = [organizationSchema, ...extraSchemas];
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta property="og:site_name" content="Open Integration Engine" />
+    <meta property="og:site_name" content="Eclipse Open Integration Engine" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content={type} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:image:alt" content="Open Integration Engine" />
+    <meta property="og:image:alt" content="Eclipse Open Integration Engine" />
     {type === 'article' && publishedDate && (
       <meta property="article:published_time" content={publishedDate.toISOString()} />
     )}

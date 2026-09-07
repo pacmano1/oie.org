@@ -5,12 +5,12 @@ import Icon from '../components/Icon.astro';
 import { plugins } from '../data/plugins';
 ---
 
-<BaseLayout title="Plugins - Open Integration Engine" description="Open source plugins that extend the Open Integration Engine.">
+<BaseLayout title="Plugins - Eclipse Open Integration Engine" description="Open source plugins that extend the Open Integration Engine.">
   <article class="container page">
     <PageHero title="Plugins" />
 
     <p class="page-lead">
-      A growing ecosystem of open source plugins extends OIE into the work you actually
+      A growing ecosystem of third-party open source plugins extends OIE into the work you actually
       need to do. They are built and maintained by the community, free to use, and open
       to contribution. The engine discovers plugins at runtime, so one install serves both
       the desktop administrator and the
@@ -53,11 +53,26 @@ import { plugins } from '../data/plugins';
         </li>
       ))}
     </ul>
+
+    <p class="plugins__note">
+      These plugins are independent open source projects maintained by their own authors. They
+      extend Eclipse Open Integration Engine but are not part of the Eclipse project, so the
+      Eclipse Foundation's licensing and IP review do not cover them. Each repository states its
+      own license.
+    </p>
   </article>
 </BaseLayout>
 
 <style>
   .page { padding: 3rem 0 4rem; }
+  .plugins__note {
+    margin: 2.5rem 0 0;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--color-divider);
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: var(--color-base);
+  }
   .page-lead { max-width: 720px; margin: -1.5rem auto 3rem; }
 
   .plugins__grid {
