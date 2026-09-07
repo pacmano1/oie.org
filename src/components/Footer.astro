@@ -14,9 +14,9 @@ const social = [
 <footer class="site-footer">
   <div class="container site-footer__inner">
     <div class="site-footer__brand">
-      <img src="/images/oie-logo.png" alt="" width="48" height="48" />
+      <img src="/images/oie-mark.svg" alt="" width="48" height="48" />
       <div>
-        <div class="site-footer__brand-name">Open Integration Engine<sup>™</sup></div>
+        <div class="site-footer__brand-name">Eclipse Open Integration Engine<sup>™</sup></div>
         <div class="site-footer__brand-tag">Free. Open Source. Trusted.</div>
       </div>
     </div>
@@ -29,12 +29,35 @@ const social = [
       ))}
     </nav>
 
+    <div class="site-footer__eclipse">
+      <div class="site-footer__eclipse-col">
+        <a class="site-footer__logo" href="https://www.eclipse.org/" target="_blank" rel="noopener" aria-label="Eclipse Foundation">
+          <img class="site-footer__ef" src="/images/eclipse-foundation.svg" alt="" aria-hidden="true" width="283" height="91" />
+        </a>
+        <p>
+          Eclipse Open Integration Engine is a project of the Eclipse Foundation, an international
+          non-profit that provides neutral, community-owned governance for open source software.
+        </p>
+      </div>
+      <div class="site-footer__eclipse-col">
+        <a class="site-footer__logo" href="https://www.eclipse.org/projects/dev_process/" target="_blank" rel="noopener" aria-label="Eclipse Incubation">
+          <img class="site-footer__incubation" src="/images/eclipse-incubation.svg" alt="" aria-hidden="true" width="468" height="169" />
+        </a>
+        <p>
+          The project is in the incubation phase of the
+          <a href="https://www.eclipse.org/projects/dev_process/" target="_blank" rel="noopener">Eclipse Development Process</a>,
+          working through the Foundation's processes and IP review.
+        </p>
+      </div>
+    </div>
+
     <div class="site-footer__meta">
       <p>© {year} The Open Integration Engine Project Authors. <a href="/privacy/">Privacy Policy</a></p>
       <p class="site-footer__disclaimer">
-        Open Integration Engine™ is an independent project and is not affiliated with, endorsed by,
-        or sponsored by NextGen Healthcare, Inc. or Innovar Healthcare. Mirth® and Mirth® Connect are
-        registered trademarks of NextGen Healthcare, Inc. BridgeLink is a trademark of Innovar Healthcare.
+        Eclipse, Eclipse Foundation, Open Integration Engine, and OIE are trademarks of Eclipse
+        Foundation AISBL. This project is not affiliated with, endorsed by, or sponsored by NextGen
+        Healthcare, Inc. or Innovar Healthcare. Mirth® and Mirth® Connect are registered trademarks
+        of NextGen Healthcare, Inc. BridgeLink is a trademark of Innovar Healthcare.
       </p>
     </div>
   </div>
@@ -53,6 +76,7 @@ const social = [
     grid-template-columns: 1fr auto;
     grid-template-areas:
       "brand social"
+      "eclipse eclipse"
       "meta meta";
     gap: 2rem;
     align-items: center;
@@ -94,6 +118,34 @@ const social = [
     background: rgba(8, 145, 178, 0.08);
   }
 
+  .site-footer__eclipse {
+    grid-area: eclipse;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    border-top: 1px solid var(--color-divider);
+    padding-top: 1.5rem;
+  }
+  .site-footer__eclipse-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.85rem;
+  }
+  .site-footer__eclipse img { display: block; height: auto; }
+  .site-footer__logo {
+    display: flex;
+    align-items: center;
+    min-height: 60px;
+  }
+  .site-footer__ef { width: 112px; }
+  /* Its viewBox carries ~31% clear space, so the box is wider to match EF's artwork. */
+  .site-footer__incubation { width: 164px; }
+  .site-footer__eclipse p {
+    margin: 0;
+    font-size: 0.875rem;
+  }
+
   .site-footer__meta {
     grid-area: meta;
     border-top: 1px solid var(--color-divider);
@@ -115,7 +167,9 @@ const social = [
       grid-template-areas:
         "brand"
         "social"
+        "eclipse"
         "meta";
     }
+    .site-footer__eclipse { grid-template-columns: 1fr; gap: 1.5rem; }
   }
 </style>

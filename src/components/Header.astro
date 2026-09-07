@@ -41,9 +41,10 @@ const communityActive = communityLinks.some((l) => isActive(l.href));
 
 <header class="site-header">
   <div class="container site-header__inner">
-    <a href="/" class="site-header__brand" aria-label="Open Integration Engine, home">
-      <img src="/images/oie-logo.png" alt="" width="56" height="56" />
+    <a href="/" class="site-header__brand" aria-label="Eclipse Open Integration Engine, home">
+      <img src="/images/oie-mark.svg" alt="" width="56" height="56" />
       <span class="site-header__brand-text">
+        <span class="site-header__brand-eyebrow">Eclipse</span>
         <span class="site-header__brand-name">Open Integration Engine<sup>™</sup></span>
         <span class="site-header__brand-tag">Free. Open Source. Trusted.</span>
       </span>
@@ -187,6 +188,14 @@ const communityActive = communityLinks.some((l) => isActive(l.href));
   .site-header__brand img { width: 56px; height: 56px; border-radius: 6px; }
 
   .site-header__brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+
+  .site-header__brand-eyebrow {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
 
   .site-header__brand-name {
     font-weight: 700;

@@ -3,7 +3,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://openintegrationengine.org',
-  integrations: [sitemap()],
+  integrations: [sitemap({ filter: (page) => !page.includes('/og-preview') })],
   build: {
     assets: 'assets',
   },

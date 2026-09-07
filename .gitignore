@@ -14,3 +14,10 @@ yarn-error.log*
 
 # Local deploy configuration (bucket name, distribution ID)
 deploy.config.local.sh
+
+# Eclipse Foundation brand assets (reference only, not part of the build)
+EF Logo/
+
+# Share card generator working files
+scripts/brand/Raleway.ttf
+scripts/brand/.tmp/
