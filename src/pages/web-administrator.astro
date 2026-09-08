@@ -3,35 +3,27 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import Icon from '../components/Icon.astro';
 
-type Feature = { title: string; body: string; img: string; alt: string };
+type Shot = { img: string; caption: string; alt: string };
 
-const features: Feature[] = [
+const shots: Shot[] = [
   {
-    title: 'Inspect every message',
-    body:
-      'Search, browse, reprocess, and resend messages, and drill into any one with the full message tree.',
     img: '/images/webadmin/03-message-tree.png',
+    caption: 'Message browser',
     alt: 'Message browser with the message tree',
   },
   {
-    title: 'Full channel editing',
-    body:
-      'Not a read-only viewer. Configure sources and destinations, write transformers and filters, and deploy.',
     img: '/images/webadmin/04-channel-editor.png',
+    caption: 'Channel editor',
     alt: 'Channel editor in the web administrator',
   },
   {
-    title: 'Your plugins, in the browser',
-    body:
-      'Plugins you install are recognized at runtime, the same ones that run in the desktop client, from a single install. Nobody maintains a separate web build.',
     img: '/images/webadmin/05-source-code-search.png',
+    caption: 'Source Code Search plugin',
     alt: 'Source Code Search plugin running in the web administrator',
   },
   {
-    title: 'Extensions light up on their own',
-    body:
-      'Install an extension on the engine and the administrator detects and serves its interface automatically. Its views appear alongside the built-in ones.',
     img: '/images/webadmin/06-extensions.png',
+    caption: 'Extensions',
     alt: 'Extensions page in the web administrator',
   },
 ];
@@ -48,36 +40,75 @@ const features: Feature[] = [
       <summary>Why does a web interface get its own page?</summary>
       <div class="context__body">
         <p>
-          If you have never administered an engine in this family, here is what the job used to
-          take. This is our own client too, not a competitor's.
+          Mirth and its derivatives including Open Integration Engine have always required the use
+          of a java tool to administer the server and the process to run that tool was this:
         </p>
         <ol>
-          <li>Install an Administration Tool Launcher, not the administrator.</li>
-          <li>The launcher brings its own Java runtime. You may use yours instead, provided it has JavaFX.</li>
-          <li>The launcher downloads the administrator. Close to 90 MB of it.</li>
-          <li>The administrator opens. Log in to a user interface that is twenty years old.</li>
-          <li>Start doing the Administration.</li>
+          <li>Install an Administration Tool Launcher which is not the administrator.</li>
+          <li>The launcher brings its own Java runtime or you can use yours if yours has JavaFX.</li>
+          <li>The launcher downloads the administrator which is close to 90 MB.</li>
+          <li>The administrator opens and you log in.</li>
         </ol>
-        <p class="context__now">Now:</p>
-        <ol>
-          <li>Open a browser and log in.</li>
-          <li>Start doing the Administration.</li>
-        </ol>
-        <p>
-          The web administrator is served by the engine itself, on the same port and behind the same
-          credentials. The desktop Administrator still works against the same engine, so nothing has
-          to move at once.
-        </p>
+        <p class="context__now">With the web administrator, you open a browser and log in.</p>
       </div>
     </details>
 
     <p class="page-lead">
-      Administer Open Integration Engine from any browser. The web administrator is open source
-      under MPL 2.0, and installs as a standard extension. Everything you build works in both the
-      desktop and web administrators from one install.
+      Open Integration Engine can be administered from a browser. The web administrator is open
+      source under MPL 2.0 and installs as a standard extension, and the plugins you install are
+      the same ones the desktop client runs so there is no separate web build to maintain.
     </p>
 
+    <section class="more">
+      <h2 class="section-title">A sampling of extra features</h2>
+      <dl class="more__grid">
+        <div>
+          <dt>Command palette</dt>
+          <dd>Press Cmd-K or Ctrl-K to jump to any view, channel, or command from anywhere.</dd>
+        </div>
+        <div>
+          <dt>Content compare</dt>
+          <dd>Compare any two pieces of stored message content side by side in a diff viewer.</dd>
+        </div>
+        <div>
+          <dt>Card dashboard</dt>
+          <dd>A card view of the dashboard as an alternative to the status table, grouped by channel group, tag, or state.</dd>
+        </div>
+        <div>
+          <dt>Guided builders</dt>
+          <dd>Step-by-step wizards for building a channel or an alert, as an alternative to the classic editors.</dd>
+        </div>
+        <div>
+          <dt>Linkable views</dt>
+          <dd>Every view has a real URL, so you can bookmark a channel editor or paste a link to it for a colleague.</dd>
+        </div>
+        <div>
+          <dt>Time zones</dt>
+          <dd>Switch every timestamp between the engine's time zone, your own, and UTC.</dd>
+        </div>
+        <div>
+          <dt>Highlighted content</dt>
+          <dd>Message content is syntax highlighted, and hovering an HL7 field tells you what it is.</dd>
+        </div>
+        <div>
+          <dt>Script editor</dt>
+          <dd>A modern code editor for scripts, with autocompletion and find and replace.</dd>
+        </div>
+        <div>
+          <dt>Any device</dt>
+          <dd>Works on any device with a browser, including a tablet or a workstation you can't install software on.</dd>
+        </div>
+        <div>
+          <dt>One engine or many</dt>
+          <dd>Install it into a single engine, or run one copy that fronts all of your engines and pick which one at login.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <h2 class="section-title">Sample screenshots</h2>
+
     <section class="lead-shot">
+      <p class="lead-shot__caption">Dashboard, light and dark</p>
       <div class="lead-shot__pair">
         <figure class="screen">
           <img src="/images/webadmin/01-dashboard-light.png" alt="Web administrator dashboard, light theme" loading="lazy" />
@@ -86,27 +117,19 @@ const features: Feature[] = [
           <img src="/images/webadmin/02-dashboard-dark.png" alt="Web administrator dashboard, dark theme" loading="lazy" />
         </figure>
       </div>
-      <p class="lead-shot__caption">
-        The full administrator in your browser: live channel status, throughput, and deployment
-        state, in light or dark theme.
-      </p>
     </section>
 
-    <ul class="feature-grid">
-      {features.map((f) => (
-        <li class="card card--hover card--lift feature-card">
-          <div class="feature-card__head">
-            <h3>{f.title}</h3>
-            <p>{f.body}</p>
+
+    <div class="gallery">
+      {shots.map((s) => (
+        <figure class="shot">
+          <figcaption>{s.caption}</figcaption>
+          <div class="screen">
+            <img src={s.img} alt={s.alt} loading="lazy" />
           </div>
-          <div class="feature-card__shot">
-            <div class="screen">
-              <img src={f.img} alt={f.alt} loading="lazy" />
-            </div>
-          </div>
-        </li>
+        </figure>
       ))}
-    </ul>
+    </div>
 
     <section class="extend">
       <h2>How do I add web capabilities to my new or existing plugin?</h2>
@@ -192,18 +215,11 @@ const features: Feature[] = [
   .context li { margin: 0 0 0.4rem; }
   .context__now { font-weight: 600; margin-bottom: 0.75rem; }
 
-  .lead-shot { margin: 0 0 3rem; }
+  .lead-shot { margin: 0 0 2.5rem; }
   .lead-shot__pair {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1.25rem;
-  }
-  .lead-shot__caption {
-    text-align: center;
-    color: var(--color-text-muted);
-    font-size: 0.9rem;
-    margin: 1rem auto 0;
-    max-width: 640px;
   }
 
   .screen {
@@ -213,33 +229,50 @@ const features: Feature[] = [
     border: 1px solid var(--color-border);
     border-radius: 8px;
     overflow: hidden;
+    box-shadow: 0 2px 4px rgba(24, 51, 67, 0.06), 0 14px 34px rgba(24, 51, 67, 0.16);
   }
   .screen img { display: block; width: 100%; height: auto; }
 
-  .feature-grid {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  .more { max-width: 720px; margin: 0 auto 3rem; }
+  .section-title { font-size: 1.35rem; margin: 0 0 1.25rem; text-align: center; }
+  .more p { color: var(--color-base); line-height: 1.6; margin: 0 0 1rem; }
+  .more__grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-
-  .feature-card { overflow: hidden; display: flex; flex-direction: column; }
-  .feature-card__head { padding: 1.5rem 1.25rem 1rem; }
-  .feature-card__head h3 { font-size: 1.15rem; margin: 0 0 0.5rem; }
-  .feature-card__head p {
-    color: var(--color-base);
-    font-size: 0.93rem;
-    line-height: 1.55;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.1rem 2rem;
     margin: 0;
   }
+  .more__grid dt {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--color-headings);
+    margin: 0 0 0.15rem;
+  }
+  .more__grid dd {
+    margin: 0;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--color-base);
+  }
 
-  .feature-card__shot { margin-top: auto; padding: 0 1.25rem 1.25rem; }
-  .feature-card__shot .screen { aspect-ratio: 16 / 10; }
-  .feature-card__shot .screen img { height: 100%; object-fit: cover; object-position: top center; }
+  .gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
 
-  .extend { max-width: 720px; margin: 3rem auto 0; }
+  .shot { margin: 0; }
+
+  .lead-shot__caption,
+  .shot figcaption {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    text-align: center;
+    margin: 0 0 0.75rem;
+  }
+
+  .extend { max-width: 720px; margin: 3.5rem auto 0; }
   .extend h2 { font-size: 1.35rem; margin: 0 0 1rem; }
   .extend p { color: var(--color-base); line-height: 1.6; margin: 0 0 1rem; }
   .extend__link {
@@ -261,7 +294,8 @@ const features: Feature[] = [
   .cta__secondary { font-weight: 600; }
 
   @media (max-width: 720px) {
+    .more__grid { grid-template-columns: 1fr; }
     .lead-shot__pair { grid-template-columns: 1fr; }
-    .feature-grid { grid-template-columns: 1fr; }
+    .gallery { gap: 2rem; }
   }
 </style>
