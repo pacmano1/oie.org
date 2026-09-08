@@ -22,7 +22,7 @@ const {
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();
-const ogImage = new URL('/og-image.jpg', Astro.site).toString();
+const ogImage = new URL('/og-image.jpg?v=2', Astro.site).toString();
 
 const organizationSchema = {
   '@context': 'https://schema.org',

@@ -24,12 +24,12 @@ FONT_URL = 'https://raw.githubusercontent.com/google/fonts/main/ofl/raleway/Rale
 
 # --- canvas -----------------------------------------------------------------
 W, H   = 1200, 630          # the size every platform expects
-BG     = (24, 51, 67)       # --color-headings #183343
-FG     = (255, 255, 255)
+BG     = (255, 255, 255)
+FG     = (24, 51, 67)       # --color-headings #183343
 MARGIN = 80
 HEADLINE = ["Healthcare Integration", "Free and Open Source", "No Vendor Lock-In"]
 NAME     = "Eclipse Open Integration Engine"
-START_SIZE = 70             # shrinks automatically if the copy grows
+START_SIZE = 62             # shrinks automatically if the copy grows
 
 def fetch_font():
     if os.path.exists(FONT):
@@ -60,30 +60,32 @@ def main():
     mark_png = os.path.join(tmp, 'mark.png')
     ef_png   = os.path.join(tmp, 'ef.png')
     svg_to_png(os.path.join(ROOT, 'public', 'images', 'oie-mark.svg'), mark_png, 600)
-    # Their reversed logo, not the colour one recoloured. Brand guidelines 4.2:
-    # on dark backgrounds use the inverted orange-and-white mark.
-    svg_to_png(os.path.join(HERE, 'eclipse-foundation-reversed.svg'), ef_png, 600)
+    # Their colour logo. Brand guidelines 4.2 reserve the reversed orange-and-white
+    # mark for dark backgrounds; this card is white, so the colour one applies.
+    svg_to_png(os.path.join(ROOT, 'public', 'images', 'eclipse-foundation.svg'), ef_png, 600)
 
     im = Image.new('RGB', (W, H), BG)
     d  = ImageDraw.Draw(im)
 
-    # Top row. The OIE mark is navy and would vanish on this background, so it
-    # sits on a light chip rather than being recoloured.
-    CHIP, CHIP_Y = 88, 62
-    chip = Image.new('RGBA', (CHIP, CHIP), (0, 0, 0, 0))
-    ImageDraw.Draw(chip).rounded_rectangle([0, 0, CHIP-1, CHIP-1], radius=20, fill=(255, 255, 255, 255))
-    mark = Image.open(mark_png).convert('RGBA').resize((int(CHIP*0.80),)*2, Image.LANCZOS)
-    chip.paste(mark, ((CHIP-mark.width)//2,)*2, mark)
-    im.paste(chip, (MARGIN, CHIP_Y), chip)
+    # Top row. The card is white, so the mark sits on the page as itself; it
+    # needed a light chip only while the background was navy.
+    # Trim the SVG's own padding first: oie-mark.svg carries ~6% empty margin
+    # inside its 1024 viewBox, so scaling the nominal box undershoots. Scale the
+    # measured ink instead, and MARK is then the size you actually get.
+    MARK, CHIP_Y = 110, 62
+    mark = Image.open(mark_png).convert('RGBA')
+    mark = mark.crop(mark.getbbox())
+    mark = mark.resize((MARK, int(MARK*mark.height/mark.width)), Image.LANCZOS)
+    im.paste(mark, (MARGIN, CHIP_Y + (MARK-mark.height)//2), mark)
 
-    fn = font(29, 600)
+    fn = font(33, 600)
     bb = d.textbbox((0, 0), NAME, font=fn)
-    d.text((MARGIN+CHIP+24, CHIP_Y+CHIP//2-(bb[3]-bb[1])//2-6), NAME, font=fn, fill=FG)
-    top_ink = CHIP_Y + CHIP
+    d.text((MARGIN+MARK+24, CHIP_Y+MARK//2-(bb[3]-bb[1])//2-6), NAME, font=fn, fill=FG)
+    top_ink = CHIP_Y + MARK
 
     # Eclipse Foundation logo, bottom right. Its clear-space requirement is the
-    # cap height of the "E", which at this width is 26.6px; it gets 80 and 72.
-    EF_W = 190
+    # cap height of the "E", which at this width is 31.5px; it gets 80 and 72.
+    EF_W = 225
     ef = Image.open(ef_png).convert('RGBA')
     ef = ef.resize((EF_W, int(EF_W*ef.height/ef.width)), Image.LANCZOS)
     ex, ey = W-MARGIN-EF_W, H-72-ef.height

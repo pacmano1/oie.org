@@ -5,17 +5,19 @@ what LinkedIn, Slack, Teams, Discord and iMessage render when a link to the site
 is posted, and it never appears on the site itself.
 
 ```
-python3 scripts/og-card/build.py
+python3 scripts/brand/og-card.py
 ```
 
 Needs python3 with Pillow, and node with sharp (already a dependency of Astro).
 The Raleway variable font is fetched on first run into `Raleway.ttf` here, which
 is gitignored.
 
-`eclipse-foundation-reversed.svg` is the Eclipse Foundation's own `EF_White-Orange.svg`,
-byte for byte. Their brand guidelines (4.2) require the reversed mark on dark
-backgrounds, and their trademark policy forbids altering the artwork, so it is
-copied rather than recoloured.
+The card is white, so it uses the Eclipse Foundation's colour logo from
+`public/images/`. `eclipse-foundation-reversed.svg` here is their own
+`EF_White-Orange.svg`, byte for byte, and is currently unreferenced: guidelines
+(4.2) require the reversed mark on dark backgrounds, so it is kept for the day
+something of ours needs one. Their trademark policy forbids altering the artwork,
+so both are copied rather than recoloured.
 
 The icons are the mark alone on an opaque white ground. Not a lockup, because a
 wordmark inside a 32px square is noise rather than small type, and not transparent,

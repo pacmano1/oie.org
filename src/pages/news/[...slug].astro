@@ -22,7 +22,7 @@ const articleSchema = {
   description: post.data.excerpt,
   datePublished: post.data.date.toISOString(),
   dateModified: post.data.date.toISOString(),
-  image: new URL('/og-image.jpg', Astro.site).toString(),
+  image: new URL('/og-image.jpg?v=2', Astro.site).toString(),
   author: { '@type': 'Organization', name: 'Open Integration Engine' },
   publisher: {
     '@type': 'Organization',
