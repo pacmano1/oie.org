@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Rebuild public/og-image.jpg, the Open Graph share card.
+"""Rebuild public/og-image-2.jpg, the Open Graph share card.
 
 The card never appears on the site, so it is easy to forget it exists and let it
 go stale. It did exactly that once: it sat unchanged from April 2026 with no
@@ -18,7 +18,7 @@ from PIL import Image, ImageDraw, ImageFont
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
 ROOT = os.path.abspath(os.path.join(HERE, '..', '..'))
-OUT  = os.path.join(ROOT, 'public', 'og-image.jpg')
+OUT  = os.path.join(ROOT, 'public', 'og-image-2.jpg')
 FONT = os.path.join(HERE, 'Raleway.ttf')
 FONT_URL = 'https://raw.githubusercontent.com/google/fonts/main/ofl/raleway/Raleway%5Bwght%5D.ttf'
 

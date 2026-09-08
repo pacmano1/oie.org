@@ -1,6 +1,6 @@
 # Brand asset generators
 
-Rebuilds `public/og-image.jpg`, the Open Graph image every page points at. It is
+Rebuilds `public/og-image-2.jpg`, the Open Graph image every page points at. It is
 what LinkedIn, Slack, Teams, Discord and iMessage render when a link to the site
 is posted, and it never appears on the site itself.
 
