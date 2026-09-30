@@ -60,7 +60,7 @@ const sortedVendors = [...vendors].sort((a, b) =>
               <button type="button" class="vendor__more" data-dialog={`#vendor-${id}`}>
                 Read more
               </button>
-              <a class="vendor__visit" href={v.url} target="_blank" rel="noopener">
+              <a class="vendor__visit" href={v.listingUrl ?? v.url} target="_blank" rel="noopener">
                 Visit site
                 <Icon name="arrow-up-right" size={14} />
               </a>
@@ -82,7 +82,7 @@ const sortedVendors = [...vendors].sort((a, b) =>
               </div>
 
               <div class="vendor-dialog__body">
-                <p>{v.description}</p>
+                {v.description.split('\n\n').map((para) => <p>{para}</p>)}
                 <dl class="vendor-dialog__meta">
                   <div><dt>Regions</dt><dd>{v.regions}</dd></div>
                   <div><dt>Languages</dt><dd>{v.languages}</dd></div>
@@ -91,7 +91,7 @@ const sortedVendors = [...vendors].sort((a, b) =>
               </div>
 
               <div class="vendor-dialog__footer">
-                <a class="button" href={v.url} target="_blank" rel="noopener">
+                <a class="button" href={v.listingUrl ?? v.url} target="_blank" rel="noopener">
                   Visit {v.name}
                 </a>
               </div>
