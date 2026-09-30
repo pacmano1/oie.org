@@ -23,10 +23,10 @@ const articleSchema = {
   datePublished: post.data.date.toISOString(),
   dateModified: post.data.date.toISOString(),
   image: new URL('/og-image-2.jpg', Astro.site).toString(),
-  author: { '@type': 'Organization', name: 'Open Integration Engine' },
+  author: { '@type': 'Organization', name: 'Eclipse Open Integration Engine' },
   publisher: {
     '@type': 'Organization',
-    name: 'Open Integration Engine',
+    name: 'Eclipse Open Integration Engine',
     logo: { '@type': 'ImageObject', url: new URL('/images/oie-logo.png', Astro.site).toString() },
   },
   mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },

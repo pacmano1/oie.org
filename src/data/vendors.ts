@@ -31,7 +31,7 @@ export const vendors: Vendor[] = [
     tagline:
       "Plugin development and custom integrations with deep expertise in OIE's internals.",
     description:
-      "BrightCodeCompany excels in Mirth Connect/OIE plugin development, offering specialized solutions for custom integrations. Our expertise in Open Integration Engine's internals ensures a seamless and efficient integration process, making us your reliable partner for tailored and high-quality solutions.",
+      "BrightCodeCompany excels in Mirth Connect/OIE plugin development, offering specialized solutions for custom integrations. Our expertise in Eclipse Open Integration Engine's internals ensures a seamless and efficient integration process, making us your reliable partner for tailored and high-quality solutions.",
     regions: 'HQ in Estonia, operates globally',
     languages: 'English, Estonian',
     services: [
@@ -68,7 +68,7 @@ export const vendors: Vendor[] = [
     tagline:
       'Implementation and support for Mirth Connect, OIE, and BridgeLink on AWS, Azure, or on-premises.',
     description:
-      'Diridium Technologies provides support and implementation of Mirth Connect, Open Integration Engine and BridgeLink. We specialize in using your infrastructure whether that be AWS, Azure or on-premises.',
+      'Diridium Technologies provides support and implementation of Mirth Connect, Eclipse Open Integration Engine and BridgeLink. We specialize in using your infrastructure whether that be AWS, Azure or on-premises.',
     regions: 'HQ in USA. Global subject to language constraints',
     languages: 'English',
     services: [
@@ -134,7 +134,7 @@ export const vendors: Vendor[] = [
     tagline:
       '20+ years of healthcare IT expertise delivering HIPAA-compliant integrations across HL7, FHIR, and XDS.',
     description:
-      'Taction Software brings 20+ years of healthcare IT expertise to Open Integration Engine and Mirth Connect projects. We specialize in custom interface development, EHR/EMR integrations, secure data exchange, and HIPAA-compliant workflows. Deep understanding of HL7, FHIR, and XDS ensures reliable, audit-ready integration solutions for hospitals, clinics, and healthtech startups. From legacy engine migration to plugin development and long-term managed support, Taction is your trusted partner for scalable and future-proof integration projects.',
+      'Taction Software brings 20+ years of healthcare IT expertise to Eclipse Open Integration Engine and Mirth Connect projects. We specialize in custom interface development, EHR/EMR integrations, secure data exchange, and HIPAA-compliant workflows. Deep understanding of HL7, FHIR, and XDS ensures reliable, audit-ready integration solutions for hospitals, clinics, and healthtech startups. From legacy engine migration to plugin development and long-term managed support, Taction is your trusted partner for scalable and future-proof integration projects.',
     regions: 'HQ in USA, clients across North America, Europe, and Asia',
     languages: 'English',
     services: [
@@ -152,7 +152,7 @@ export const vendors: Vendor[] = [
     tagline:
       'Australian specialist in digital health and integration engine services across Mirth Connect, OIE, Rhapsody, and IRIS for Health.',
     description:
-      'Converge Health delivers specialised digital health and integration engine services, with proven experience in platforms such as Mirth Connect, Open Integration Engine, Rhapsody, and InterSystems IRIS for Health. Headquartered in Australia, we serve clients across Asia-Pacific, Europe, the Middle East, and the United Kingdom. As a trusted partner for seamless interoperability, engine migration, and interface development, we help healthcare organisations connect systems, streamline workflows, and enhance patient outcomes.',
+      'Converge Health delivers specialised digital health and integration engine services, with proven experience in platforms such as Mirth Connect, Eclipse Open Integration Engine, Rhapsody, and InterSystems IRIS for Health. Headquartered in Australia, we serve clients across Asia-Pacific, Europe, the Middle East, and the United Kingdom. As a trusted partner for seamless interoperability, engine migration, and interface development, we help healthcare organisations connect systems, streamline workflows, and enhance patient outcomes.',
     regions: 'HQ in Australia, operates across APAC, Europe, Middle East, UK',
     languages: 'English, Filipino, Hindi',
     services: [
@@ -230,7 +230,7 @@ export const vendors: Vendor[] = [
     tagline:
       'Professional services and managed support for OIE-based interfaces, from the team behind OpenEMPI.',
     description:
-      'SYSNET International provides professional services and managed support to organizations using Open Integration Engine as part of an OpenEMPI deployment. SYSNET is the company behind OpenEMPI, a master patient/entity index that matches, deduplicates, and links records across systems. The team helps customers implement, configure, operate, and support OIE-based interfaces alongside OpenEMPI, covering interface development, HL7 and healthcare-system integration, architecture and design assessments, custom development, performance testing and tuning, data transformation, and ongoing managed support.',
+      'SYSNET International provides professional services and managed support to organizations using Eclipse Open Integration Engine as part of an OpenEMPI deployment. SYSNET is the company behind OpenEMPI, a master patient/entity index that matches, deduplicates, and links records across systems. The team helps customers implement, configure, operate, and support OIE-based interfaces alongside OpenEMPI, covering interface development, HL7 and healthcare-system integration, architecture and design assessments, custom development, performance testing and tuning, data transformation, and ongoing managed support.',
     regions: 'HQ in USA, operates worldwide',
     languages: 'English',
     services: [
