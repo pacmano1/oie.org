@@ -172,7 +172,7 @@ export const vendors: Vendor[] = [
     tagline:
       'US healthcare integration engineers for OIE and Mirth Connect: migration, channel development and 24/7 support. Makers of MirthSync.',
     description:
-      'Saga IT is a US healthcare integration and software firm, founded in 2016. We help organizations run Open Integration Engine in production: migration from Mirth Connect, channel and code-template development, upgrades, cloud and on-premise deployment, 24/7 managed support, and training.\n\n' +
+      'Saga IT is a US healthcare integration and software firm, founded in 2016. We help organizations run Eclipse Open Integration Engine in production: migration from Mirth Connect, channel and code-template development, upgrades, cloud and on-premise deployment, 24/7 managed support, and training.\n\n' +
       'We build and maintain MirthSync, the open-source (EPL-1.0) tool that puts OIE and Mirth Connect configuration under version control, with a VS Code extension and an engine plugin. We also publish OIE Docker images (sagait/engine) and OpenShare, a browser-based administration and data-exchange platform that runs on OIE.',
     regions: 'HQ in USA (Eastern Time), operates globally',
     languages: 'English, Spanish',
