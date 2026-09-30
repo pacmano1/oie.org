@@ -8,7 +8,13 @@ export type VendorService =
 
 export interface Vendor {
   name: string;
+  /** The vendor's home page. Used by the homepage logo strip. */
   url: string;
+  /**
+   * Optional deep link for the Commercial Support listing, when a vendor keeps a
+   * page specifically about their OIE offering. Falls back to `url`.
+   */
+  listingUrl?: string;
   logo: string;
   tagline: string;
   description: string;
@@ -161,12 +167,14 @@ export const vendors: Vendor[] = [
   {
     name: 'Saga IT',
     url: 'https://saga-it.com',
+    listingUrl: 'https://saga-it.com/services/open-integration-engine',
     logo: '/images/vendors/saga.png',
     tagline:
-      'US-based healthcare IT consulting specializing in OIE and Mirth Connect. Makers of MirthSync and the MDDS Console.',
+      'US healthcare integration engineers for OIE and Mirth Connect: migration, channel development and 24/7 support. Makers of MirthSync.',
     description:
-      'Saga IT is a US-based healthcare IT consulting firm, founded in 2016, specializing in integration engines (OIE and Mirth Connect) along with broader healthcare interoperability and EHR integration. We build and maintain MirthSync, distribute OIE packages and Docker images, and develop the MDDS Console browser-based management platform. Our team provides OIE consulting across the full lifecycle: migration from Mirth Connect, channel development, cloud and on-premise deployment, managed support, and training. We deploy on AWS, Azure, Google Cloud, Docker, Kubernetes, and on-premise infrastructure.',
-    regions: 'HQ in USA, operates globally',
+      'Saga IT is a US healthcare integration and software firm, founded in 2016. We help organizations run Open Integration Engine in production: migration from Mirth Connect, channel and code-template development, upgrades, cloud and on-premise deployment, 24/7 managed support, and training.\n\n' +
+      'We build and maintain MirthSync, the open-source (EPL-1.0) tool that puts OIE and Mirth Connect configuration under version control, with a VS Code extension and an engine plugin. We also publish OIE Docker images (sagait/engine) and OpenShare, a browser-based administration and data-exchange platform that runs on OIE.',
+    regions: 'HQ in USA (Eastern Time), operates globally',
     languages: 'English, Spanish',
     services: [
       'Integration & Interface Services',
