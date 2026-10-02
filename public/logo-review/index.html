@@ -1,0 +1,427 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex, nofollow"></head><body><title>Eclipse Wordmark Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;600&family=Inter:opsz,wght@14..32,600..700&family=Raleway:wght@600&display=swap">
+<style>
+/* Layout: one 1120px reading column. Logo specimens sit on fixed white ("paper") and
+   navy ("ink") grounds so they are judged against the backgrounds they will meet,
+   whichever theme the reader uses. */
+:root {
+  --bg: #f2f4f7; --surface: #ffffff; --fg: #10233a; --muted: #56677b; --rule: #d7dee7;
+  --accent: #2a7bb7; --link: #1f6aa3;
+  --paper: #ffffff; --paper-fg: #56677b; --paper-text: #10233a; --paper-rule: #d7dee7; --ink: #14212e; --ink-fg: #a3b3c4;
+  --check-a: #333d48; --check-b: #262e37; --swing-bar: #2a75b2;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0d1620; --surface: #15212d; --fg: #e4ebf2; --muted: #9db0c3; --rule: #263546;
+  --accent: #6db2e4; --link: #8cc4ee; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #0d1620; --surface: #15212d; --fg: #e4ebf2; --muted: #9db0c3; --rule: #263546;
+  --accent: #6db2e4; --link: #8cc4ee; color-scheme: dark; }
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font: 16px/1.6 var(--font-body); margin: 0; padding: 0 16px; }
+main { max-width: 1120px; margin: 0 auto; padding-block: 40px 72px; display: flex; flex-direction: column; gap: 56px; }
+a { color: var(--link); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+h1, h2, h3 { text-wrap: balance; margin: 0; line-height: 1.25; }
+h1 { font-size: clamp(1.7rem, 3.4vw, 2.4rem); font-weight: 600; letter-spacing: -0.01em; }
+h2 { font-size: 1.35rem; font-weight: 600; }
+h3 { font-size: 1.1rem; font-weight: 600; }
+p { margin: 0; }
+section { display: flex; flex-direction: column; gap: 16px; }
+.prose { max-width: 68ch; display: flex; flex-direction: column; gap: 12px; }
+.muted { color: var(--muted); }
+.eyebrow { font: 500 0.78rem/1.4 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+code, .mono { font-family: var(--font-mono); font-size: 0.9em; }
+blockquote { margin: 0; padding: 12px 16px; border: 1px solid var(--rule); border-radius: 8px; background: var(--surface); }
+blockquote cite { display: block; margin-top: 6px; font-style: normal; font-size: 0.85rem; color: var(--muted); }
+
+.intro { display: flex; flex-direction: column; gap: 14px; }
+.respond { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 20px 22px;
+            display: flex; flex-direction: column; gap: 10px; max-width: 760px; }
+.respond ol { margin: 0; padding-left: 1.3em; display: flex; flex-direction: column; gap: 4px; }
+
+.chip { display: inline-grid; place-items: center; width: 1.9em; height: 1.9em; flex: none; border-radius: 6px;
+         border: 1px solid var(--rule); background: var(--surface); font: 600 0.95rem/1 var(--font-mono); color: var(--fg); }
+.chip.today { color: var(--muted); }
+
+.paper { background: var(--paper); }
+.ink { background: var(--ink); }
+.logo { display: block; }
+
+table.files { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
+.table-wrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 8px; background: var(--surface); }
+table.files th, table.files td { text-align: left; padding: 9px 14px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+table.files tr:last-child td { border-bottom: 0; }
+table.files th { font-size: 0.8rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+
+.glance { display: flex; flex-direction: column; gap: 10px; }
+.glance-row, .size-row { display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 16px; align-items: center; }
+.glance-label { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 0.95rem; }
+.glance-spec { border: 1px solid var(--rule); border-radius: 8px; padding: 18px 22px; min-width: 0; }
+.glance-spec .logo { height: 64px; width: auto; max-width: 100%; }
+.glance-stack { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.glance-cell { margin: 0; border: 1px solid var(--rule); border-radius: 8px; padding: 14px 10px 10px;
+                display: flex; flex-direction: column; align-items: center; gap: 8px; min-width: 0; }
+.glance-cell .logo { width: 100%; height: 190px; object-fit: contain; }
+.glance-cell figcaption { font-size: 0.82rem; font-weight: 600; color: var(--paper-fg); display: flex; align-items: center; gap: 6px; text-align: center; }
+.glance-cell figcaption .chip { width: 1.6em; height: 1.6em; font-size: 0.8rem; border-color: var(--paper-rule); background: var(--paper); color: var(--paper-text); }
+
+.options { display: flex; flex-direction: column; gap: 48px; }
+.option { display: flex; flex-direction: column; gap: 14px; }
+.option-head { display: flex; gap: 14px; align-items: flex-start; }
+.option-head .chip { width: 2.3em; height: 2.3em; font-size: 1.05rem; }
+.option-head p { color: var(--muted); }
+.points { margin: 0; padding-left: 1.2em; max-width: 72ch; display: flex; flex-direction: column; gap: 4px; }
+.spec-grid { display: grid; gap: 12px; }
+.spec-grid.banners { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.spec-grid.stacks { grid-template-columns: repeat(2, minmax(0, 380px)); }
+.spec { margin: 0; border-radius: 8px; padding: 22px 20px 10px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.spec.paper { border: 1px solid var(--rule); }
+.spec .logo { width: 100%; height: auto; }
+.spec .logo.stacked, .spec .logo.marktm { max-width: 300px; margin: 0 auto; }
+.spec figcaption { font-size: 0.8rem; }
+.spec.paper figcaption { color: var(--paper-fg); }
+.spec.ink figcaption { color: var(--ink-fg); }
+
+.sizes { display: flex; flex-direction: column; gap: 12px; }
+.size-row { align-items: start; }
+.size-specs { border: 1px solid var(--rule); border-radius: 8px; padding: 16px 20px; display: flex; flex-direction: column; gap: 14px; min-width: 0; overflow: hidden; }
+.size-specs .logo { width: auto; max-width: 100%; }
+.h56 .logo { height: 56px; } .h32 .logo { height: 32px; }
+.s-row { display: flex; gap: 24px; align-items: flex-end; flex-wrap: wrap; }
+.s200 .logo { height: 200px; } .s96 .logo { height: 96px; }
+
+.icons { display: flex; gap: 18px; align-items: flex-end; flex-wrap: wrap; border: 1px solid var(--rule); border-radius: 8px; padding: 18px 20px; }
+.icon-cell { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.icon-box .logo { height: 100%; width: auto; }
+.icon-cell figcaption { font: 0.78rem var(--font-mono); color: var(--paper-fg); }
+
+.evidence { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.evidence figure { margin: 0; border: 1px solid var(--rule); border-radius: 8px; padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+.evidence img { width: 100%; height: auto; display: block; }
+.evidence figcaption { font-size: 0.8rem; color: var(--paper-fg); }
+.key { display: flex; gap: 18px; flex-wrap: wrap; font-size: 0.9rem; }
+.key span::before { content: ""; display: inline-block; width: 0.9em; height: 0.9em; margin-right: 6px; vertical-align: -0.1em; border-radius: 2px; background: var(--swatch); border: 1px solid var(--rule); }
+
+.check { background-color: var(--check-a);
+          background-image: conic-gradient(var(--check-b) 25%, transparent 0 50%, var(--check-b) 0 75%, transparent 0);
+          background-size: 18px 18px; }
+.spec.check figcaption { color: var(--ink-fg); display: flex; align-items: center; gap: 6px; }
+.spec.check figcaption .chip { width: 1.6em; height: 1.6em; font-size: 0.8rem; }
+.spec-grid.mono { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.swing { display: flex; flex-direction: column; gap: 10px; }
+.swing-bar { background: var(--swing-bar); display: flex; align-items: flex-end; justify-content: space-between;
+              gap: 16px; padding: 5px 20px 4px 12px; border-radius: 4px; min-width: 0; overflow: hidden; }
+.swing-title { font: bold 18px/1.2 Tahoma, Verdana, "DejaVu Sans", sans-serif; color: #ffffff; padding-bottom: 3px; }
+.swing-logo .logo, .login-strip .logo { height: 30px; width: auto; max-width: 100%; }
+.swing-logo { display: flex; min-width: 0; }
+.login-strip { border: 1px solid var(--rule); border-radius: 4px; padding: 8px 12px; display: flex; min-width: 0; }
+table.files td.num { font-variant-numeric: tabular-nums; text-align: right; }
+table.files th.num { text-align: right; }
+ol.steps { margin: 0; padding-left: 1.3em; max-width: 72ch; display: flex; flex-direction: column; gap: 6px; }
+.sources { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 4px; font-size: 0.95rem; }
+footer { border-top: 1px solid var(--rule); padding-top: 16px; font-size: 0.85rem; color: var(--muted); max-width: 72ch; }
+
+@media (max-width: 760px) {
+  main { gap: 44px; padding-block: 28px 56px; }
+  .glance-row, .size-row { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .glance-stack { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .glance-spec .logo { height: auto; width: 100%; }
+  .spec-grid.banners, .spec-grid.stacks, .spec-grid.mono, .evidence { grid-template-columns: minmax(0, 1fr); }
+  .swing-title { display: none; }
+  .s200 .logo { height: 160px; }
+}
+</style>
+
+<main>
+  <section class="intro">
+    <p class="eyebrow">Logo review &middot; Draft for approval &middot; 1 October 2026</p>
+    <h1>A new wordmark for Eclipse Open Integration Engine&trade;</h1>
+    <div class="prose">
+      <p>The project is now formally named Eclipse Open Integration Engine, so the words in the logo need to say so.
+      The symbol stays exactly as it is. Below are four options for the lettering, shown side by side and then one at a time.</p>
+    </div>
+    <div class="respond">
+      <h2>How to respond</h2>
+      <p>For the Steering Committee and maintainers. Reply in the project Discord with:</p>
+      <ol>
+        <li>Your choice of wordmark: <strong>A</strong>, <strong>B</strong>, <strong>C</strong> or <strong>D</strong>.</li>
+        <li>Your view on the trademark sign for the small app icons (see <a href="#icons">Small icons</a>): yes, no, or large sizes only.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <h2>Why the logo is changing</h2>
+    <div class="prose">
+      <p>The project entered incubation at the Eclipse Foundation on 7 September 2026, and its formal name became
+      Eclipse Open Integration Engine (<a href="https://openintegrationengine.org/news/eclipse-foundation-incubation/" target="_blank" rel="noopener">announcement</a>).
+      Two rules in the Eclipse Project Handbook apply to the logo.</p>
+    </div>
+    <blockquote>
+      &ldquo;The primary branding for any project name is fully-qualified formal name which includes the brand (typically Eclipse &hellip;) prefix.&rdquo;
+      <cite>Eclipse Project Handbook, <a href="https://www.eclipse.org/projects/handbook/#trademarks-project-formal" target="_blank" rel="noopener">Formal Name</a></cite>
+    </blockquote>
+    <blockquote>
+      &ldquo;For a project&rsquo;s official logo, the designer must ensure that it includes a small trademark (&trade;) or registered trademark (&reg;) symbol (as appropriate) in the graphic or immediately adjacent to it.&rdquo;
+      <cite>Eclipse Project Handbook, <a href="https://www.eclipse.org/projects/handbook/#trademarks-project-logo" target="_blank" rel="noopener">Logos and Graphics</a></cite>
+    </blockquote>
+    <div class="prose">
+      <p>None of today&rsquo;s logo files carry a trademark sign, so every option adds one.</p>
+      <p>Eclipse does not require a typeface for project logos. The Handbook encourages projects &ldquo;to create a unique logo&rdquo;.
+      The Foundation&rsquo;s own <a href="https://www.eclipse.org/legal/documents/eclipse-foundation-branding-guidelines.pdf" target="_blank" rel="noopener">brand guidelines</a>
+      (September 2025) set Inter as its typeface, which is why options C and D are here.</p>
+      <p>Putting the Eclipse Foundation&rsquo;s <em>logo</em> inside a project logo needs permission from its Board of Directors.
+      None of these options do that. They use the word only.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>What changes and what stays</h2>
+    <div class="prose">
+      <p>The symbol, its three colours and both layouts (the wide banner and the stacked version) stay as they are.
+      The words become &ldquo;Eclipse Open Integration Engine&trade;&rdquo;. In the stacked version, &ldquo;Eclipse Open&rdquo; shares the first line,
+      which keeps the three lines close in width. The symbol-only files gain a small &trade;.</p>
+      <p>These files in the <a href="https://github.com/OpenIntegrationEngine/governance/tree/main/branding" target="_blank" rel="noopener">governance repository</a> would change:</p>
+    </div>
+    <div class="table-wrap">
+      <table class="files">
+        <thead><tr><th>File</th><th>Change</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">logos/oie_logo_banner_text.svg</td><td>New words and &trade;</td></tr>
+          <tr><td class="mono">logos/oie_white_logo_banner_text.svg</td><td>New words and &trade;, white version for dark backgrounds</td></tr>
+          <tr><td class="mono">logos/oie_logo_bottom_text.svg</td><td>New words and &trade;, stacked version</td></tr>
+          <tr><td class="mono">logos/oie_logo_only.svg</td><td>&trade; added beside the symbol</td></tr>
+          <tr><td class="mono">logos/oie_logo_only_white_background.svg</td><td>&trade; added beside the symbol</td></tr>
+          <tr><td class="mono">icons/oie_logo_only_white_background_*.png</td><td>Six icons, 16 to 256 px. Depends on question 2.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>The options at a glance</h2>
+    <p class="muted">Every banner below is drawn at the same height, so the lettering is at the same scale in each.</p>
+    <div class="glance"><div class="glance-row"><div class="glance-label"><span class="chip today" aria-hidden="true">&middot;</span><span>Today</span></div><div class="glance-spec paper"><img class="logo banner" src="/logo-review/current/oie_logo_banner_text.svg" alt="Current banner logo"></div></div><div class="glance-row"><div class="glance-label"><span class="chip" aria-hidden="true">A</span><span>Raleway SemiBold</span></div><div class="glance-spec paper"><svg class="logo banner" role="img" aria-label="Option A banner logo" data-base="0 0 3941 550" data-pad="88" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3941 550"><image href="/logo-review/mark.svg" x="-9.3" y="-16.3" width="579.1" height="579.1"/><text x="622.0" y="358.1" font-family="Raleway" font-weight="600" font-size="282.3" text-anchor="start" fill="#02274c"><tspan fill="#02274c">Eclipse</tspan> Open Integration Engine<tspan font-size="169.4" dx="8.5" dy="-80.2">™</tspan></text></svg></div></div><div class="glance-row"><div class="glance-label"><span class="chip" aria-hidden="true">B</span><span>Raleway SemiBold, orange "Eclipse"</span></div><div class="glance-spec paper"><svg class="logo banner" role="img" aria-label="Option B banner logo" data-base="0 0 3941 550" data-pad="88" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3941 550"><image href="/logo-review/mark.svg" x="-9.3" y="-16.3" width="579.1" height="579.1"/><text x="622.0" y="358.1" font-family="Raleway" font-weight="600" font-size="282.3" text-anchor="start" fill="#02274c"><tspan fill="#e2690e">Eclipse</tspan> Open Integration Engine<tspan font-size="169.4" dx="8.5" dy="-80.2">™</tspan></text></svg></div></div><div class="glance-row"><div class="glance-label"><span class="chip" aria-hidden="true">C</span><span>Inter Bold</span></div><div class="glance-spec paper"><svg class="logo banner" role="img" aria-label="Option C banner logo" data-base="0 0 3941 550" data-pad="88" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3941 550"><image href="/logo-review/mark.svg" x="-9.3" y="-16.3" width="579.1" height="579.1"/><text x="622.0" y="358.1" font-family="Inter" font-weight="700" font-size="275.3" text-anchor="start" fill="#02274c"><tspan fill="#02274c">Eclipse</tspan> Open Integration Engine<tspan font-size="192.7" dx="8.3" dy="-60.1">™</tspan></text></svg></div></div><div class="glance-row"><div class="glance-label"><span class="chip" aria-hidden="true">D</span><span>Inter SemiBold</span></div><div class="glance-spec paper"><svg class="logo banner" role="img" aria-label="Option D banner logo" data-base="0 0 3941 550" data-pad="88" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3941 550"><image href="/logo-review/mark.svg" x="-9.3" y="-16.3" width="579.1" height="579.1"/><text x="622.0" y="358.1" font-family="Inter" font-weight="600" font-size="275.3" text-anchor="start" fill="#02274c"><tspan fill="#02274c">Eclipse</tspan> Open Integration Engine<tspan font-size="192.7" dx="8.3" dy="-60.1">™</tspan></text></svg></div></div></div>
+    <div class="glance-stack"><figure class="glance-cell paper"><img class="logo stacked" src="/logo-review/current/oie_logo_bottom_text.svg" alt="Current stacked logo"><figcaption>Today</figcaption></figure><figure class="glance-cell paper"><svg class="logo stacked" role="img" aria-label="Option A stacked logo" data-base="0 0 1024 1024" data-pad="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><image href="/logo-review/mark.svg" x="223.0" y="38.5" width="578.5" height="578.5"/><text x="512.3" y="692.8" font-family="Raleway" font-weight="600" font-size="122.8" text-anchor="middle" fill="#02274c"><tspan fill="#02274c">Eclipse</tspan> Open</text><text x="512.3" y="808.6" font-family="Raleway" font-weight="600" font-size="122.8" text-anchor="middle" fill="#02274c">Integration</text><text x="543.3" y="927.2" font-family="Raleway" font-weight="600" font-size="122.8" text-anchor="middle" fill="#02274c">Engine<tspan font-size="73.7" dx="3.7" dy="-34.9">™</tspan></text></svg><figcaption><span class="chip" aria-hidden="true">A</span> Raleway SemiBold</figcaption></figure><figure class="glance-cell paper"><svg class="logo stacked" role="img" aria-label="Option B stacked logo" data-base="0 0 1024 1024" data-pad="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><image href="/logo-review/mark.svg" x="223.0" y="38.5" width="578.5" height="578.5"/><text x="512.3" y="692.8" font-family="Raleway" font-weight="600" font-size="122.8" text-anchor="middle" fill="#02274c"><tspan fill="#e2690e">Eclipse</tspan> Open</text><text x="512.3" y="808.6" font-family="Raleway" font-weight="600" font-size="122.8" text-anchor="middle" fill="#02274c">Integration</text><text x="543.3" y="927.2" font-family="Raleway" font-weight="600" font-size="122.8" text-anchor="middle" fill="#02274c">Engine<tspan font-size="73.7" dx="3.7" dy="-34.9">™</tspan></text></svg><figcaption><span class="chip" aria-hidden="true">B</span> Raleway SemiBold, orange "Eclipse"</figcaption></figure><figure class="glance-cell paper"><svg class="logo stacked" role="img" aria-label="Option C stacked logo" data-base="0 0 1024 1024" data-pad="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><image href="/logo-review/mark.svg" x="223.0" y="38.5" width="578.5" height="578.5"/><text x="512.3" y="692.8" font-family="Inter" font-weight="700" font-size="119.8" text-anchor="middle" fill="#02274c"><tspan fill="#02274c">Eclipse</tspan> Open</text><text x="512.3" y="808.6" font-family="Inter" font-weight="700" font-size="119.8" text-anchor="middle" fill="#02274c">Integration</text><text x="539.9" y="927.2" font-family="Inter" font-weight="700" font-size="119.8" text-anchor="middle" fill="#02274c">Engine<tspan font-size="83.8" dx="3.6" dy="-26.2">™</tspan></text></svg><figcaption><span class="chip" aria-hidden="true">C</span> Inter Bold</figcaption></figure><figure class="glance-cell paper"><svg class="logo stacked" role="img" aria-label="Option D stacked logo" data-base="0 0 1024 1024" data-pad="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><image href="/logo-review/mark.svg" x="223.0" y="38.5" width="578.5" height="578.5"/><text x="512.3" y="692.8" font-family="Inter" font-weight="600" font-size="119.8" text-anchor="middle" fill="#02274c"><tspan fill="#02274c">Eclipse</tspan> Open</text><text x="512.3" y="808.6" font-family="Inter" font-weight="600" font-size="119.8" text-anchor="middle" fill="#02274c">Integration</text><text x="539.9" y="927.2" font-family="Inter" font-weight="600" font-size="119.8" text-anchor="middle" fill="#02274c">Engine<tspan font-size="83.8" dx="3.6" dy="-26.2">™</tspan></text></svg><figcaption><span class="chip" aria-hidden="true">D</span> Inter SemiBold</figcaption></figure></div>
+  </section>
+
+  <section>
+    <h2>Each option in detail</h2>
+    <p class="muted prose">Each option on a light and a dark background. The points listed are things to weigh, not a ranking.</p>
+    <div class="options">
+<article class="option" id="option-a">
+  <header class="option-head"><span class="chip" aria-hidden="true">A</span><div><h3>Raleway SemiBold</h3><p>Today's typeface and weight, all in navy.</p></div></header>
+  <ul class="points"><li>Same typeface and weight as today's lettering, so the existing words look exactly as they do now.</li><li>openintegrationengine.org sets all of its text in Raleway, so the logo and the website match.</li><li>No visual link to the Eclipse Foundation's own typeface.</li></ul>
+  <div class="spec-grid banners">
+    <figure class="spec paper"><svg class="logo banner" role="img" aria-label="Option A banner logo" data-base="0 0 3941 550" data-pad="88" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3941 550"><image href="/logo-review/mark.svg" x="-9.3" y="-16.3" width="579.1" height="579.1"/><text x="622.0" y="358.1" font-family="Raleway" font-weight="600" font-size="282.3" text-anchor="start" fill="#02274c"><tspan fill="#02274c">Eclipse</tspan> Open Integration Engine<tspan font-size="169.4" dx="8.5" dy="-80.2">™</tspan></text></svg><figcaption>Banner on a light background</figcaption></figure>
+    <figure class="spec ink"><svg class="logo banner" role="img" aria-label="Option A banner logo" data-base="0 0 3941 550" data-pad="88" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3941 550"><image href="/logo-review/mark-white.svg" x="-9.3" y="-16.3" width="579.1" height="579.1"/><text x="622.0" y="358.1" font-family="Raleway" font-weight="600" font-size="282.3" text-anchor="start" fill="#ffffff"><tspan fill="#ffffff">Eclipse</tspan> Open Integration Engine<tspan font-size="169.4" dx="8.5" dy="-80.2">™</tspan></text></svg><figcaption>Banner on a dark background</figcaption></figure>
+  </div>
+  <div class="spec-grid stacks">
+    <figure class="spec paper"><svg class="logo stacked" role="img" aria-label="Option A stacked logo" data-base="0 0 1024 1024" data-pad="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><image href="/logo-review/mark.svg" x="223.0" y="38.5" width="578.5" height="578.5"/><text x="512.3" y="692.8" font-family="Raleway" font-weight="600" font-size="122.8" text-anchor="middle" fill="#02274c"><tspan fill="#02274c">Eclipse</tspan> Open</text><text x="512.3" y="808.6" font-family="Raleway" font-weight="600" font-size="122.8" text-anchor="middle" fill="#02274c">Integration</text><text x="543.3" y="927.2" font-family="Raleway" font-weight="600" font-size="122.8" text-anchor="middle" fill="#02274c">Engine<tspan font-size="73.7" dx="3.7" dy="-34.9">™</tspan></text></svg><figcaption>Stacked on a light background</figcaption></figure>
+    <figure class="spec ink"><svg class="logo stacked" role="img" aria-label="Option A stacked logo" data-base="0 0 1024 1024" data-pad="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><image href="/logo-review/mark-white.svg" x="223.0" y="38.5" width="578.5" height="578.5"/><text x="512.3" y="692.8" font-family="Raleway" font-weight="600" font-size="122.8" text-anchor="middle" fill="#ffffff"><tspan fill="#ffffff">Eclipse</tspan> Open</text><text x="512.3" y="808.6" font-family="Raleway" font-weight="600" font-size="122.8" text-anchor="middle" fill="#ffffff">Integration</text><text x="543.3" y="927.2" font-family="Raleway" font-weight="600" font-size="122.8" text-anchor="middle" fill="#ffffff">Engine<tspan font-size="73.7" dx="3.7" dy="-34.9">™</tspan></text></svg><figcaption>Stacked on a dark background</figcaption></figure>
+  </div>
+</article>
+<article class="option" id="option-b">
+  <header class="option-head"><span class="chip" aria-hidden="true">B</span><div><h3>Raleway SemiBold, orange "Eclipse"</h3><p>As A, with "Eclipse" in the orange already used in the symbol.</p></div></header>
+  <ul class="points"><li>Everything in A, plus "Eclipse" picked out in the symbol's orange (#e2690e).</li><li>That orange is close to the Eclipse Foundation's brand orange (#F06C02), so the word reads as a nod to Eclipse.</li><li>A two-colour wordmark. Wherever the logo is printed in one colour, the emphasis disappears.</li></ul>
+  <div class="spec-grid banners">
+    <figure class="spec paper"><svg class="logo banner" role="img" aria-label="Option B banner logo" data-base="0 0 3941 550" data-pad="88" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3941 550"><image href="/logo-review/mark.svg" x="-9.3" y="-16.3" width="579.1" height="579.1"/><text x="622.0" y="358.1" font-family="Raleway" font-weight="600" font-size="282.3" text-anchor="start" fill="#02274c"><tspan fill="#e2690e">Eclipse</tspan> Open Integration Engine<tspan font-size="169.4" dx="8.5" dy="-80.2">™</tspan></text></svg><figcaption>Banner on a light background</figcaption></figure>
+    <figure class="spec ink"><svg class="logo banner" role="img" aria-label="Option B banner logo" data-base="0 0 3941 550" data-pad="88" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3941 550"><image href="/logo-review/mark-white.svg" x="-9.3" y="-16.3" width="579.1" height="579.1"/><text x="622.0" y="358.1" font-family="Raleway" font-weight="600" font-size="282.3" text-anchor="start" fill="#ffffff"><tspan fill="#e2690e">Eclipse</tspan> Open Integration Engine<tspan font-size="169.4" dx="8.5" dy="-80.2">™</tspan></text></svg><figcaption>Banner on a dark background</figcaption></figure>
+  </div>
+  <div class="spec-grid stacks">
+    <figure class="spec paper"><svg class="logo stacked" role="img" aria-label="Option B stacked logo" data-base="0 0 1024 1024" data-pad="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><image href="/logo-review/mark.svg" x="223.0" y="38.5" width="578.5" height="578.5"/><text x="512.3" y="692.8" font-family="Raleway" font-weight="600" font-size="122.8" text-anchor="middle" fill="#02274c"><tspan fill="#e2690e">Eclipse</tspan> Open</text><text x="512.3" y="808.6" font-family="Raleway" font-weight="600" font-size="122.8" text-anchor="middle" fill="#02274c">Integration</text><text x="543.3" y="927.2" font-family="Raleway" font-weight="600" font-size="122.8" text-anchor="middle" fill="#02274c">Engine<tspan font-size="73.7" dx="3.7" dy="-34.9">™</tspan></text></svg><figcaption>Stacked on a light background</figcaption></figure>
+    <figure class="spec ink"><svg class="logo stacked" role="img" aria-label="Option B stacked logo" data-base="0 0 1024 1024" data-pad="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><image href="/logo-review/mark-white.svg" x="223.0" y="38.5" width="578.5" height="578.5"/><text x="512.3" y="692.8" font-family="Raleway" font-weight="600" font-size="122.8" text-anchor="middle" fill="#ffffff"><tspan fill="#e2690e">Eclipse</tspan> Open</text><text x="512.3" y="808.6" font-family="Raleway" font-weight="600" font-size="122.8" text-anchor="middle" fill="#ffffff">Integration</text><text x="543.3" y="927.2" font-family="Raleway" font-weight="600" font-size="122.8" text-anchor="middle" fill="#ffffff">Engine<tspan font-size="73.7" dx="3.7" dy="-34.9">™</tspan></text></svg><figcaption>Stacked on a dark background</figcaption></figure>
+  </div>
+</article>
+<article class="option" id="option-c">
+  <header class="option-head"><span class="chip" aria-hidden="true">C</span><div><h3>Inter Bold</h3><p>The Eclipse Foundation's typeface, at the weight its guidelines give for headlines.</p></div></header>
+  <ul class="points"><li>Matches the typeface the Eclipse Foundation uses for its own materials.</li><li>Heavier and wider than today's lettering.</li><li>openintegrationengine.org uses Raleway, including the project name in its header right beside the symbol. The two would differ unless the website changes fonts too.</li></ul>
+  <div class="spec-grid banners">
+    <figure class="spec paper"><svg class="logo banner" role="img" aria-label="Option C banner logo" data-base="0 0 3941 550" data-pad="88" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3941 550"><image href="/logo-review/mark.svg" x="-9.3" y="-16.3" width="579.1" height="579.1"/><text x="622.0" y="358.1" font-family="Inter" font-weight="700" font-size="275.3" text-anchor="start" fill="#02274c"><tspan fill="#02274c">Eclipse</tspan> Open Integration Engine<tspan font-size="192.7" dx="8.3" dy="-60.1">™</tspan></text></svg><figcaption>Banner on a light background</figcaption></figure>
+    <figure class="spec ink"><svg class="logo banner" role="img" aria-label="Option C banner logo" data-base="0 0 3941 550" data-pad="88" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3941 550"><image href="/logo-review/mark-white.svg" x="-9.3" y="-16.3" width="579.1" height="579.1"/><text x="622.0" y="358.1" font-family="Inter" font-weight="700" font-size="275.3" text-anchor="start" fill="#ffffff"><tspan fill="#ffffff">Eclipse</tspan> Open Integration Engine<tspan font-size="192.7" dx="8.3" dy="-60.1">™</tspan></text></svg><figcaption>Banner on a dark background</figcaption></figure>
+  </div>
+  <div class="spec-grid stacks">
+    <figure class="spec paper"><svg class="logo stacked" role="img" aria-label="Option C stacked logo" data-base="0 0 1024 1024" data-pad="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><image href="/logo-review/mark.svg" x="223.0" y="38.5" width="578.5" height="578.5"/><text x="512.3" y="692.8" font-family="Inter" font-weight="700" font-size="119.8" text-anchor="middle" fill="#02274c"><tspan fill="#02274c">Eclipse</tspan> Open</text><text x="512.3" y="808.6" font-family="Inter" font-weight="700" font-size="119.8" text-anchor="middle" fill="#02274c">Integration</text><text x="539.9" y="927.2" font-family="Inter" font-weight="700" font-size="119.8" text-anchor="middle" fill="#02274c">Engine<tspan font-size="83.8" dx="3.6" dy="-26.2">™</tspan></text></svg><figcaption>Stacked on a light background</figcaption></figure>
+    <figure class="spec ink"><svg class="logo stacked" role="img" aria-label="Option C stacked logo" data-base="0 0 1024 1024" data-pad="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><image href="/logo-review/mark-white.svg" x="223.0" y="38.5" width="578.5" height="578.5"/><text x="512.3" y="692.8" font-family="Inter" font-weight="700" font-size="119.8" text-anchor="middle" fill="#ffffff"><tspan fill="#ffffff">Eclipse</tspan> Open</text><text x="512.3" y="808.6" font-family="Inter" font-weight="700" font-size="119.8" text-anchor="middle" fill="#ffffff">Integration</text><text x="539.9" y="927.2" font-family="Inter" font-weight="700" font-size="119.8" text-anchor="middle" fill="#ffffff">Engine<tspan font-size="83.8" dx="3.6" dy="-26.2">™</tspan></text></svg><figcaption>Stacked on a dark background</figcaption></figure>
+  </div>
+</article>
+<article class="option" id="option-d">
+  <header class="option-head"><span class="chip" aria-hidden="true">D</span><div><h3>Inter SemiBold</h3><p>The Eclipse Foundation's typeface, one weight lighter than C.</p></div></header>
+  <ul class="points"><li>Same typeface as C, one step lighter. Closer to how heavy today's lettering looks.</li><li>Inter's letters are a little wider and plainer than Raleway's.</li><li>Same website point as C: the site's Raleway header text would differ from the logo unless the site changes too.</li></ul>
+  <div class="spec-grid banners">
+    <figure class="spec paper"><svg class="logo banner" role="img" aria-label="Option D banner logo" data-base="0 0 3941 550" data-pad="88" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3941 550"><image href="/logo-review/mark.svg" x="-9.3" y="-16.3" width="579.1" height="579.1"/><text x="622.0" y="358.1" font-family="Inter" font-weight="600" font-size="275.3" text-anchor="start" fill="#02274c"><tspan fill="#02274c">Eclipse</tspan> Open Integration Engine<tspan font-size="192.7" dx="8.3" dy="-60.1">™</tspan></text></svg><figcaption>Banner on a light background</figcaption></figure>
+    <figure class="spec ink"><svg class="logo banner" role="img" aria-label="Option D banner logo" data-base="0 0 3941 550" data-pad="88" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3941 550"><image href="/logo-review/mark-white.svg" x="-9.3" y="-16.3" width="579.1" height="579.1"/><text x="622.0" y="358.1" font-family="Inter" font-weight="600" font-size="275.3" text-anchor="start" fill="#ffffff"><tspan fill="#ffffff">Eclipse</tspan> Open Integration Engine<tspan font-size="192.7" dx="8.3" dy="-60.1">™</tspan></text></svg><figcaption>Banner on a dark background</figcaption></figure>
+  </div>
+  <div class="spec-grid stacks">
+    <figure class="spec paper"><svg class="logo stacked" role="img" aria-label="Option D stacked logo" data-base="0 0 1024 1024" data-pad="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><image href="/logo-review/mark.svg" x="223.0" y="38.5" width="578.5" height="578.5"/><text x="512.3" y="692.8" font-family="Inter" font-weight="600" font-size="119.8" text-anchor="middle" fill="#02274c"><tspan fill="#02274c">Eclipse</tspan> Open</text><text x="512.3" y="808.6" font-family="Inter" font-weight="600" font-size="119.8" text-anchor="middle" fill="#02274c">Integration</text><text x="539.9" y="927.2" font-family="Inter" font-weight="600" font-size="119.8" text-anchor="middle" fill="#02274c">Engine<tspan font-size="83.8" dx="3.6" dy="-26.2">™</tspan></text></svg><figcaption>Stacked on a light background</figcaption></figure>
+    <figure class="spec ink"><svg class="logo stacked" role="img" aria-label="Option D stacked logo" data-base="0 0 1024 1024" data-pad="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><image href="/logo-review/mark-white.svg" x="223.0" y="38.5" width="578.5" height="578.5"/><text x="512.3" y="692.8" font-family="Inter" font-weight="600" font-size="119.8" text-anchor="middle" fill="#ffffff"><tspan fill="#ffffff">Eclipse</tspan> Open</text><text x="512.3" y="808.6" font-family="Inter" font-weight="600" font-size="119.8" text-anchor="middle" fill="#ffffff">Integration</text><text x="539.9" y="927.2" font-family="Inter" font-weight="600" font-size="119.8" text-anchor="middle" fill="#ffffff">Engine<tspan font-size="83.8" dx="3.6" dy="-26.2">™</tspan></text></svg><figcaption>Stacked on a dark background</figcaption></figure>
+  </div>
+</article></div>
+  </section>
+
+  <section>
+    <h2>At the sizes people actually see</h2>
+    <p class="muted prose">Banner at 56 px and 32 px tall, the range of a website header or an email signature. Stacked at 200 px,
+    the largest an Eclipse project page displays, and at 96 px.</p>
+    <div class="sizes">
+<div class="size-row">
+  <div class="glance-label"><span class="chip" aria-hidden="true">A</span><span>Raleway SemiBold</span></div>
+  <div class="size-specs paper">
+    <div class="h56"><svg class="logo banner" role="img" aria-label="Option A banner logo" data-base="0 0 3941 550" data-pad="88" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3941 550"><image href="/logo-review/mark.svg" x="-9.3" y="-16.3" width="579.1" height="579.1"/><text x="622.0" y="358.1" font-family="Raleway" font-weight="600" font-size="282.3" text-anchor="start" fill="#02274c"><tspan fill="#02274c">Eclipse</tspan> Open Integration Engine<tspan font-size="169.4" dx="8.5" dy="-80.2">™</tspan></text></svg></div>
+    <div class="h32"><svg class="logo banner" role="img" aria-label="Option A banner logo" data-base="0 0 3941 550" data-pad="88" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3941 550"><image href="/logo-review/mark.svg" x="-9.3" y="-16.3" width="579.1" height="579.1"/><text x="622.0" y="358.1" font-family="Raleway" font-weight="600" font-size="282.3" text-anchor="start" fill="#02274c"><tspan fill="#02274c">Eclipse</tspan> Open Integration Engine<tspan font-size="169.4" dx="8.5" dy="-80.2">™</tspan></text></svg></div>
+    <div class="s-row"><div class="s200"><svg class="logo stacked" role="img" aria-label="Option A stacked logo" data-base="0 0 1024 1024" data-pad="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><image href="/logo-review/mark.svg" x="223.0" y="38.5" width="578.5" height="578.5"/><text x="512.3" y="692.8" font-family="Raleway" font-weight="600" font-size="122.8" text-anchor="middle" fill="#02274c"><tspan fill="#02274c">Eclipse</tspan> Open</text><text x="512.3" y="808.6" font-family="Raleway" font-weight="600" font-size="122.8" text-anchor="middle" fill="#02274c">Integration</text><text x="543.3" y="927.2" font-family="Raleway" font-weight="600" font-size="122.8" text-anchor="middle" fill="#02274c">Engine<tspan font-size="73.7" dx="3.7" dy="-34.9">™</tspan></text></svg></div><div class="s96"><svg class="logo stacked" role="img" aria-label="Option A stacked logo" data-base="0 0 1024 1024" data-pad="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><image href="/logo-review/mark.svg" x="223.0" y="38.5" width="578.5" height="578.5"/><text x="512.3" y="692.8" font-family="Raleway" font-weight="600" font-size="122.8" text-anchor="middle" fill="#02274c"><tspan fill="#02274c">Eclipse</tspan> Open</text><text x="512.3" y="808.6" font-family="Raleway" font-weight="600" font-size="122.8" text-anchor="middle" fill="#02274c">Integration</text><text x="543.3" y="927.2" font-family="Raleway" font-weight="600" font-size="122.8" text-anchor="middle" fill="#02274c">Engine<tspan font-size="73.7" dx="3.7" dy="-34.9">™</tspan></text></svg></div></div>
+  </div>
+</div>
+<div class="size-row">
+  <div class="glance-label"><span class="chip" aria-hidden="true">B</span><span>Raleway SemiBold, orange "Eclipse"</span></div>
+  <div class="size-specs paper">
+    <div class="h56"><svg class="logo banner" role="img" aria-label="Option B banner logo" data-base="0 0 3941 550" data-pad="88" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3941 550"><image href="/logo-review/mark.svg" x="-9.3" y="-16.3" width="579.1" height="579.1"/><text x="622.0" y="358.1" font-family="Raleway" font-weight="600" font-size="282.3" text-anchor="start" fill="#02274c"><tspan fill="#e2690e">Eclipse</tspan> Open Integration Engine<tspan font-size="169.4" dx="8.5" dy="-80.2">™</tspan></text></svg></div>
+    <div class="h32"><svg class="logo banner" role="img" aria-label="Option B banner logo" data-base="0 0 3941 550" data-pad="88" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3941 550"><image href="/logo-review/mark.svg" x="-9.3" y="-16.3" width="579.1" height="579.1"/><text x="622.0" y="358.1" font-family="Raleway" font-weight="600" font-size="282.3" text-anchor="start" fill="#02274c"><tspan fill="#e2690e">Eclipse</tspan> Open Integration Engine<tspan font-size="169.4" dx="8.5" dy="-80.2">™</tspan></text></svg></div>
+    <div class="s-row"><div class="s200"><svg class="logo stacked" role="img" aria-label="Option B stacked logo" data-base="0 0 1024 1024" data-pad="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><image href="/logo-review/mark.svg" x="223.0" y="38.5" width="578.5" height="578.5"/><text x="512.3" y="692.8" font-family="Raleway" font-weight="600" font-size="122.8" text-anchor="middle" fill="#02274c"><tspan fill="#e2690e">Eclipse</tspan> Open</text><text x="512.3" y="808.6" font-family="Raleway" font-weight="600" font-size="122.8" text-anchor="middle" fill="#02274c">Integration</text><text x="543.3" y="927.2" font-family="Raleway" font-weight="600" font-size="122.8" text-anchor="middle" fill="#02274c">Engine<tspan font-size="73.7" dx="3.7" dy="-34.9">™</tspan></text></svg></div><div class="s96"><svg class="logo stacked" role="img" aria-label="Option B stacked logo" data-base="0 0 1024 1024" data-pad="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><image href="/logo-review/mark.svg" x="223.0" y="38.5" width="578.5" height="578.5"/><text x="512.3" y="692.8" font-family="Raleway" font-weight="600" font-size="122.8" text-anchor="middle" fill="#02274c"><tspan fill="#e2690e">Eclipse</tspan> Open</text><text x="512.3" y="808.6" font-family="Raleway" font-weight="600" font-size="122.8" text-anchor="middle" fill="#02274c">Integration</text><text x="543.3" y="927.2" font-family="Raleway" font-weight="600" font-size="122.8" text-anchor="middle" fill="#02274c">Engine<tspan font-size="73.7" dx="3.7" dy="-34.9">™</tspan></text></svg></div></div>
+  </div>
+</div>
+<div class="size-row">
+  <div class="glance-label"><span class="chip" aria-hidden="true">C</span><span>Inter Bold</span></div>
+  <div class="size-specs paper">
+    <div class="h56"><svg class="logo banner" role="img" aria-label="Option C banner logo" data-base="0 0 3941 550" data-pad="88" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3941 550"><image href="/logo-review/mark.svg" x="-9.3" y="-16.3" width="579.1" height="579.1"/><text x="622.0" y="358.1" font-family="Inter" font-weight="700" font-size="275.3" text-anchor="start" fill="#02274c"><tspan fill="#02274c">Eclipse</tspan> Open Integration Engine<tspan font-size="192.7" dx="8.3" dy="-60.1">™</tspan></text></svg></div>
+    <div class="h32"><svg class="logo banner" role="img" aria-label="Option C banner logo" data-base="0 0 3941 550" data-pad="88" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3941 550"><image href="/logo-review/mark.svg" x="-9.3" y="-16.3" width="579.1" height="579.1"/><text x="622.0" y="358.1" font-family="Inter" font-weight="700" font-size="275.3" text-anchor="start" fill="#02274c"><tspan fill="#02274c">Eclipse</tspan> Open Integration Engine<tspan font-size="192.7" dx="8.3" dy="-60.1">™</tspan></text></svg></div>
+    <div class="s-row"><div class="s200"><svg class="logo stacked" role="img" aria-label="Option C stacked logo" data-base="0 0 1024 1024" data-pad="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><image href="/logo-review/mark.svg" x="223.0" y="38.5" width="578.5" height="578.5"/><text x="512.3" y="692.8" font-family="Inter" font-weight="700" font-size="119.8" text-anchor="middle" fill="#02274c"><tspan fill="#02274c">Eclipse</tspan> Open</text><text x="512.3" y="808.6" font-family="Inter" font-weight="700" font-size="119.8" text-anchor="middle" fill="#02274c">Integration</text><text x="539.9" y="927.2" font-family="Inter" font-weight="700" font-size="119.8" text-anchor="middle" fill="#02274c">Engine<tspan font-size="83.8" dx="3.6" dy="-26.2">™</tspan></text></svg></div><div class="s96"><svg class="logo stacked" role="img" aria-label="Option C stacked logo" data-base="0 0 1024 1024" data-pad="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><image href="/logo-review/mark.svg" x="223.0" y="38.5" width="578.5" height="578.5"/><text x="512.3" y="692.8" font-family="Inter" font-weight="700" font-size="119.8" text-anchor="middle" fill="#02274c"><tspan fill="#02274c">Eclipse</tspan> Open</text><text x="512.3" y="808.6" font-family="Inter" font-weight="700" font-size="119.8" text-anchor="middle" fill="#02274c">Integration</text><text x="539.9" y="927.2" font-family="Inter" font-weight="700" font-size="119.8" text-anchor="middle" fill="#02274c">Engine<tspan font-size="83.8" dx="3.6" dy="-26.2">™</tspan></text></svg></div></div>
+  </div>
+</div>
+<div class="size-row">
+  <div class="glance-label"><span class="chip" aria-hidden="true">D</span><span>Inter SemiBold</span></div>
+  <div class="size-specs paper">
+    <div class="h56"><svg class="logo banner" role="img" aria-label="Option D banner logo" data-base="0 0 3941 550" data-pad="88" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3941 550"><image href="/logo-review/mark.svg" x="-9.3" y="-16.3" width="579.1" height="579.1"/><text x="622.0" y="358.1" font-family="Inter" font-weight="600" font-size="275.3" text-anchor="start" fill="#02274c"><tspan fill="#02274c">Eclipse</tspan> Open Integration Engine<tspan font-size="192.7" dx="8.3" dy="-60.1">™</tspan></text></svg></div>
+    <div class="h32"><svg class="logo banner" role="img" aria-label="Option D banner logo" data-base="0 0 3941 550" data-pad="88" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3941 550"><image href="/logo-review/mark.svg" x="-9.3" y="-16.3" width="579.1" height="579.1"/><text x="622.0" y="358.1" font-family="Inter" font-weight="600" font-size="275.3" text-anchor="start" fill="#02274c"><tspan fill="#02274c">Eclipse</tspan> Open Integration Engine<tspan font-size="192.7" dx="8.3" dy="-60.1">™</tspan></text></svg></div>
+    <div class="s-row"><div class="s200"><svg class="logo stacked" role="img" aria-label="Option D stacked logo" data-base="0 0 1024 1024" data-pad="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><image href="/logo-review/mark.svg" x="223.0" y="38.5" width="578.5" height="578.5"/><text x="512.3" y="692.8" font-family="Inter" font-weight="600" font-size="119.8" text-anchor="middle" fill="#02274c"><tspan fill="#02274c">Eclipse</tspan> Open</text><text x="512.3" y="808.6" font-family="Inter" font-weight="600" font-size="119.8" text-anchor="middle" fill="#02274c">Integration</text><text x="539.9" y="927.2" font-family="Inter" font-weight="600" font-size="119.8" text-anchor="middle" fill="#02274c">Engine<tspan font-size="83.8" dx="3.6" dy="-26.2">™</tspan></text></svg></div><div class="s96"><svg class="logo stacked" role="img" aria-label="Option D stacked logo" data-base="0 0 1024 1024" data-pad="60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><image href="/logo-review/mark.svg" x="223.0" y="38.5" width="578.5" height="578.5"/><text x="512.3" y="692.8" font-family="Inter" font-weight="600" font-size="119.8" text-anchor="middle" fill="#02274c"><tspan fill="#02274c">Eclipse</tspan> Open</text><text x="512.3" y="808.6" font-family="Inter" font-weight="600" font-size="119.8" text-anchor="middle" fill="#02274c">Integration</text><text x="539.9" y="927.2" font-family="Inter" font-weight="600" font-size="119.8" text-anchor="middle" fill="#02274c">Engine<tspan font-size="83.8" dx="3.6" dy="-26.2">™</tspan></text></svg></div></div>
+  </div>
+</div></div>
+  </section>
+
+  <section id="swing">
+    <h2>In the Swing Administrator</h2>
+    <div class="prose">
+      <p>The Administrator&rsquo;s main window shows a single-colour version of the banner in its top-right corner, on the title bar.
+      That bar is blue (#2A75B2) by default, and administrators can change its colour in Settings, so this version is plain white
+      on a transparent background. The login window shows the full-colour banner. Today both are 215 &times; 30 px images.</p>
+      <p>Option B&rsquo;s orange cannot appear in a one-colour file, so its single-colour version is all white, the same as A.</p>
+    </div>
+    <h3>Single colour, on a checkerboard to show the transparency</h3>
+    <div class="spec-grid mono"><figure class="spec check"><img class="logo banner" src="/logo-review/current/oie_white_logo_banner_text.svg" alt="Current single-colour banner"><figcaption>Today</figcaption></figure><figure class="spec check"><svg class="logo banner" role="img" aria-label="Option A banner logo" data-base="0 0 3941 550" data-pad="88" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3941 550"><image href="/logo-review/mark-white.svg" x="-9.3" y="-16.3" width="579.1" height="579.1"/><text x="622.0" y="358.1" font-family="Raleway" font-weight="600" font-size="282.3" text-anchor="start" fill="#ffffff"><tspan fill="#ffffff">Eclipse</tspan> Open Integration Engine<tspan font-size="169.4" dx="8.5" dy="-80.2">™</tspan></text></svg><figcaption><span class="chip" aria-hidden="true">A</span> Raleway SemiBold</figcaption></figure><figure class="spec check"><svg class="logo banner" role="img" aria-label="Option B banner logo" data-base="0 0 3941 550" data-pad="88" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3941 550"><image href="/logo-review/mark-white.svg" x="-9.3" y="-16.3" width="579.1" height="579.1"/><text x="622.0" y="358.1" font-family="Raleway" font-weight="600" font-size="282.3" text-anchor="start" fill="#ffffff"><tspan fill="#ffffff">Eclipse</tspan> Open Integration Engine<tspan font-size="169.4" dx="8.5" dy="-80.2">™</tspan></text></svg><figcaption><span class="chip" aria-hidden="true">B</span> Raleway SemiBold, orange "Eclipse"</figcaption></figure><figure class="spec check"><svg class="logo banner" role="img" aria-label="Option C banner logo" data-base="0 0 3941 550" data-pad="88" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3941 550"><image href="/logo-review/mark-white.svg" x="-9.3" y="-16.3" width="579.1" height="579.1"/><text x="622.0" y="358.1" font-family="Inter" font-weight="700" font-size="275.3" text-anchor="start" fill="#ffffff"><tspan fill="#ffffff">Eclipse</tspan> Open Integration Engine<tspan font-size="192.7" dx="8.3" dy="-60.1">™</tspan></text></svg><figcaption><span class="chip" aria-hidden="true">C</span> Inter Bold</figcaption></figure><figure class="spec check"><svg class="logo banner" role="img" aria-label="Option D banner logo" data-base="0 0 3941 550" data-pad="88" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3941 550"><image href="/logo-review/mark-white.svg" x="-9.3" y="-16.3" width="579.1" height="579.1"/><text x="622.0" y="358.1" font-family="Inter" font-weight="600" font-size="275.3" text-anchor="start" fill="#ffffff"><tspan fill="#ffffff">Eclipse</tspan> Open Integration Engine<tspan font-size="192.7" dx="8.3" dy="-60.1">™</tspan></text></svg><figcaption><span class="chip" aria-hidden="true">D</span> Inter SemiBold</figcaption></figure></div>
+    <h3>Main window title bar, actual size (mock-up)</h3>
+    <div class="swing"><div class="glance-row"><div class="glance-label"><span class="chip today" aria-hidden="true">&middot;</span><span>Today</span></div><div class="swing-bar"><span class="swing-title">Dashboard</span><span class="swing-logo"><img class="logo" src="/logo-review/current/oie_white_logo_banner_text.svg" alt="Current single-colour banner"></span></div></div><div class="glance-row"><div class="glance-label"><span class="chip" aria-hidden="true">A</span><span>Raleway SemiBold</span></div><div class="swing-bar"><span class="swing-title">Dashboard</span><span class="swing-logo"><svg class="logo banner" role="img" aria-label="Option A banner logo" data-base="0 0 3941 550" data-pad="88" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3941 550"><image href="/logo-review/mark-white.svg" x="-9.3" y="-16.3" width="579.1" height="579.1"/><text x="622.0" y="358.1" font-family="Raleway" font-weight="600" font-size="282.3" text-anchor="start" fill="#ffffff"><tspan fill="#ffffff">Eclipse</tspan> Open Integration Engine<tspan font-size="169.4" dx="8.5" dy="-80.2">™</tspan></text></svg></span></div></div><div class="glance-row"><div class="glance-label"><span class="chip" aria-hidden="true">B</span><span>Raleway SemiBold, orange "Eclipse"</span></div><div class="swing-bar"><span class="swing-title">Dashboard</span><span class="swing-logo"><svg class="logo banner" role="img" aria-label="Option B banner logo" data-base="0 0 3941 550" data-pad="88" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3941 550"><image href="/logo-review/mark-white.svg" x="-9.3" y="-16.3" width="579.1" height="579.1"/><text x="622.0" y="358.1" font-family="Raleway" font-weight="600" font-size="282.3" text-anchor="start" fill="#ffffff"><tspan fill="#ffffff">Eclipse</tspan> Open Integration Engine<tspan font-size="169.4" dx="8.5" dy="-80.2">™</tspan></text></svg></span></div></div><div class="glance-row"><div class="glance-label"><span class="chip" aria-hidden="true">C</span><span>Inter Bold</span></div><div class="swing-bar"><span class="swing-title">Dashboard</span><span class="swing-logo"><svg class="logo banner" role="img" aria-label="Option C banner logo" data-base="0 0 3941 550" data-pad="88" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3941 550"><image href="/logo-review/mark-white.svg" x="-9.3" y="-16.3" width="579.1" height="579.1"/><text x="622.0" y="358.1" font-family="Inter" font-weight="700" font-size="275.3" text-anchor="start" fill="#ffffff"><tspan fill="#ffffff">Eclipse</tspan> Open Integration Engine<tspan font-size="192.7" dx="8.3" dy="-60.1">™</tspan></text></svg></span></div></div><div class="glance-row"><div class="glance-label"><span class="chip" aria-hidden="true">D</span><span>Inter SemiBold</span></div><div class="swing-bar"><span class="swing-title">Dashboard</span><span class="swing-logo"><svg class="logo banner" role="img" aria-label="Option D banner logo" data-base="0 0 3941 550" data-pad="88" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3941 550"><image href="/logo-review/mark-white.svg" x="-9.3" y="-16.3" width="579.1" height="579.1"/><text x="622.0" y="358.1" font-family="Inter" font-weight="600" font-size="275.3" text-anchor="start" fill="#ffffff"><tspan fill="#ffffff">Eclipse</tspan> Open Integration Engine<tspan font-size="192.7" dx="8.3" dy="-60.1">™</tspan></text></svg></span></div></div></div>
+    <h3>Login window, actual size</h3>
+    <div class="swing"><div class="glance-row"><div class="glance-label"><span class="chip today" aria-hidden="true">&middot;</span><span>Today</span></div><div class="login-strip paper"><img class="logo" src="/logo-review/current/oie_logo_banner_text.svg" alt="Current banner"></div></div><div class="glance-row"><div class="glance-label"><span class="chip" aria-hidden="true">A</span><span>Raleway SemiBold</span></div><div class="login-strip paper"><svg class="logo banner" role="img" aria-label="Option A banner logo" data-base="0 0 3941 550" data-pad="88" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3941 550"><image href="/logo-review/mark.svg" x="-9.3" y="-16.3" width="579.1" height="579.1"/><text x="622.0" y="358.1" font-family="Raleway" font-weight="600" font-size="282.3" text-anchor="start" fill="#02274c"><tspan fill="#02274c">Eclipse</tspan> Open Integration Engine<tspan font-size="169.4" dx="8.5" dy="-80.2">™</tspan></text></svg></div></div><div class="glance-row"><div class="glance-label"><span class="chip" aria-hidden="true">B</span><span>Raleway SemiBold, orange "Eclipse"</span></div><div class="login-strip paper"><svg class="logo banner" role="img" aria-label="Option B banner logo" data-base="0 0 3941 550" data-pad="88" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3941 550"><image href="/logo-review/mark.svg" x="-9.3" y="-16.3" width="579.1" height="579.1"/><text x="622.0" y="358.1" font-family="Raleway" font-weight="600" font-size="282.3" text-anchor="start" fill="#02274c"><tspan fill="#e2690e">Eclipse</tspan> Open Integration Engine<tspan font-size="169.4" dx="8.5" dy="-80.2">™</tspan></text></svg></div></div><div class="glance-row"><div class="glance-label"><span class="chip" aria-hidden="true">C</span><span>Inter Bold</span></div><div class="login-strip paper"><svg class="logo banner" role="img" aria-label="Option C banner logo" data-base="0 0 3941 550" data-pad="88" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3941 550"><image href="/logo-review/mark.svg" x="-9.3" y="-16.3" width="579.1" height="579.1"/><text x="622.0" y="358.1" font-family="Inter" font-weight="700" font-size="275.3" text-anchor="start" fill="#02274c"><tspan fill="#02274c">Eclipse</tspan> Open Integration Engine<tspan font-size="192.7" dx="8.3" dy="-60.1">™</tspan></text></svg></div></div><div class="glance-row"><div class="glance-label"><span class="chip" aria-hidden="true">D</span><span>Inter SemiBold</span></div><div class="login-strip paper"><svg class="logo banner" role="img" aria-label="Option D banner logo" data-base="0 0 3941 550" data-pad="88" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3941 550"><image href="/logo-review/mark.svg" x="-9.3" y="-16.3" width="579.1" height="579.1"/><text x="622.0" y="358.1" font-family="Inter" font-weight="600" font-size="275.3" text-anchor="start" fill="#02274c"><tspan fill="#02274c">Eclipse</tspan> Open Integration Engine<tspan font-size="192.7" dx="8.3" dy="-60.1">™</tspan></text></svg></div></div></div>
+    <h3>The 215 &times; 30 px slot</h3>
+    <div class="prose">
+      <p>The engine expects these images at 215 &times; 30 px (<span class="mono">BrandingConstants.java</span>).
+      Adding &ldquo;Eclipse&rdquo; makes the banner longer, so the engine has to either make room for a wider image or show smaller lettering:</p>
+    </div>
+    <div class="table-wrap">
+      <table class="files">
+        <thead><tr><th>Wordmark</th><th class="num">Width at 30 px tall</th><th class="num">Height at 215 px wide</th></tr></thead>
+        <tbody><tr><td>Today</td><td class="num">215</td><td class="num">30</td></tr><tr><td><span class="chip" aria-hidden="true">A</span> Raleway SemiBold</td><td class="num">280</td><td class="num">23.0</td></tr><tr><td><span class="chip" aria-hidden="true">B</span> Raleway SemiBold, orange "Eclipse"</td><td class="num">280</td><td class="num">23.0</td></tr><tr><td><span class="chip" aria-hidden="true">C</span> Inter Bold</td><td class="num">267</td><td class="num">24.2</td></tr><tr><td><span class="chip" aria-hidden="true">D</span> Inter SemiBold</td><td class="num">262</td><td class="num">24.6</td></tr></tbody>
+      </table>
+    </div>
+    <p class="muted prose">That choice belongs to the engine change that follows this decision. It does not affect which option to pick.</p>
+  </section>
+
+  <section id="icons">
+    <h2>The trademark sign on the symbol, and small icons</h2>
+    <div class="prose">
+      <p>The symbol-only logo needs a &trade; too. It is placed just outside the circle at the lower right, about 4.5% of the symbol&rsquo;s height,
+      and is the same in every option.</p>
+    </div>
+    <div class="spec-grid stacks">
+      <figure class="spec paper"><svg class="logo marktm" role="img" aria-label="Symbol with trademark sign" data-base="0 0 1024 1024" data-pad="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><image href="/logo-review/mark.svg" x="0" y="0" width="1024" height="1024"/><text x="800" y="896.3" font-family="Raleway" font-weight="600" font-size="135.6" fill="#02274c">™</text></svg><figcaption>Symbol with &trade;, light background</figcaption></figure>
+      <figure class="spec ink"><svg class="logo marktm" role="img" aria-label="Symbol with trademark sign" data-base="0 0 1024 1024" data-pad="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><image href="/logo-review/mark-white.svg" x="0" y="0" width="1024" height="1024"/><text x="800" y="896.3" font-family="Raleway" font-weight="600" font-size="135.6" fill="#ffffff">™</text></svg><figcaption>Symbol with &trade;, dark background</figcaption></figure>
+    </div>
+    <div class="prose">
+      <h3>Question 2: small icons</h3>
+      <p>The six PNG icons are the symbol alone, from 256 px down to 16 px. Here is the symbol with its &trade; at those sizes.
+      At 32 px the sign is about one pixel tall, and at 16 px it is less than that. The choices are to add it to all six, add it to the larger sizes only, or leave the icons without it.</p>
+    </div>
+    <div class="icons paper"><figure class="icon-cell"><div class="icon-box" style="height:256px"><svg class="logo marktm" role="img" aria-label="Symbol with trademark sign" data-base="0 0 1024 1024" data-pad="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><image href="/logo-review/mark.svg" x="0" y="0" width="1024" height="1024"/><text x="800" y="896.3" font-family="Raleway" font-weight="600" font-size="135.6" fill="#02274c">™</text></svg></div><figcaption>256 px</figcaption></figure><figure class="icon-cell"><div class="icon-box" style="height:128px"><svg class="logo marktm" role="img" aria-label="Symbol with trademark sign" data-base="0 0 1024 1024" data-pad="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><image href="/logo-review/mark.svg" x="0" y="0" width="1024" height="1024"/><text x="800" y="896.3" font-family="Raleway" font-weight="600" font-size="135.6" fill="#02274c">™</text></svg></div><figcaption>128 px</figcaption></figure><figure class="icon-cell"><div class="icon-box" style="height:64px"><svg class="logo marktm" role="img" aria-label="Symbol with trademark sign" data-base="0 0 1024 1024" data-pad="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><image href="/logo-review/mark.svg" x="0" y="0" width="1024" height="1024"/><text x="800" y="896.3" font-family="Raleway" font-weight="600" font-size="135.6" fill="#02274c">™</text></svg></div><figcaption>64 px</figcaption></figure><figure class="icon-cell"><div class="icon-box" style="height:32px"><svg class="logo marktm" role="img" aria-label="Symbol with trademark sign" data-base="0 0 1024 1024" data-pad="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><image href="/logo-review/mark.svg" x="0" y="0" width="1024" height="1024"/><text x="800" y="896.3" font-family="Raleway" font-weight="600" font-size="135.6" fill="#02274c">™</text></svg></div><figcaption>32 px</figcaption></figure><figure class="icon-cell"><div class="icon-box" style="height:16px"><svg class="logo marktm" role="img" aria-label="Symbol with trademark sign" data-base="0 0 1024 1024" data-pad="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><image href="/logo-review/mark.svg" x="0" y="0" width="1024" height="1024"/><text x="800" y="896.3" font-family="Raleway" font-weight="600" font-size="135.6" fill="#02274c">™</text></svg></div><figcaption>16 px</figcaption></figure></div>
+  </section>
+
+  <section>
+    <h2>How we know today&rsquo;s typeface is Raleway</h2>
+    <div class="prose">
+      <p>Today&rsquo;s lettering is stored as outlines, and the files do not record a font name. To identify it, we rendered the current banner
+      and laid Raleway SemiBold over it at the same size.</p>
+    </div>
+    <div class="key">
+      <span style="--swatch:#000000">Both agree</span>
+      <span style="--swatch:#ff0000">Only in today&rsquo;s logo</span>
+      <span style="--swatch:#0000ff">Only in Raleway</span>
+    </div>
+    <div class="evidence">
+      <figure class="paper"><img src="/logo-review/overlay-left.png" alt="Overlay of today's lettering and Raleway SemiBold, start of the line" loading="lazy"><figcaption>Start of the line</figcaption></figure>
+      <figure class="paper"><img src="/logo-review/overlay-right.png" alt="Overlay of today's lettering and Raleway SemiBold, end of the line" loading="lazy"><figcaption>End of the line</figcaption></figure>
+    </div>
+    <div class="prose">
+      <p>The letter shapes coincide. What is left is a thin fringe a few pixels wide, and the whole line differs in length by 0.1%.
+      The other Raleway weights, tested from 400 to 900, all matched clearly worse.</p>
+      <p>Raleway and Inter are both free under the SIL Open Font License. The final logo files will have their letters converted to outlines,
+      so nobody needs either font installed to use them.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>After the decision</h2>
+    <ol class="steps">
+      <li>Produce the final SVG files with the letters converted to outlines, and the PNG icons if question 2 calls for a change.</li>
+      <li>Open a pull request to the governance repository with those files.</li>
+      <li>Update the copies of the logo on openintegrationengine.org. With option C or D, the website&rsquo;s own font becomes a separate question.</li>
+      <li>Update the copies in the engine repository: the Swing Administrator&rsquo;s two 215 &times; 30 px banners (see the slot size above),
+      its 32 px window icon, the 48 px icons, and the logos on the server&rsquo;s landing page and API documentation page.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Sources</h2>
+    <ul class="sources">
+      <li><a href="https://www.eclipse.org/projects/handbook/" target="_blank" rel="noopener">Eclipse Project Handbook</a>, sections Formal Name and Logos and Graphics</li>
+      <li><a href="https://www.eclipse.org/legal/documents/eclipse-foundation-branding-guidelines.pdf" target="_blank" rel="noopener">Eclipse Foundation Brand Guidelines</a>, September 2025, section 6 (Typography)</li>
+      <li><a href="https://www.eclipse.org/legal/logo-guidelines/" target="_blank" rel="noopener">Eclipse Foundation Trademark Usage Policy</a></li>
+      <li><a href="https://openintegrationengine.org/news/eclipse-foundation-incubation/" target="_blank" rel="noopener">OIE Is Now Eclipse Open Integration Engine</a>, openintegrationengine.org, 7 September 2026</li>
+      <li><a href="https://github.com/OpenIntegrationEngine/governance/tree/main/branding" target="_blank" rel="noopener">Current logo files</a>, OpenIntegrationEngine/governance</li>
+    </ul>
+  </section>
+
+  <footer>Prepared 1 October 2026. The previews on this page are drawn by your browser from the Raleway and Inter fonts.
+  The final files will have the same letters converted to outlines.</footer>
+</main>
+
+<script>
+// Widen each logo's viewBox to fit its text once the fonts have loaded. The original
+// artwork box is the minimum, and the original side margin is kept as padding.
+(function () {
+  function fit() {
+    document.querySelectorAll('svg[data-base]').forEach(function (svg) {
+      var b0 = svg.dataset.base.split(' ').map(Number), pad = Number(svg.dataset.pad);
+      var x0 = b0[0], y0 = b0[1], x1 = b0[0] + b0[2], y1 = b0[1] + b0[3];
+      svg.querySelectorAll('text').forEach(function (t) {
+        var b = t.getBBox();
+        x0 = Math.min(x0, b.x - pad); x1 = Math.max(x1, b.x + b.width + pad);
+        y0 = Math.min(y0, b.y); y1 = Math.max(y1, b.y + b.height);
+      });
+      if (svg.classList.contains('stacked')) {   // keep stacked logos centred on the symbol
+        var c = b0[0] + b0[2] / 2, half = Math.max(c - x0, x1 - c);
+        x0 = c - half; x1 = c + half;
+      }
+      svg.setAttribute('viewBox', [x0, y0, x1 - x0, y1 - y0].map(function (v) { return v.toFixed(1); }).join(' '));
+    });
+  }
+  var loads = ['600 100px Raleway', '600 100px Inter', '700 100px Inter'].map(function (f) {
+    return document.fonts.load(f, 'Eclipse Open Integration Engine\u2122').catch(function () {});
+  });
+  Promise.all(loads).then(function () { return document.fonts.ready; }).then(fit, fit);
+})();
+</script>
+</body></html>
