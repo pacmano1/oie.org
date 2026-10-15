@@ -12,10 +12,11 @@ import PageHero from '../components/PageHero.astro';
 
     <section class="channels">
       <div class="card card--padded-sm">
-        <h2>General inquiries</h2>
+        <h2>Mailing list</h2>
         <p>
-          Email us at
-          <a href="mailto:info@openintegrationengine.org"><strong>info@openintegrationengine.org</strong></a>
+          Email
+          <a href="mailto:oie-dev@eclipse.org"><strong class="address">oie-dev@eclipse.org</strong></a>.
+          Only subscribers can post. See <a href="/mailing-list/">how to join</a>.
         </p>
       </div>
 
@@ -52,4 +53,5 @@ import PageHero from '../components/PageHero.astro';
   .channels { display: grid; gap: 1rem; }
   .channels h2 { font-size: 1.2rem; margin: 0 0 0.35rem; color: var(--color-headings); }
   .channels p { margin: 0; }
+  .address { white-space: nowrap; }
 </style>

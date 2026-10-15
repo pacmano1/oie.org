@@ -7,7 +7,7 @@ const social = [
   { name: 'GitHub',   icon: 'github'   as const, href: 'https://github.com/OpenIntegrationEngine' },
   { name: 'LinkedIn', icon: 'linkedin' as const, href: 'https://www.linkedin.com/company/open-integration-engine' },
   { name: 'Discord',  icon: 'discord'  as const, href: 'https://discord.gg/azdehW2Zrx' },
-  { name: 'Email',    icon: 'envelope' as const, href: 'mailto:info@openintegrationengine.org' },
+  { name: 'Mailing list', icon: 'envelope' as const, href: '/mailing-list/' },
 ];
 ---
 
@@ -23,7 +23,7 @@ const social = [
 
     <nav class="site-footer__social" aria-label="Social links">
       {social.map((s) => (
-        <a href={s.href} target={s.href.startsWith('mailto:') ? undefined : '_blank'} rel={s.href.startsWith('mailto:') ? undefined : 'noopener'} aria-label={s.name}>
+        <a href={s.href} target={s.href.startsWith('http') ? '_blank' : undefined} rel={s.href.startsWith('http') ? 'noopener' : undefined} aria-label={s.name}>
           <Icon name={s.icon} />
         </a>
       ))}
