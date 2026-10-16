@@ -106,6 +106,7 @@ a {
   color: var(--color-accent);
   text-decoration: none;
   transition: color 0.15s ease;
+  overflow-wrap: break-word; /* long URLs wrap instead of widening the page on phones */
 }
 a:hover { color: var(--color-accent-active); }
 
@@ -175,6 +176,12 @@ img { max-width: 100%; height: auto; }
 /* --- Page hero (title + optional lead) --- */
 .page-hero {
   margin: 0 auto 3rem;
+}
+/* A hero inside a page that is already a container uses the page's side padding. */
+.container > .page-hero,
+.container-narrow > .page-hero {
+  padding-left: 0;
+  padding-right: 0;
 }
 .page-hero h1 {
   margin-bottom: 1rem;
