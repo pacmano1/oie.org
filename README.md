@@ -61,6 +61,12 @@ Install the CloudFront Function that resolves `/about/` to `/about/index.html`:
 
 This is safe to re-run if you change the function later.
 
+Serve the site's 404 page for paths that do not exist (the bucket is private, so S3 answers a missing file with 403):
+
+```
+./setup-cloudfront-errors.sh
+```
+
 ### Push a build to S3
 
 ```
