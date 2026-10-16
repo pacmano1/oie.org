@@ -32,6 +32,9 @@ import { sponsors } from '../data/sponsors';
   .page { padding-top: 3rem; padding-bottom: 4rem; }
   .page-lead { max-width: 720px; margin: -1.5rem auto 3rem; }
   .page > h2 { text-align: center; margin-bottom: 1.5rem; }
+  /* "Acknowledgments" is wider than a phone at the site's 40px minimum. 8vw
+     matches the other titles from 500px up and fits the word below that. */
+  .page :global(.page-hero h1) { font-size: min(var(--font-size-page-h1), 8vw); }
 
   .sponsor-grid {
     list-style: none;
