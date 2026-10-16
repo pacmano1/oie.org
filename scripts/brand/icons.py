@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Rebuild public/favicon-32.png and public/apple-touch-icon.png.
+"""Rebuild public/favicon-32.png, public/apple-touch-icon.png and public/favicon.ico.
 
-Both are the OIE mark alone on an opaque white ground. Two things the previous
+All are the OIE mark alone on an opaque white ground. Two things the previous
 pair got wrong, kept here as the reason this script exists:
 
   * They included the wordmark. "Open Integration Engine" set inside a 32px
@@ -31,6 +31,12 @@ TARGETS = [
     ('apple-touch-icon.png', 180, 0.72),
 ]
 
+# favicon.ico is for clients that ignore the <link> tags and ask for
+# /favicon.ico directly (Slack, crawlers, some browsers). Each size is drawn
+# at that size rather than shrunk from the largest, with the favicon's fill.
+ICO_SIZES = [16, 32, 48]
+ICO_FILL = 0.86
+
 def render_mark(px):
     tmp = os.path.join(HERE, '.tmp')
     os.makedirs(tmp, exist_ok=True)
@@ -43,24 +49,33 @@ def render_mark(px):
         cwd=ROOT, check=True)
     return Image.open(out).convert('RGBA')
 
+def icon(size, fill):
+    # Render large, crop to the actual ink, then scale. The mark's viewBox
+    # carries padding, so scaling the box would leave the artwork undersized.
+    big = render_mark(1600)
+    box = big.split()[3].getbbox()
+    ink = big.crop(box)
+    target = int(round(size*fill))
+    w, h = ink.size
+    scale = target/max(w, h)
+    ink = ink.resize((max(1, int(round(w*scale))), max(1, int(round(h*scale)))), Image.LANCZOS)
+
+    canvas = Image.new('RGB', (size, size), WHITE)
+    canvas.paste(ink, ((size-ink.width)//2, (size-ink.height)//2), ink)
+    return canvas, ink
+
 def main():
     for name, size, fill in TARGETS:
-        # Render large, crop to the actual ink, then scale. The mark's viewBox
-        # carries padding, so scaling the box would leave the artwork undersized.
-        big = render_mark(1600)
-        box = big.split()[3].getbbox()
-        ink = big.crop(box)
-        target = int(round(size*fill))
-        w, h = ink.size
-        scale = target/max(w, h)
-        ink = ink.resize((max(1, int(round(w*scale))), max(1, int(round(h*scale)))), Image.LANCZOS)
-
-        canvas = Image.new('RGB', (size, size), WHITE)
-        canvas.paste(ink, ((size-ink.width)//2, (size-ink.height)//2), ink)
+        canvas, ink = icon(size, fill)
         out = os.path.join(ROOT, 'public', name)
         canvas.save(out, optimize=True)
         print("wrote public/%-22s %dx%d  ink %dx%d (%.0f%%)"
               % (name, size, size, ink.width, ink.height, 100*max(ink.size)/size))
+
+    frames = [icon(size, ICO_FILL)[0] for size in ICO_SIZES]
+    out = os.path.join(ROOT, 'public', 'favicon.ico')
+    frames[-1].save(out, format='ICO', sizes=[(s, s) for s in ICO_SIZES], append_images=frames[:-1])
+    print("wrote public/%-22s %s" % ('favicon.ico', ', '.join('%dx%d' % (s, s) for s in ICO_SIZES)))
 
 if __name__ == '__main__':
     main()
