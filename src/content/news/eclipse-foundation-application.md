@@ -16,4 +16,4 @@ From here the proposal goes through community review and a formal creation revie
 
 We are also laying the groundwork for an Eclipse Working Group, a place for the organizations that depend on OIE to shape its roadmap, fund its growth, and help promote it across the industry.
 
-To get involved with the working group, or to follow along, reach out on Discord or at info@openintegrationengine.org.
+To get involved with the working group, or to follow along, reach out on Discord or on the [oie-dev mailing list](/mailing-list/).

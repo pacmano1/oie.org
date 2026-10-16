@@ -16,4 +16,4 @@ Nothing about the day to day changes. The code stays open under the same license
 
 Groundwork for an Eclipse Working Group continues, separately from project creation. That is where organizations depending on OIE can shape its roadmap, fund its growth, and help promote it across the industry.
 
-To get involved, or to follow along, reach out on Discord or at info@openintegrationengine.org.
+To get involved, or to follow along, reach out on Discord or on the [oie-dev mailing list](/mailing-list/).

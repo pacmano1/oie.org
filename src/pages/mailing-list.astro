@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+---
+
+<BaseLayout title="Mailing List - Eclipse Open Integration Engine" description="How to read and post to oie-dev@eclipse.org, the Open Integration Engine mailing list.">
+  <article class="container-narrow page">
+    <PageHero
+      title="Mailing List"
+      lead="oie-dev@eclipse.org is the project's mailing list, hosted by the Eclipse Foundation."
+    />
+
+    <section class="steps">
+      <div class="card card--padded-sm">
+        <h2>Post to the list</h2>
+        <p>Only subscribers can post, and subscribing requires an Eclipse account.</p>
+        <ol>
+          <li>
+            <a href="https://accounts.eclipse.org/user/register" target="_blank" rel="noopener">Create an Eclipse account</a>,
+            or <a href="https://accounts.eclipse.org/user/login?destination=/mailing-list/oie-dev" target="_blank" rel="noopener">log in</a>
+            if you already have one.
+          </li>
+          <li>
+            Subscribe on the
+            <a href="https://accounts.eclipse.org/mailing-list/oie-dev" target="_blank" rel="noopener">oie-dev list page</a>.
+          </li>
+          <li>
+            Email <a href="mailto:oie-dev@eclipse.org"><strong class="address">oie-dev@eclipse.org</strong></a>.
+          </li>
+        </ol>
+      </div>
+
+      <div class="card card--padded-sm">
+        <h2>Before you post</h2>
+        <p>
+          Every message is published in the public archive. Leave out patient data, passwords,
+          keys, and anything else that should not be public.
+        </p>
+      </div>
+
+      <div class="card card--padded-sm">
+        <h2>Security issues</h2>
+        <p>
+          Do not report vulnerabilities on the list. Follow the Eclipse Foundation's
+          <a href="https://www.eclipse.org/security/" target="_blank" rel="noopener">vulnerability reporting process</a>.
+        </p>
+      </div>
+
+      <div class="card card--padded-sm">
+        <h2>Read the list</h2>
+        <p>
+          The <a href="https://www.eclipse.org/lists/oie-dev" target="_blank" rel="noopener"><strong>archive</strong></a>
+          is public and needs no account. New messages are also published as an
+          <a href="https://www.eclipse.org/lists/oie-dev/maillist.rss" target="_blank" rel="noopener">RSS feed</a>.
+        </p>
+      </div>
+    </section>
+
+    <p class="other">
+      For Discord, GitHub, and other ways to reach the project, see the <a href="/contact/">contact page</a>.
+    </p>
+  </article>
+</BaseLayout>
+
+<style>
+  .page { padding-top: 3rem; padding-bottom: 4rem; }
+  .steps { display: grid; gap: 1rem; }
+  .steps h2 { font-size: 1.2rem; margin: 0 0 0.35rem; color: var(--color-headings); }
+  .steps p { margin: 0; }
+  .steps ol { margin: 0.75rem 0 0; padding-left: 1.4rem; }
+  .steps li + li { margin-top: 0.4rem; }
+  .address { white-space: nowrap; }
+  .other { margin: 1.5rem 0 0; }
+</style>
