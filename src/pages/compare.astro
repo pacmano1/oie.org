@@ -241,6 +241,9 @@ const rows: { label: string; cells: Cell[]; note?: number }[] = [
   .compare-table-wrap {
     overflow-x: auto;
     padding: 0;
+    /* Contains the cells' absolutely positioned .sr-only labels, which would
+       otherwise sit outside this scroller and widen the whole page on phones. */
+    position: relative;
   }
 
   .compare-table {
