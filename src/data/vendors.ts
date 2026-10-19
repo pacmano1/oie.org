@@ -239,4 +239,16 @@ export const vendors: Vendor[] = [
       'Custom Development',
     ],
   },
+  {
+    name: 'CENS',
+    url: 'https://cens.cl/',
+    logo: '/images/vendors/cens.svg',
+    tagline:
+      'Chilean non-profit digital health center founded by five universities. Interoperability consulting and training in HL7 FHIR and Mirth Connect.',
+    description:
+      'The Centro Nacional en Sistemas de Información en Salud (CENS) is a Chilean non-profit founded in 2016 by the Universidad de Chile, the Pontificia Universidad Católica de Chile, the Universidad de Concepción, the Universidad de Valparaíso and the Universidad de Talca, with support from CORFO and ANID. Its interoperability team advises health organizations on adopting interoperability standards and implementing health information systems. CENS also trains health and IT professionals from Chile and across Latin America, with courses in HL7 FHIR and a hands-on Mirth Connect workshop on configuring channels, connectors and clinical data flows with HL7 v2, CDA and FHIR.',
+    regions: 'HQ in Chile, operates across the Southern Cone of Latin America',
+    languages: 'Spanish, English',
+    services: ['Integration & Interface Services', 'Training'],
+  },
 ];
