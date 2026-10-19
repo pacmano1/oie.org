@@ -270,4 +270,21 @@ export const vendors: Vendor[] = [
       'Training',
     ],
   },
+  {
+    name: 'X Connections',
+    url: 'https://x-connections.com/',
+    logo: '/images/vendors/xconnections.png',
+    tagline:
+      'Dutch healthcare integration specialists for OIE, BridgeLink and Mirth Connect, with two-day and online training.',
+    description:
+      'X Connections empowers healthcare integration with expert support and seamless implementation for Eclipse Open Integration Engine, BridgeLink and Mirth Connect OS, helping you connect systems effortlessly.',
+    regions: 'HQ in the Netherlands, serves the European Union',
+    languages: 'English, German, Dutch',
+    services: [
+      'Integration & Interface Services',
+      'Migration from Other Engines',
+      'Custom Development',
+      'Training',
+    ],
+  },
 ];
