@@ -251,4 +251,23 @@ export const vendors: Vendor[] = [
     languages: 'Spanish, English',
     services: ['Integration & Interface Services', 'Training'],
   },
+  {
+    name: 'Miriade',
+    url: 'https://www.miriade.it/',
+    logo: '/images/vendors/miriade.svg',
+    tagline:
+      'Italian technology partner offering implementation, migration and expert support for OIE and Mirth Connect, from incident recovery to DevOps automation.',
+    description:
+      'Miriade is an Italian technological partner that has worked with companies to innovate, integrate, and manage their digital platforms. We offer expert support for Eclipse Open Integration Engine, from immediate incident recovery to performance optimization and DevOps automation.\n\n' +
+      'Through our R.O.C.E. (Recover, Optimize, Control, Evolve) methodology, we balance security, high performance, and cost control. Miriade delivers expert implementation, migration, and support for Open Integration Engine and Mirth Connect projects.',
+    regions: 'HQ in Italy, operates globally',
+    languages: 'Italian, English',
+    services: [
+      'Integration & Interface Services',
+      'Migration from Other Engines',
+      'Managed Support',
+      'Custom Development',
+      'Training',
+    ],
+  },
 ];
