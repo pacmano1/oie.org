@@ -8,4 +8,8 @@ export default defineConfig({
     assets: 'assets',
   },
   compressHTML: true,
+  redirects: {
+    // The WordPress site's vendor page, still linked from vendors issues.
+    '/commercial-support-vendors': '/commercial-support/',
+  },
 });
