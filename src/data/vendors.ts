@@ -15,6 +15,11 @@ export interface Vendor {
    * page specifically about their OIE offering. Falls back to `url`.
    */
   listingUrl?: string;
+  /**
+   * Optional further sites the vendor asked to be listed, such as a regional
+   * site. Each is shown as its own link after the main one.
+   */
+  otherSites?: { label: string; url: string }[];
   logo: string;
   tagline: string;
   description: string;
@@ -148,6 +153,7 @@ export const vendors: Vendor[] = [
   {
     name: 'Converge Health',
     url: 'http://www.convergehealth.com.au/',
+    otherSites: [{ label: 'UK site', url: 'https://www.convergehealth.co.uk/' }],
     logo: '/images/vendors/converge.png',
     tagline:
       'Australian specialist in digital health and integration engine services across Mirth Connect, OIE, Rhapsody, and IRIS for Health.',

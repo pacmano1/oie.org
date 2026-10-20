@@ -64,6 +64,12 @@ const sortedVendors = [...vendors].sort((a, b) =>
                 Visit site
                 <Icon name="arrow-up-right" size={14} />
               </a>
+              {v.otherSites?.map((s) => (
+                <a class="vendor__visit" href={s.url} target="_blank" rel="noopener">
+                  {s.label}
+                  <Icon name="arrow-up-right" size={14} />
+                </a>
+              ))}
             </div>
 
             <dialog class="vendor-dialog" id={`vendor-${id}`} aria-labelledby={`vendor-${id}-title`}>
@@ -91,6 +97,12 @@ const sortedVendors = [...vendors].sort((a, b) =>
               </div>
 
               <div class="vendor-dialog__footer">
+                {v.otherSites?.map((s) => (
+                  <a class="vendor__visit" href={s.url} target="_blank" rel="noopener">
+                    {s.label}
+                    <Icon name="arrow-up-right" size={14} />
+                  </a>
+                ))}
                 <a class="button" href={v.listingUrl ?? v.url} target="_blank" rel="noopener">
                   Visit {v.name}
                 </a>
@@ -196,6 +208,7 @@ const sortedVendors = [...vendors].sort((a, b) =>
     padding: 0.5rem 0;
     margin-left: auto;
   }
+  .vendor__visit + .vendor__visit { margin-left: 0; }
   .vendor__visit:hover { color: var(--color-accent); }
 
   /* Dialog */
@@ -265,6 +278,9 @@ const sortedVendors = [...vendors].sort((a, b) =>
     padding: 1.5rem 2rem 2rem;
     border-top: 1px solid var(--color-border-soft);
     display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.25rem;
     justify-content: flex-end;
   }
 
