@@ -10,8 +10,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.7.2",
+    "@astrojs/sitemap": "^3.7.4",
     "@fontsource/raleway": "^5.1.0",
-    "astro": "^5.1.0"
+    "astro": "^7.4.2"
   }
 }
