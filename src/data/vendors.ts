@@ -293,4 +293,24 @@ export const vendors: Vendor[] = [
       'Training',
     ],
   },
+  {
+    name: 'Nirmitee.io',
+    url: 'https://nirmitee.io/',
+    listingUrl: 'https://nirmitee.io/open-integration-engine-services/',
+    logo: '/images/vendors/nirmitee.png',
+    tagline:
+      'Healthcare integration company for HL7 v2, FHIR and X12. Moves live channels from Mirth Connect to OIE and builds custom OIE plugins and connectors.',
+    description:
+      'Nirmitee.io is a healthcare software company focused on integration work: HL7 v2, FHIR, X12 and interface engines. For Eclipse Open Integration Engine we build and support channels, and we move live channels from Mirth Connect to OIE. We also build custom OIE plugins and connectors, such as new source and destination connectors, transformer steps and Administrator extensions.\n\n' +
+      'Our open-source work for the Mirth and OIE community includes openmirth-console, a browser-based operations console for Mirth Connect, OIE and BridgeLink over the REST API (Apache 2.0), and mirth-connect-cookbook, a collection of channel recipes and transformers (MIT).',
+    regions: 'Pune, India (IST) and the United States, serves clients in the US and India',
+    languages: 'English, Hindi',
+    services: [
+      'Integration & Interface Services',
+      'Migration from Other Engines',
+      'Cloud Hosting',
+      'Managed Support',
+      'Custom Development',
+    ],
+  },
 ];
