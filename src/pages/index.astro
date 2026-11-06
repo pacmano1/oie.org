@@ -45,6 +45,7 @@ const newsFmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long
 
         <p class="hero__cta">
           <a class="button" href="/downloads/">Download</a>
+          <a class="button button-outline" href="https://docs.openintegrationengine.org/engine/" target="_blank" rel="noopener">Documentation</a>
         </p>
       </div>
     </div>
@@ -220,6 +221,9 @@ const newsFmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long
   }
 
   .hero__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
     margin: 0.5rem 0 0;
   }
 
