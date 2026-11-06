@@ -4,6 +4,7 @@ import Icon from './Icon.astro';
 const aboutLinks = [
   { href: '/about/',   label: 'About' },
   { href: '/open/',    label: 'Open Development' },
+  { href: 'https://docs.openintegrationengine.org/engine/', label: 'Documentation' },
   { href: '/compare/', label: 'Compare' },
   { href: '/contact/', label: 'Contact' },
 ];
@@ -76,6 +77,8 @@ const communityActive = communityLinks.some((l) => isActive(l.href));
                   role="menuitem"
                   href={link.href}
                   class:list={['site-header__dropdown-link', { 'is-active': isActive(link.href) }]}
+                  target={link.href.startsWith('http') ? '_blank' : undefined}
+                  rel={link.href.startsWith('http') ? 'noopener' : undefined}
                 >
                   {link.label}
                 </a>

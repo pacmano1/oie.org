@@ -150,6 +150,8 @@ img { max-width: 100%; height: auto; }
   background: transparent;
   color: var(--color-main);
   border: 2px solid var(--color-main);
+  /* Less the border, so it is the same size as a plain button beside it. */
+  padding: calc(0.75em - 2px) calc(1.75em - 2px);
 }
 .button-outline:hover {
   background: var(--color-main);
